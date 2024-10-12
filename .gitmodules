@@ -8,5 +8,5 @@
 	branch = tex
 [submodule "wse-sketches"]
 	path = wse-sketches
-	url = https://github.com/mmore500/hypermutator-dynamics.git
+	url = https://github.com/mmore500/wse-sketches.git
 	branch = master
