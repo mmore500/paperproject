@@ -62,20 +62,19 @@ jobs:
           sudo python -m pip install pip --upgrade
           sudo python -m pip install uv --upgrade
           sudo python -m uv pip install -r requirements.txt  --system
-      - run:
-          convert --version
       # Adapted from https://askubuntu.com/a/524368
       - run: ./binder/execute_notebooks.sh
       # adapted from https://unix.stackexchange.com/a/545630
       - run: find -type f -name "*.pdf" -exec bash -c 'gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dBATCH -dQUIET -sOutputFile="new.pdf" "{}"; rm "{}"; mv "new.pdf" "{}";' {} \;
-      - run: git init
+      - run: |
+        git init
+        sed -i '/teeplots\//d' binder/.gitignore
       - uses: fregante/setup-git-user@v1
       - run: git commit --allow-empty -m "Initial commit"
-      - run: cp -r binder/ deploy/
       - uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
           branch: binder # The branch the action should deploy to.
-          folder: deploy # The folder the action should deploy.
+          folder: . # The folder the action should deploy.
   latex:
     name: Latex Build and Deploy
     runs-on: ubuntu-22.04
