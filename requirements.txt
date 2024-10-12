@@ -145,6 +145,7 @@ numpy==2.1.2
     #   matplotlib
     #   pandas
     #   pecking
+    #   pyarrow
     #   scipy
     #   seaborn
 opytional==0.1.0
@@ -194,6 +195,8 @@ ptyprocess==0.7.0
     # via pexpect
 py==1.11.0
     # via retry
+pyarrow==16.1.0
+    # via -r requirements.in
 pycodestyle==2.12.1
     # via autopep8
 pygments==2.18.0
