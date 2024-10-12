@@ -25,7 +25,6 @@ jobs:
           sudo python -m pip install pip --upgrade
           sudo python -m pip install uv --upgrade
           sudo python -m uv pip install -r requirements.txt  --system
-          sudo python -m uv pip install -r docs/requirements.txt --system
       - run: ./tidy/test_tidy.sh
 
   lint:
