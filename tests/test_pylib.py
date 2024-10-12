@@ -1,5 +1,5 @@
-from hsurf import hsurf  # noqa F401
+from pylib import pylib  # noqa F401
 
 
-def test_hsturf():
+def test_pylib():
     pass
