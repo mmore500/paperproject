@@ -1,4 +1,4 @@
-from pylib import pylib  # noqa F401
+import pylib
 
 
 def test_pylib():
