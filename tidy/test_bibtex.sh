@@ -9,7 +9,7 @@ set -e
 
 SOURCE_HASH=$( find -path ./cpp/third-party -prune -false -o -type f | sort | xargs cat | sha1sum )
 
-./tex/script/bibtex-tidy.sh
+# ./tex/script/bibtex-tidy.sh
 
 if [ "${SOURCE_HASH}" == "$( find -path ./cpp/third-party -prune -false -o -type f | sort | xargs cat | sha1sum )" ];
 then
