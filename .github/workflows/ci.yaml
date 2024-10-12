@@ -1,0 +1,114 @@
+name: CI
+on:
+  push:
+    branches: [ master, dev ]
+  pull_request:
+    branches:
+      - '**'
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+jobs:
+
+  tidy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: |
+          sudo apt-get update -y
+          sudo apt-get install -y bibtool rename
+          npm install -g bibtex-tidy
+          python -m pip install pip --upgrade
+          sudo python -m pip install pip --upgrade
+          sudo python -m pip install uv --upgrade
+          sudo python -m uv pip install -r requirements.txt  --system
+          sudo python -m uv pip install -r docs/requirements.txt --system
+      - run: ./tidy/test_tidy.sh
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          python -m pip install pip --upgrade
+          sudo python -m pip install pip --upgrade
+          sudo python -m pip install uv --upgrade
+          sudo python -m uv pip install -r requirements.txt  --system
+      - run: ./lint.sh
+
+  test-pylib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          python -m pip install pip --upgrade
+          sudo python -m pip install pip --upgrade
+          sudo python -m pip install uv --upgrade
+          sudo python -m uv pip install -r requirements.txt  --system
+      - run: python -m pytest -n auto tests
+
+  binder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup headless display
+        uses: pyvista/setup-headless-display-action@v2
+      - run: |
+          sudo apt-get update -y
+          sudo apt-get install -y ghostscript imagemagick python3-pil libgif-dev ffmpeg
+          python -m pip install pip --upgrade
+          sudo python -m pip install pip --upgrade
+          sudo python -m pip install uv --upgrade
+          sudo python -m uv pip install -r requirements.txt  --system
+      - run:
+          convert --version
+      # Adapted from https://askubuntu.com/a/524368
+      - run: ./binder/execute_notebooks.sh
+      # adapted from https://unix.stackexchange.com/a/545630
+      - run: find -type f -name "*.pdf" -exec bash -c 'gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dBATCH -dQUIET -sOutputFile="new.pdf" "{}"; rm "{}"; mv "new.pdf" "{}";' {} \;
+      - run: git init
+      - uses: fregante/setup-git-user@v1
+      - run: git commit --allow-empty -m "Initial commit"
+      - run: cp -r binder/ deploy/
+      - uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          branch: binder # The branch the action should deploy to.
+          folder: deploy # The folder the action should deploy.
+  latex:
+    name: Latex Build and Deploy
+    runs-on: ubuntu-22.04
+    container:
+      image: ghcr.io/mmore500/teximage:sha-77b8179
+      options: --user root
+    permissions:
+      contents: write
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+      - name: Build LaTeX document
+        run: |
+          trap 'cat tex/*.log || true >> "$GITHUB_OUTPUT"' EXIT
+          make -C tex
+      - name: Prepare deploy directory
+        run: |
+          mkdir -p deploy
+          cp tex/${{ github.event.repository.name }}-draft.pdf deploy/
+          echo '<html><body><a href="${{ github.event.repository.name }}-draft.pdf">Download Manuscript Draft [PDF]</a></body></html>' > deploy/index.html
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: deploy
+        if: github.ref == 'refs/heads/master'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        if: github.ref == 'refs/heads/master'
