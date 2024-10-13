@@ -18,7 +18,7 @@ def _make_cmap():
 
     return mpl_colors.LinearSegmentedColormap.from_list(
         "custom_cmap",
-        list(reversed(colors_combined)),
+        list(colors_combined),
     )
 
 
@@ -84,7 +84,6 @@ def size_fixation_heatmap(
 
     # Invert colorbar and add labels as before
     cbar = plt.gcf().axes[-1]  # Access the colorbar
-    cbar.invert_yaxis()
     cbar_label_top = "normo\nmutate\nfavored"
     cbar_label_bottom = "\nhyper\nmutate\nfavored"
     plt.text(
