@@ -74,7 +74,7 @@ jobs:
         uses: pyvista/setup-headless-display-action@v2
       - run: |
           sudo apt-get update -y
-          sudo apt-get install -y ghostscript imagemagick python3-pil libgif-dev ffmpeg
+          sudo apt-get install -y ghostscript imagemagick python3-pil libgif-dev ffmpeg mat2
           python -m pip install pip --upgrade
           sudo python -m pip install pip --upgrade
           sudo python -m pip install uv --upgrade
@@ -83,6 +83,9 @@ jobs:
       - run: ./binder/execute_notebooks.sh "${{ matrix.notebook }}"
       # adapted from https://unix.stackexchange.com/a/545630
       - run: find -type f -name "*.pdf" -exec bash -c 'gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dBATCH -dQUIET -sOutputFile="new.pdf" "{}"; rm "{}"; mv "new.pdf" "{}";' {} \;
+      - name: Strip PDF metadata
+        run: |
+          find -type f -name "*.pdf" -exec mat2 --inplace "{}" \;
       - run: |
           git init
           sed -i '/teeplots\//d' binder/.gitignore
