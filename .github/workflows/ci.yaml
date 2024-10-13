@@ -85,7 +85,7 @@ jobs:
       - run: find -type f -name "*.pdf" -exec bash -c 'gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dBATCH -dQUIET -sOutputFile="new.pdf" "{}"; rm "{}"; mv "new.pdf" "{}";' {} \;
       - name: Strip PDF metadata
         run: |
-          find -type f -name "*.pdf" -exec mat2 --lightweight --inplace "{}" \;
+          find -type f -name "*.pdf" -exec mat2 --lightweight --inplace --unknown-members keep "{}" \;
       - run: |
           git init
           sed -i '/teeplots\//d' binder/.gitignore
