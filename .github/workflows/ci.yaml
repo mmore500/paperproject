@@ -11,7 +11,7 @@ on:
 jobs:
 
   tidy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
@@ -28,7 +28,7 @@ jobs:
       - run: ./tidy/test_tidy.sh
 
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
       - run: |
@@ -39,7 +39,7 @@ jobs:
       - run: ./lint.sh
 
   test-pylib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
       - run: |
@@ -51,7 +51,7 @@ jobs:
 
   # adapted from https://code.dblock.org/2021/09/03/generating-task-matrix-by-looping-over-repo-files-with-github-actions.html
   list-notebooks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -63,7 +63,7 @@ jobs:
 
   binder-notebook:
     needs: list-notebooks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -97,7 +97,7 @@ jobs:
           folder: . # The folder the action should deploy.
 
   binder:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
       - name: Setup headless display
