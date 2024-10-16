@@ -1,7 +1,3 @@
-[submodule "hypermutator-dynamics"]
-	path = hypermutator-dynamics
-	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-5050-spatial1d-genomes.ipynb
 [submodule "binder/binder"]
 	path = binder/binder
 	url = https://github.com/mmore500/hypermutator-dynamics.git
