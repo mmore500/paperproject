@@ -1,7 +1,3 @@
-[submodule "tex/binder"]
-	path = tex/binder
-	url = https://github.com/mmore500/hstrat-surface-concept.git
-	branch = binder
 [submodule "tex"]
 	path = tex
 	url = https://github.com/mmore500/hypermutator-dynamics.git
