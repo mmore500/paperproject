@@ -10,7 +10,7 @@ for branch in $(git branch -r | grep 'origin/binder' | sed 's|origin/||'); do
     echo "Processing branch $branch"
 
     # Add the branch as a submodule
-    git submodule add -b "$branch" --depth 1 "$(git config --get remote.origin.url)" "binder/$branch"
+    git submodule add -b "$branch" "$(git config --get remote.origin.url)" "binder/$branch"
     git config -f .gitmodules submodule."binder/$branch".shallow true
 
 done
