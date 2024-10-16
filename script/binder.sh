@@ -11,10 +11,9 @@ for branch in $(git branch -r | grep 'origin/binder' | sed 's|origin/||'); do
     echo "Processing branch $branch"
 
     # Add the branch as a submodule
-    git submodule add --branch "$branch" "$(git config --get remote.origin.url)" "binder/$branch"
+    git clone --branch "$branch" --single-branch "https://github.com/mmore500/hypermutator-dynamics.git" "binder/$branch" --jobs $(nproc) --depth 1
+    git submodule add --branch "$branch" "https://github.com/mmore500/hypermutator-dynamics.git" "binder/$branch"
+    git config -f .gitmodules submodule."binder/$branch".branch "$branch"
     git config -f .gitmodules submodule."binder/$branch".shallow true
 
 done
-
-# Initialize the submodule
-git submodule update --init --recursive --depth 1 --jobs $(nproc)
