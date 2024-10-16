@@ -1,84 +1,84 @@
 [submodule "binder/binder-cupy-5050-spatial1d-genomes.ipynb"]
-	path = binder/binder-cupy-5050-spatial1d-genomes.ipynb
+	path = "binder/binder-cupy-5050-spatial1d-genomes.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-5050-spatial1d-genomes.ipynb
+	branch = "binder-cupy-5050-spatial1d-genomes.ipynb"
 [submodule "binder/binder-cupy-5050-spatial1d-traits.ipynb"]
-	path = binder/binder-cupy-5050-spatial1d-traits.ipynb
+	path = "binder/binder-cupy-5050-spatial1d-traits.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-5050-spatial1d-traits.ipynb
+	branch = "binder-cupy-5050-spatial1d-traits.ipynb"
 [submodule "binder/binder-cupy-5050-spatial2d-genomes.ipynb"]
-	path = binder/binder-cupy-5050-spatial2d-genomes.ipynb
+	path = "binder/binder-cupy-5050-spatial2d-genomes.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-5050-spatial2d-genomes.ipynb
+	branch = "binder-cupy-5050-spatial2d-genomes.ipynb"
 [submodule "binder/binder-cupy-5050-spatial2d-traits.ipynb"]
-	path = binder/binder-cupy-5050-spatial2d-traits.ipynb
+	path = "binder/binder-cupy-5050-spatial2d-traits.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-5050-spatial2d-traits.ipynb
+	branch = "binder-cupy-5050-spatial2d-traits.ipynb"
 [submodule "binder/binder-cupy-5050-wellmixed-genomes.ipynb"]
-	path = binder/binder-cupy-5050-wellmixed-genomes.ipynb
+	path = "binder/binder-cupy-5050-wellmixed-genomes.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-5050-wellmixed-genomes.ipynb
+	branch = "binder-cupy-5050-wellmixed-genomes.ipynb"
 [submodule "binder/binder-cupy-5050-wellmixed-traits.ipynb"]
-	path = binder/binder-cupy-5050-wellmixed-traits.ipynb
+	path = "binder/binder-cupy-5050-wellmixed-traits.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-5050-wellmixed-traits.ipynb
+	branch = "binder-cupy-5050-wellmixed-traits.ipynb"
 [submodule "binder/binder-cupy-denovo-spatial1d-genomes.ipynb"]
-	path = binder/binder-cupy-denovo-spatial1d-genomes.ipynb
+	path = "binder/binder-cupy-denovo-spatial1d-genomes.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-denovo-spatial1d-genomes.ipynb
+	branch = "binder-cupy-denovo-spatial1d-genomes.ipynb"
 [submodule "binder/binder-cupy-denovo-spatial1d-traits.ipynb"]
-	path = binder/binder-cupy-denovo-spatial1d-traits.ipynb
+	path = "binder/binder-cupy-denovo-spatial1d-traits.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-denovo-spatial1d-traits.ipynb
+	branch = "binder-cupy-denovo-spatial1d-traits.ipynb"
 [submodule "binder/binder-cupy-denovo-spatial2d-genomes.ipynb"]
-	path = binder/binder-cupy-denovo-spatial2d-genomes.ipynb
+	path = "binder/binder-cupy-denovo-spatial2d-genomes.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-denovo-spatial2d-genomes.ipynb
+	branch = "binder-cupy-denovo-spatial2d-genomes.ipynb"
 [submodule "binder/binder-cupy-denovo-spatial2d-traits.ipynb"]
-	path = binder/binder-cupy-denovo-spatial2d-traits.ipynb
+	path = "binder/binder-cupy-denovo-spatial2d-traits.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-denovo-spatial2d-traits.ipynb
+	branch = "binder-cupy-denovo-spatial2d-traits.ipynb"
 [submodule "binder/binder-cupy-denovo-wellmixed-genomes.ipynb"]
-	path = binder/binder-cupy-denovo-wellmixed-genomes.ipynb
+	path = "binder/binder-cupy-denovo-wellmixed-genomes.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-denovo-wellmixed-genomes.ipynb
+	branch = "binder-cupy-denovo-wellmixed-genomes.ipynb"
 [submodule "binder/binder-cupy-denovo-wellmixed-traits.ipynb"]
-	path = binder/binder-cupy-denovo-wellmixed-traits.ipynb
+	path = "binder/binder-cupy-denovo-wellmixed-traits.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-cupy-denovo-wellmixed-traits.ipynb
+	branch = "binder-cupy-denovo-wellmixed-traits.ipynb"
 [submodule "binder/binder-index.ipynb"]
-	path = binder/binder-index.ipynb
+	path = "binder/binder-index.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-index.ipynb
+	branch = "binder-index.ipynb"
 [submodule "binder/binder-perf-wse-tilepop.ipynb"]
-	path = binder/binder-perf-wse-tilepop.ipynb
+	path = "binder/binder-perf-wse-tilepop.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-perf-wse-tilepop.ipynb
+	branch = "binder-perf-wse-tilepop.ipynb"
 [submodule "binder/binder-perf-wse-vs-gpu-100k.ipynb"]
-	path = binder/binder-perf-wse-vs-gpu-100k.ipynb
+	path = "binder/binder-perf-wse-vs-gpu-100k.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-perf-wse-vs-gpu-100k.ipynb
+	branch = "binder-perf-wse-vs-gpu-100k.ipynb"
 [submodule "binder/binder-perf-wse-vs-gpu.ipynb"]
-	path = binder/binder-perf-wse-vs-gpu.ipynb
+	path = "binder/binder-perf-wse-vs-gpu.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-perf-wse-vs-gpu.ipynb
+	branch = "binder-perf-wse-vs-gpu.ipynb"
 [submodule "binder/binder-wse-5050-spatial2d-2048atile-traits.ipynb"]
-	path = binder/binder-wse-5050-spatial2d-2048atile-traits.ipynb
+	path = "binder/binder-wse-5050-spatial2d-2048atile-traits.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-wse-5050-spatial2d-2048atile-traits.ipynb
+	branch = "binder-wse-5050-spatial2d-2048atile-traits.ipynb"
 [submodule "binder/binder-wse-5050-spatial2d-32atile-traits.ipynb"]
-	path = binder/binder-wse-5050-spatial2d-32atile-traits.ipynb
+	path = "binder/binder-wse-5050-spatial2d-32atile-traits.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-wse-5050-spatial2d-32atile-traits.ipynb
+	branch = "binder-wse-5050-spatial2d-32atile-traits.ipynb"
 [submodule "binder/binder-wse-5050-spatial2d-explicitsite-traits.ipynb"]
-	path = binder/binder-wse-5050-spatial2d-explicitsite-traits.ipynb
+	path = "binder/binder-wse-5050-spatial2d-explicitsite-traits.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-wse-5050-spatial2d-explicitsite-traits.ipynb
+	branch = "binder-wse-5050-spatial2d-explicitsite-traits.ipynb"
 [submodule "binder/binder-wse-denovo-spatial2d-explicitsite-traits.ipynb"]
-	path = binder/binder-wse-denovo-spatial2d-explicitsite-traits.ipynb
+	path = "binder/binder-wse-denovo-spatial2d-explicitsite-traits.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-wse-denovo-spatial2d-explicitsite-traits.ipynb
+	branch = "binder-wse-denovo-spatial2d-explicitsite-traits.ipynb"
 [submodule "binder/binder-wse-denovo-spatial2d-traits.ipynb"]
-	path = binder/binder-wse-denovo-spatial2d-traits.ipynb
+	path = "binder/binder-wse-denovo-spatial2d-traits.ipynb"
 	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder-wse-denovo-spatial2d-traits.ipynb
+	branch = "binder-wse-denovo-spatial2d-traits.ipynb"
