@@ -1,8 +1,3 @@
-[submodule "binder/binder"]
-	shallow = true
-	path = binder/binder
-	url = https://github.com/mmore500/hypermutator-dynamics.git
-	branch = binder
 [submodule "binder/binder-cupy-5050-spatial1d-genomes.ipynb"]
 	shallow = true
 	path = binder/binder-cupy-5050-spatial1d-genomes.ipynb
