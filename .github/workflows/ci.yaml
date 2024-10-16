@@ -89,6 +89,7 @@ jobs:
       - run: |
           git init
           sed -i '/teeplots\//d' binder/.gitignore
+          rm -rf .gitmodules
       - uses: fregante/setup-git-user@v1
       - run: git commit --allow-empty -m "Initial commit"
       - uses: JamesIves/github-pages-deploy-action@4.0.0
@@ -116,6 +117,7 @@ jobs:
       - run: |
           git init
           sed -i '/teeplots\//d' binder/.gitignore
+          rm -rf .gitmodules
       - uses: fregante/setup-git-user@v1
       - run: git commit --allow-empty -m "Initial commit"
       - uses: JamesIves/github-pages-deploy-action@4.0.0
