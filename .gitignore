@@ -1,6 +1,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/latex
 # Edit at https://www.toptal.com/developers/gitignore?templates=latex
 
+main.pdf
+hypermutator-dynamics.pdf
+hypermutator-dynamics-draft.pdf
+
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
 *.aux
