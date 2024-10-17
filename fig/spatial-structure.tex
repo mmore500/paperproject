@@ -1,0 +1,101 @@
+\begin{figure}[h]
+  % adapted from https://tex.stackexchange.com/a/122813/316176
+  \captionsetup[subfigure]{justification=raggedright}
+  \begin{minipage}{\textwidth}
+
+    \begin{minipage}{0.1\textwidth}~\end{minipage}%
+    \begin{minipage}{0.25\textwidth}
+      \centering
+      \itshape
+      {\large
+      \textbf{weak} spatial structure
+      }
+
+      (well-mixed)
+    \end{minipage}%
+    \begin{minipage}{0.25\textwidth}
+      \centering
+      \itshape
+      {\huge
+      $\longleftrightarrow$
+      }
+      
+      (2D demes)
+    \end{minipage}%
+    \begin{minipage}{0.25\textwidth}
+      \centering
+      \itshape
+      {\large
+      \textbf{strong} spatial stcture
+      }
+
+      (1D demes)
+    \end{minipage}
+
+    ~\vspace{-0.7ex}
+
+    % Top subfigure
+    \begin{subfigure}[b]{\linewidth}
+        \begin{minipage}{0.3\textwidth}
+          \includegraphics[height=5.5cm, trim={0cm 0cm 3.9cm 0cm}, clip]{binder/binder-cupy-5050-wellmixed-traits.ipynb/binder/teeplots/cupy-5050-wellmixed-traits/col=population-size+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+        \end{minipage}%
+        \begin{minipage}{0.06\textwidth}
+          ~
+        \end{minipage}%
+        \begin{minipage}{0.26\textwidth}
+          \includegraphics[height=5.5cm, trim={2.1cm 0cm 3.9cm 0cm}, clip]{binder/binder-cupy-5050-spatial1d-traits.ipynb/binder/teeplots/cupy-5050-spatial1d-traits/col=population-size+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+        \end{minipage}%
+        % \begin{minipage}{0.05\textwidth}
+        %   ~
+        % \end{minipage}%
+        \begin{minipage}{0.25\textwidth}
+          \includegraphics[height=5.5cm, trim={2.1cm 0cm 3.9cm 0cm}, clip]{binder/binder-cupy-5050-spatial2d-traits.ipynb/binder/teeplots/cupy-5050-spatial2d-traits/col=population-size+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+        \end{minipage}%
+      \begin{minipage}{0.12\textwidth}
+        \raggedright
+        \large
+        \caption{50/50 initial conditions}
+        \label{fig:wse-inf-one:32}
+      \end{minipage}%
+    \end{subfigure}%
+
+    % Bottom subfigure
+    \begin{subfigure}[b]{\linewidth}
+        \begin{minipage}{0.3\textwidth}
+          \includegraphics[height=5.5cm, trim={0cm 0cm 3.9cm 0cm}, clip]{binder/binder-cupy-denovo-wellmixed-traits.ipynb/binder/teeplots/cupy-denovo-wellmixed-traits/col=population-size+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+        \end{minipage}%
+        \begin{minipage}{0.06\textwidth}
+          ~
+        \end{minipage}%
+        \begin{minipage}{0.26\textwidth}
+          \includegraphics[height=5.5cm, trim={2.1cm 0cm 3.9cm 0cm}, clip]{binder/binder-cupy-denovo-spatial1d-traits.ipynb/binder/teeplots/cupy-denovo-spatial1d-traits/col=population-size+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+        \end{minipage}%
+        % \begin{minipage}{0.05\textwidth}
+        %   ~
+        % \end{minipage}%
+        \begin{minipage}{0.25\textwidth}
+          \includegraphics[height=5.5cm, trim={2.1cm 0cm 3.9cm 0cm}, clip]{binder/binder-cupy-denovo-spatial2d-traits.ipynb/binder/teeplots/cupy-denovo-spatial2d-traits/col=population-size+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+        \end{minipage}%
+      \begin{minipage}{0.12\textwidth}
+        \raggedright
+        \large
+        \caption{\textit{de novo} initial conditions}
+        \label{fig:wse-inf-one:32}
+      \end{minipage}%
+    \end{subfigure}%
+
+~\vspace{-1.2ex}
+
+\includegraphics[width=\textwidth, trim={0cm 4.7cm 5.3cm 0cm}, clip]{binder/binder-wse-denovo-spatial2d-2048atile-infben-traits.ipynb/binder/teeplots/wse-denovo-spatial2d-2048atile-infben-traits/col=available-beneficial-mutations+errorbar=sd+hue=genotype+kind=line+style=genotype+viz=relplot+x=population-size+y=fixation-probability+ext=}
+
+  \end{minipage}
+
+  \begin{minipage}{\textwidth}
+    \caption{%
+      \textbf{Spatial structure favors hypermutators under \textit{de novo} conditions when limited beneficial mutations are available.}
+      \footnotesize
+      TODO, on GPU.
+    }
+    \label{fig:spatial-structure}
+  \end{minipage}
+\end{figure}
