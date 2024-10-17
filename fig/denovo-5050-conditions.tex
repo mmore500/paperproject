@@ -1,0 +1,81 @@
+\begin{figure}[h]
+  % adapted from https://tex.stackexchange.com/a/122813/316176
+  \captionsetup[subfigure]{justification=raggedright}
+  \begin{minipage}{\textwidth}
+
+    \begin{minipage}{0.1\textwidth}~\end{minipage}%
+    \begin{minipage}{0.35\textwidth}
+      \centering
+      \itshape
+      {\large
+      \textbf{50/50} conditions
+      }
+    \end{minipage}%
+    \begin{minipage}{0.45\textwidth}
+      \centering
+      \itshape
+      {\large
+      \textbf{de novo} conditions
+      }
+    \end{minipage}
+
+    ~\vspace{-0.7ex}
+
+    % Top subfigure
+    \begin{subfigure}[b]{\linewidth}
+        \begin{minipage}{0.42\textwidth}
+          \includegraphics[height=5.5cm, trim={0cm 1.2cm 0cm 0cm}, clip]{binder/binder-cupy-5050-wellmixed-traits.ipynb/binder/teeplots/cupy-5050-wellmixed-traits/col=population-size+errorbar=ci+hue=genotype+layout=wide+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+        \end{minipage}%
+        \begin{minipage}{0.06\textwidth}
+          ~
+        \end{minipage}%
+        \begin{minipage}{0.38\textwidth}
+          \includegraphics[height=5.5cm, trim={1.8cm 1.2cm 0cm 0cm}, clip]{binder/binder-cupy-5050-spatial1d-traits.ipynb/binder/teeplots/cupy-5050-spatial1d-traits/col=population-size+errorbar=ci+hue=genotype+layout=wide+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+        \end{minipage}%
+      \begin{minipage}{0.12\textwidth}
+        \raggedright
+        \large
+        \caption{Poisson\\ model}
+        \label{fig:spatial-structure:5050}
+        \vspace{20ex}
+      \end{minipage}%
+    \end{subfigure}%
+
+    \vspace{-10ex}
+
+    % Bottom subfigure
+    \begin{subfigure}[b]{\linewidth}
+        \begin{minipage}{0.41\textwidth}
+          \includegraphics[height=5.5cm, trim={0cm 1.2cm 0cm 0cm}, clip]{binder/binder-cupy-denovo-wellmixed-traits.ipynb/binder/teeplots/cupy-denovo-wellmixed-traits/col=population-size+errorbar=ci+hue=genotype+layout=wide+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+        \end{minipage}%
+        \begin{minipage}{0.06\textwidth}
+          ~
+        \end{minipage}%
+        \begin{minipage}{0.38\textwidth}
+          \includegraphics[height=5.5cm, trim={1.8cm 1.2cm 0cm 0cm}, clip]{binder/binder-cupy-denovo-spatial1d-traits.ipynb/binder/teeplots/cupy-denovo-spatial1d-traits/col=population-size+errorbar=ci+hue=genotype+layout=wide+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+        \end{minipage}%
+      \begin{minipage}{0.12\textwidth}
+        \raggedright
+        \large
+        \vspace{10ex}
+        \caption{Site-explicit model}
+        \label{fig:spatial-structure:denovo}
+
+        \includegraphics[height=5.5cm, trim={7.3cm 0cm 0cm 0cm}, clip]{binder/binder-cupy-denovo-spatial1d-traits.ipynb/binder/teeplots/cupy-denovo-spatial1d-traits/col=population-size+errorbar=ci+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+      \end{minipage}%
+    \end{subfigure}%
+
+  \end{minipage}
+
+  \vspace{-10ex}
+
+  \begin{minipage}{\textwidth}
+    \caption{%
+      \textbf{TODO}
+      \footnotesize
+      TODO, on WSE.
+      Error bands indicate bootstrapped 95\% confidence interval.
+    }
+    \label{fig:spatial-structure}
+  \end{minipage}
+\end{figure}
