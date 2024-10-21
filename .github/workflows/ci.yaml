@@ -160,3 +160,23 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
         if: github.ref == 'refs/heads/master'
+
+  slurm:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git lshw python3.10-venv
+      - name: Test scripts
+        run: |
+          for script in $(find slurm -name "*.sh"); do
+            echo "${script}"
+            ./${script}
+          done
