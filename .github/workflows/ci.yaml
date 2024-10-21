@@ -151,15 +151,17 @@ jobs:
           mkdir -p deploy
           cp tex/*-draft.pdf deploy/
           echo "<html><body><a href="$(ls deploy)">Download Manuscript Draft [PDF]</a></body></html>" > deploy/index.html
-      - name: Upload artifact
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: tex/*-draft.pdf
+      - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: deploy
-        if: github.ref == 'refs/heads/master'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-        if: github.ref == 'refs/heads/master'
 
   slurm:
     runs-on: ubuntu-22.04
