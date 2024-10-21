@@ -1,7 +1,6 @@
-# Hypermutator Dynamics Manuscript
+# Paper Project
 
-[![CI](https://github.com/mmore500/hypermutator-dynamics/actions/workflows/ci.yaml/badge.svg)](https://github.com/mmore500/hypermutator-dynamics/actions/workflows/ci.yaml)
-[![GitHub stars](https://img.shields.io/github/stars/mmore500/hypermutator-dynamics.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/mmore500/hypermutator-dynamics)
+[![CI](https://github.com/mmore500/paperproject/actions/workflows/ci.yaml/badge.svg)](https://github.com/mmore500/paperproject/actions/workflows/ci.yaml)
+[![GitHub stars](https://img.shields.io/github/stars/mmore500/paperproject.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/mmore500/paperproject)
 
-- manuscript draft: <https://mmore500.github.io/hypermutator-dynamics/>
-- data via OSF: <https://osf.io/ymaf8/>
+- manuscript draft: <https://mmore500.github.io/paperproject/>

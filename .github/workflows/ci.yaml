@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [ master, dev ]
+    branches: [ master, main, dev ]
   pull_request:
     branches:
       - '**'
@@ -124,6 +124,7 @@ jobs:
         with:
           branch: binder # The branch the action should deploy to.
           folder: . # The folder the action should deploy.
+
   latex:
     name: Latex Build and Deploy
     runs-on: ubuntu-22.04
