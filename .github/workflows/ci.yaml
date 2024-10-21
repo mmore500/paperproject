@@ -154,6 +154,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
+          name: manuscript
           path: tex/*-draft.pdf
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v2
