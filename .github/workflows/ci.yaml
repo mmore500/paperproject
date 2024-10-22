@@ -36,6 +36,11 @@ jobs:
           mkdir -p deploy
           cp ${{ github.event.repository.name }}-draft.pdf deploy/
           echo '<html><body><a href="${{ github.event.repository.name }}-draft.pdf">Download Manuscript Draft [PDF]</a></body></html>' > deploy/index.html
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: manuscript
+          path: ${{ github.event.repository.name }}-draft.pdf
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
