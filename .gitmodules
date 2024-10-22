@@ -118,3 +118,8 @@
 	url = https://github.com/mmore500/hypermutator-dynamics.git
 	branch = binder-wse-5050-spatial2d-32atile-infben-traits.ipynb
 	shallow = true
+[submodule "binder/binder-wse-5050-spatial2d-traits.ipynb"]
+	path = binder/binder-wse-5050-spatial2d-traits.ipynb
+	url = https://github.com/mmore500/hypermutator-dynamics.git
+	branch = binder-wse-5050-spatial2d-traits.ipynb
+	shallow = true
