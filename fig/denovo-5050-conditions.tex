@@ -26,7 +26,7 @@
         \begin{minipage}{0.42\textwidth}
           ~
           % TODO
-          \includegraphics[height=5.5cm, trim={0cm 0.8cm 0cm 0cm}, clip]{binder/binder-wse-5050-spatial2d-traits.ipynb/binder/teeplots/wse-5050-spatial2d-traits/col=population-size+col-label=+errorbar=ci+hue=genotype+layout=wide+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+          \includegraphics[height=5.5cm, trim={0cm 0.8cm 0cm 0cm}, clip]{binder/binder-wse-5050-spatial2d-traits.ipynb/binder/teeplots/wse-5050-spatial2d-traits/col=population-size+errorbar=ci+hue=genotype+layout=wide+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
         \end{minipage}%
         \begin{minipage}{0.06\textwidth}
           ~
@@ -40,7 +40,7 @@
         \raggedright
         \large
         \caption{Poisson\\ model}
-        \label{fig:spatial-structure:5050}
+        \label{fig:denovo-5050-conditions:poisson}
         \vspace{20ex}
       \end{minipage}%
     \end{subfigure}%
@@ -50,7 +50,7 @@
     % Bottom subfigure
     \begin{subfigure}[b]{\linewidth}
         \begin{minipage}{0.41\textwidth}
-          \includegraphics[height=5.5cm, trim={0cm 0.8cm 0cm 0cm}, clip]{binder/binder-wse-5050-spatial2d-explicitsite-traits.ipynb/binder/teeplots/wse-5050-spatial2d-explicitsite-traits/col=population-size+col-label=+errorbar=ci+hue=genotype+layout=wide+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+          \includegraphics[height=5.5cm, trim={0cm 0.8cm 0cm 0cm}, clip]{binder/binder-wse-5050-spatial2d-explicitsite-traits.ipynb/binder/teeplots/wse-5050-spatial2d-explicitsite-traits/col=population-size+errorbar=ci+hue=genotype+layout=wide+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
         \end{minipage}%
         \begin{minipage}{0.06\textwidth}
           ~
@@ -63,7 +63,7 @@
         \large
         \vspace{10ex}
         \caption{Site-explicit model}
-        \label{fig:spatial-structure:denovo}
+        \label{fig:denovo-5050-conditions:site-explicit}
 
         \includegraphics[height=5.5cm, trim={7.3cm 0cm 0cm 0cm}, clip]{binder/binder-cupy-denovo-spatial1d-traits.ipynb/binder/teeplots/cupy-denovo-spatial1d-traits/col=population-size+errorbar=ci+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
       \end{minipage}%
@@ -75,11 +75,17 @@
 
   \begin{minipage}{\textwidth}
     \caption{%
-      \textbf{Normmutators persist through more available beneficial mutations when hypermutators must arise \textit{de novo}.}
+      \textbf{Initial supply of hypermutators influences normomutator resilience to available adaptive potential.}
       \footnotesize
-      TODO, on WSE.
-      Error bands indicate bootstrapped 95\% confidence interval.
+      Area plot strips track hypermutator fixation probability across surveyed levels of adaptive potential, with error bands providing bootstrapped 95\% confidence interval.
+      Strips are arranged left-to-right with ascending population size, indicated on top axis.
+      In left column, populations are initialized with half of agents as hypermutators.
+      In right column, populations are initialized with all normomutators; hypermutators must arise \textit{de novo}, with probability $10^{-6}$ per daughter.
+      The \textit{de novo} regime boosts normomutator resilience to adaptive potential, with large population sizes reliably resisting hypermutator fixation through upwards of 10 available beneficial mutations.
+      Top panel \ref{fig:denovo-5050-conditions:poisson} gives results for Poisson genome model.
+      Bottom panel \ref{fig:denovo-5050-conditions:site-explicit} gives results under site-explicit genome model, which are similar.
+      Simulations were conducted on WSE, using per-PE population size of 256.
     }
-    \label{fig:spatial-structure}
+    \label{fig:denovo-5050-conditions}
   \end{minipage}
 \end{figure}
