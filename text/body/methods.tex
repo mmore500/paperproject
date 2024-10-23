@@ -2,6 +2,18 @@
 
 \input{fig/perf}
 
+Figure \ref{fig:perf} compares simulation performance between hardware platforms, measured in agent-generations per second (AGPS).
+Mean throughput was 7.0 (SD 0.5) million AGPS on CPU, 2.7 (SD 0.03) billion AGPS on GPU, and 780 (SD 0.5) billion on WSE for \textit{de novo} trials using the Poisson model.
+Net speedup, normalized to mean CPU throughput, was 378x (SD 4) on GPU and 111,091x (SD 75) on WSE.
+Normalized to net GPU performance, WSE provided a speedup of 294x (SD 0.2).
+
+Under the site-explicit model, WSE gave 650 (SD 50) billion AGPS under \textit{de novo} conditions.
+The site-explicit model was not implemented on GPU.
+For all the above, 50/50 trials gave similar performance to \textit{de novo}.
+
+On WSE, we found agent-generation throughput to be generally consistent across per-PE population densities, as shown in Supplementary Figure \ref{fig:perf-tilepop}.
+In contrast, mean GPU throughput dropped to 121 million AGPS when increasing net population size from 15.1 million to 175 million.
+
 \subsection{Software and Data Availability} \label{sec:materials}
 
 Supporting software and executable notebooks for this work are available via Zenodo at TODO \citep{moreno2024hsurf}.

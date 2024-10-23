@@ -1,7 +1,7 @@
 \begin{figure*}
 
 \begin{subfigure}{0.5\textwidth}
-\includegraphics[width=\textwidth, trim={0cm 0cm 4.1cm 0cm}, clip]{binder/binder-perf-wse-vs-gpu.ipynb/binder/teeplots/col=experiment-design+hue=hardware+orient=h+viz=backplot+x=throughput-agent-generations-sec+ext=.pdf}
+\includegraphics[width=\textwidth, trim={0cm 0cm 2.5cm 0cm}, clip]{binder/binder-perf-wse-vs-gpu.ipynb/binder/teeplots/col=experiment-design+hue=hardware+orient=h+viz=backplot+x=throughput-agent-generations-sec+ext=.pdf}
 \caption{throughput}
 \label{fig:perf:throughput}
 \end{subfigure}%
@@ -15,9 +15,12 @@
 \end{subfigure}
 
 \caption{
-  \textbf{Runtime simulation performance.}
+  \textbf{Runtime performance for CPU, GPU, and WSE simulations.}
   \footnotesize
-  TODO.
+  CPU throughput was measured from NumPy-backed simulation code, GPU throughput was measured from equivalent CuPy-backed simulation code, and WSE throughput was measured from a comparable Cerebras Software Language implementation.
+  CPU experiments were single-core on AMD EPYC 7H12 (2.595 GHz), GPU hardware was NVIDIA A100 hosted by AMD EPYC 7713 (2.0 GHz) or Intel Xeon 8358 (2.6 GHz), and WSE hardware was CS-2 hosted by Intel Xeon Platinum 8280L (2.7-4.0GHz).
+  Speedup was calculated relative to mean CPU throughput.
+  Shaded areas indicate bootstrapped 95\% confidence interval with sample size $\geq 10$.
 }
 \label{fig:perf}
 \end{figure*}
