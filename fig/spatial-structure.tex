@@ -8,7 +8,7 @@
       \centering
       \itshape
       {\large
-      \textbf{weak} spatial structure
+      \textbf{weak} population structure
       }
 
       (well-mixed)
@@ -26,7 +26,7 @@
       \centering
       \itshape
       {\large
-      \textbf{strong} spatial stcture
+      \textbf{strong} population stcture
       }
 
       (1D demes)
@@ -96,10 +96,20 @@
 
   \begin{minipage}{\textwidth}
     \caption{%
-      \textbf{Spatial structure favors hypermutators under \textit{de novo} conditions when limited beneficial mutations are available.}
+      \textbf{Population structure increases normomutator resilience to available adaptive potential.}
       \footnotesize
-      TODO, on GPU.
-      Error bands indicate bootstrapped 95\% confidence interval.
+      Areaplot strips track hypermutator fixation probability across surveyed levels of adaptive potential, with error bands indicating bootstrapped 95\% confidence interval.
+      Strips are arranged left-to-right with ascending population size, marked on top axis.
+      Leftmost column shows well-mixed conditions.
+      Populations in center and rightmost columns are subdivided into 256-agent demes, arranged in a 2D grid or 1D ring.
+      Top panel, \ref{fig:spatial-structure:5050}, reports experiments initialized with an even mix of hyper- and normomutator agents.
+      In bottom panel, \ref{fig:spatial-structure:denovo}, hypermutators are initially absent and arise spontaneously \textit{de novo} with probability $10^{-6}$.
+      Note that $y$-axis scale differs substantially between top and bottom panels.
+      Effects of population structure are under \textit{de novo} conditions, when initial supply of hypermutators is scarce.
+      Under well-mixed conditions, increase in population size favors hypermutators; normomutators reliably persist in very large populations through fewer than 10 available beneficial populations.
+      In contrast, under 1D deme structure, very large population sizes are favorable to normomutators.
+      With such strong spatial structure, very large populations of normomutators reliably resist hypermutator fixation through upwards of 20 beneficial mutations available.
+      Results are under GPU simulation, using Poisson genome model.
     }
     \label{fig:spatial-structure}
   \end{minipage}
