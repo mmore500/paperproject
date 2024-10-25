@@ -11,10 +11,6 @@ completed=0
 echo "Info: pass --aggressive --prune=now for deeper scrub"
 echo "Starting garbage collection for $total_submodules submodules..."
 
-# Main garbage collection for main repo
-git gc $@ &
-echo "Completed garbage collection for main repository."
-
 # Garbage collection for each submodule
 git submodule foreach --recursive '
     (git gc $@ && touch "/tmp/gitgc.sh/$(basename "$PWD")" && echo "$PWD complete") &
