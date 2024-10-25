@@ -8,17 +8,22 @@ We find that the sign effect of population size on hypermutator favorability is 
 
 \subsection{Sign-change Effects of Population Size}
 
-Our first set of experiments sought to investigate how acted in larger populations than had been tested in original experiments
-Previous work by \citet{raynes2018sign} has shown that as population size scales, selection on hypermutators can move through several regimes.
-It starts out as neutral when population size is very small, owing to the power of stochastic effects.
-As population size increases, hypermutators first become disfavored by selection.
-Intuitively, this can be imagined as the population size becoming large enough to select against the mutation load imposed by hypermutator traits.
-However, as population size increases even further, hypermutators can become favored.
-This is because in large enough populations, the chance that at least one hypermutator will discover a beneficial mutation that allows it to sweep to fixation becomes a good chance.
+In a first set of experiments, we tested how hypermutator fixation probability varies with changes in population size.
 
-With larger population count per PE, resolution of our population size sweep becomes too coarse grained to reflect this effect at small population sizes.
+Previous work by \citet{raynes2018sign} has demonstrated that hypermutator dynamics can transition through several regimes with population scale.
+In the first regime, when population size is very small, hypermutator fixation is nearly equiprobable with normomutator fixation, owing to the overwhelming influence of stochastic effects.
+Subsequently, in medium-sized populations, become disfavored by selection.
+Intuitively, this can be attributed to the power of selection becoming sufficiently sensitive to penalize the mutational load imposed by hypermutator traits.
+However, in sufficiently lare populations, hypermutator fixation can move towards certainty.
+This is because, in asexual populations, hypermutator alleles that discover a significant beneficial mutation can gain in population share by association with that beneficial allele.
+Population size increases the probability of at least one hypermutator discovering a beneficial mutation, and so ``hitch-hiking'' to sweep out normomutators.
 
 \input{fig/wse-inf-one}
+
+As shown in the left column of Figure \ref{fig:wse-inf-one:32}, we also find a sign-change phenomenon with population scale, as previously reported by \citet{raynes2018sign}.
+By applying the WSE hardware accelerator, we were able to test population sizes orders of magnitude beyond the previous upper ceiling of 10,000 agents --- up to 1.5 billion agents.
+However, we do not see any qualitative difference emerge between large and very large population sizes, with respect to hypermutator fixation probability.
+With the largest-tested population count per deme, shown as the left column of Figure \ref{fig:wse-inf-one:2048}, resolution of our population size sweep becomes too coarse-grained to show the original sign-change phenomenon through small and medium-sized populations, but hypermutators retain strong selective favor across large and very large population sizes.
 
 \subsection{Normomutators Gain Favor in Large Populations when Adaptive Potential is Limited}
 
