@@ -26,9 +26,28 @@ By applying the WSE hardware accelerator, we were able to test population sizes 
 However, we do not see any qualitative difference emerge between large and very large population sizes, with respect to hypermutator fixation probability.
 With the largest-tested population count per deme, shown as the left column of Figure \ref{fig:wse-inf-one:2048}, resolution of our population size sweep becomes too coarse-grained to show the original sign-change phenomenon through small and medium-sized populations, but hypermutators retain strong selective favor across large and very large population sizes.
 
-\subsection{Normomutators Gain Favor in Large Populations when Adaptive Potential is Limited}
+\subsection{Restricting Adaptive Potential}
+\label{sec:restricting-adaptive-potential}
+
+Prediction of a strong tendency for hypermutator fixation in large populations prompts a converse question: what conditions would be necessary for large populations to resist hypermutator invasion?
+One assumption of the above result is availability of abundant potential beneficial mutations.
+Indeed, agent-based modeling work has largely yet to explore scenarios where few beneficial mutations are available \citep{raynes2013effect,raynes2018sign,raynes2019selection,raynes2019migration}.
+Recent empirical work, however, has shown indications that fitness landscape characteristics can play can a role in influencing hypermutator favorability.
+
+To investigate this question, we next performed experiments where the supply of possible beneficial mutations was constrained.
+The right panels of Figures \cleveref{fig:wse-inf-one:32,fig:wse-inf-one:2048} show hypermutator fixation probabilities where agents could accrue no more than one beneficial mutation.
+At both 32- and 2,048 agents per deme, and additional, third regime of selection on hypermutator traits appears past population sizes of 1 million agents.
+Beyond this point, normomutators reliably drive hypermutators to extinction.
+We expect this effect to be associated with sufficient scale that at least one normomutator reliably discovers the beneficial mutation before the hypermutator trait fixes.
+Then, given the large population size, selection should reliably advantages normomutators' reduced deleterious mutation load.
 
 \input{fig/avail-ben-muts}
+
+Next, we tested the sensitivity of normomutator persistence in large populations to the amount of adaptive potential available.
+Figure \ref{fig:avail-ben-muts} shows fixation curves where one, two, three, four, and five beneficial mutations are available, conducted with 256 agents per deme.
+Under surveyed conditions, with 2D spatial structure and hypermutators begining in equal proportion to normomutators, resilience to hypermutator fixation is very fragile.
+Normomutator persistence rapidly decays with increases in adaptive potential;
+even in billion-agent populations, hypermutators begin to regain favor past three beneficial mutations available.
 
 \subsection{Effects of Background Hypermutator Prevalence}
 \label{sec:background-hypermutator-prevalence}
