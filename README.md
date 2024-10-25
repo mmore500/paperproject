@@ -9,5 +9,5 @@ To set up locally,
 ```bash
 git clone --single-branch https://github.com/mmore500/paperproject.git
 cd paperproject
-./subinit.sh
+./submodules.sh
 ```
