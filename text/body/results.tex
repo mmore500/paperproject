@@ -54,7 +54,26 @@ even in billion-agent populations, hypermutators begin to regain favor past thre
 
 \input{fig/denovo-5050-conditions}
 
-We found this to be consistent across both the Poisson model and the site-explicit model.
+Having observed large population size stabilize normomutators against extinction where very few opportunities for adaptive mutation exist, we next sought to assess how robustly such a protective effect might manifest in natural populations.
+In this regard, we sought to tezt the role of initial conditions in hypermutator fixation outcomes by relaxing the assumption that hypermutators begin ``50/50'' in equal proportion to normomutators.
+Although such a scenario provides a useful design for benchtop experiments \citep{raynes2018sign}, against a background of evolutionary stasis it would, rather, be expexted that normomutators instead exist in the population at some low background rate.
+That is, where ``hitch-hikeable'' beneficial mutation are unavailable to be discovered, a very low equilibrium concentration would be expexted between purifying selection and \textit{de novo} hypermutator originations.
+
+Prior work, applying both mathematical analysis and agent-based experiments, have shown per-capita favorability of hypermutator traits to be density independent \citep{raynes2019selection}.
+Thus, we would expect a lower background rate for hypermutator alleles to reduce the net probability of normomutator extinction.
+
+To test this question, we conducted ``\textit{de novo}'' treatments where hypermutators arose spontaneously rather than being explicitly included in the initial population.
+Given that we assume the availability of some nonzero number of adaptive mutations, such a scenario might be applicable to a scenario where an abrupt change in environmental context introduces adaptive potential, such as the sudden introduction of a novel stressor.
+Note that, in our simulation experiments, we assumed hypermutators to originate with probability equivalent to that of beneficial mutations, $10^{-6}$.
+Given that
+
+Figure \ref{fig:denovo-5050-conditions} compares surveyed hypermutator fixation probabilities with and without hypermutators making up half of the initial population.
+With 256 agents per deme, population size scaled up to 136 million agents.
+In line with expectations, the \textit{de novo} treatment substantially extends normomutator viability.
+Under \textit{de novo} conditions, normomutators reliably resist hypermutator fixation in very large populations through more than 10 beneficial mutations available.
+Under 50/50 conditions, by contrast, hypermutators begin to fix in very large populations past 2 beneficial mutations available.
+
+As can be seen by comparing panels \ref{fig:denovo-5050-conditions:denovo} and \ref{fig:denovo-5050-conditions:site-explicit}, we found outcomes to be generally consistent between both the counter-based Poisson model and an alternate ``site-explicit'' model where the probability of discovering a beneficial mutation scales proportional to the number available.
 
 \subsection{Effects of Population Structure}
 \label{sec:population-structure}
