@@ -1,1 +1,41 @@
 \section{Conclusion} \label{sec:conclusion}
+
+Mutations are fundamental drivers of evolutionary processes, generating the genetic diversity necessary for populations to adapt and survive \citep{hershberg2015mutation}.
+% Developing this understanding is important Understanding the factors that influence selection on mutation rates themselves is therefore key in understanding and managing evolutionary dynamics within asexual populations.
+Ongoing efforts have established an increasingly detailed theoretical basis to explain hypermutator fixation within large populations, by way of hitchhiking on discovery of beneficial mutations \citep{TODO}.
+However, less understanding exists as to factors suppress increases in mutation rate within very large asexual populations undergoing adaptive evolution.
+In this work, we have aplied simulatoin exeriments to charactreize the role of fitness landscape adpative potential in this knowledge gap.
+
+% This work contributes experiments to better characterize factors affecting selection on hypermutator traits in very large populations.
+% replicated the sign-change effect of population size on hypermutator fixation probability, and
+In a first set of experiments, we confirmed that, under the assumption of unlimited adaptive potential, increases in population size transition outcomes to a regime where hypermutators become strongly favored.
+In line with expections, hypermutation reliably fixed through population sizes up to a billion agents --- substantially larger than had been previously tested using agent-based modeling approaches.
+However, restricting adaptive potential reversed outcomes in very large populations.
+When limited adaptive mutations were available to discover, a tertiary regime appears where normomutators regain selective favor within very large populations.
+This effect appeared consistently across both a counter-based genome model, adapted from \citet{raynes2018sign}, and a more literal ``site-explicit'' genome model where alleles with potential to experience adaptive mutation were tracked directly.
+
+Subesquent experiments investigated influence of population structure and composition on hypermutator dynamics under adaptation-constrained conditions.
+We found outcomes to be highly sensitive to the baseline frequency of hypermutators.
+Where hypermutators were not widespread at outset, very large populations reliably suppressed hypermutator fixation through substantially more available adaptive mutations.
+The protective effect of \textit{de novo} hypermutator origination was substantially compounded by introduction of strong spatial structure;
+under these conditions, with slowed selective sweeps, normomutators in large populations reliably persisted through yet more available beneficial mutations.
+Notably, however, well-mixed population structure appeared to invert the effects of population size on hypermutator dynamics.
+Under well-mixed conditions, very large population size increases, rather reduces, the probability of hypermutator fixation.
+
+Much future work remains.
+One key dynamic not investigated in this work is hypermutator reversion, where spontaneous mutations push a hypermutator strain back toward baseline mutation rates, as been observed in benchtop evolution experiments \citep{ho2021evolutionary}.
+Extensions to understand how these phenomena play out under more naturalistic, less sterile fitness landscapes such as the NK landscape that better approximates the plietropy, redundancy, asymmetries, and dimensionality found in biological evolution, would also br informative.
+Under such a framing, it would be possible to investigate adaptive potential in terms of magnitude of extrinsic disturbance of fitness landscape topology (e.g., due to encironmental change) rather than simply in terms of distance from fitness peak.
+
+By utilizing the WSE hardware accelerator to extend population sizes up to 1.5 billion agents, we observed that this dynamic persists even at unprecedented scales.
+Important avenues remain for technical work in further and better harnessing hardware accelerators for \textit{in silico} evolution experiments.
+Using the hardware accelerators was an important step in making this work feasible.
+Interesting technical challenges exist to be solved in future work.
+For instance, translating the well-mixed (or near well-mixed) spatial structure treatment to WSE point-to-point communication or creative routing structures \citep{james2020physical,luczynski2024near}.
+possible WSE simulation system extensions include adding 1D/well-mixed spatial structure, using DStream buffers to record dynamics, and recording the number of lineage tracking \citep{moreno2024guide}, and using DStream buffers to get at dynamics of population composition over time \citep{moreno2024structured}.
+beneficial mutations present when a hypermutator arises
+
+Ultimately, advances in computing technology will allow simulation experiments to more directly reflect the scale and specifics of biological model systems, boowting the synergy in untangling the synergy between these avenues of investigation.
+This will allow experiments to better build our theoretical understanding, but also enable digital twin scenarios that allow real-time prediction and alalysis of more specific scenarios of evolving organisms \citep{dekoning2023digital}.
+It would also be useful to against time to fixation \citep{ribeck2016competition} and other mathematical predictions, effects of increasing selection pressure could be compared against reducing spatial structure.
+Using synthetic data as a starting point, but then testing/applying to benchtop experimental evolution data sets would be valuable.
