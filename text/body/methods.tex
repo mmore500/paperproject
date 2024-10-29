@@ -84,8 +84,11 @@ The architectures of these hardware accelerators comprise large collections of w
 GPU hardware was NVIDIA A100 and WSE hardware was Cerebras CS-2 \citep{choquette2021nvidia,cerebras2021wafer}.
 WSE hardware was hosted by the Neocortex installation at Pittsburgh Supercomputing Center \citep{buitrago2021neocortex}.
 
-The Cerebras Wafer-Scale Engine platform, in particular, is a notable exemplar among an emerging class of next-generation AI/ML-oriented hardware accelerators \citep{TODO}.
-Explorations are ongoing in establishing applications of these platforms for scientific and high-performance computing (HPC) \citep{TODO}, including agent-based evolution simulations \citep{TODO}.
+check matthias
+check leighton
+check lady from software workshop
+The Cerebras Wafer-Scale Engine platform, in particular, is a notable exemplar among an emerging class of next-generation AI/ML-oriented hardware accelerators \citep{lauterbach2021path}.
+Explorations are ongoing in establishing applications of these platforms for scientific and high-performance computing (HPC) \citep{rocki2020fast,brown2023exploring,ltaief2023scaling,sai2023massively,brown2022distributed,luow2020using,woo2022distributed,tramm2024efficient,chen2024using,phillips2023solving,chen2024solving}, including agent-based evolution simulations \citep{moreno2024trackable}.
 The CS-2 chip comprises a grid lattice of 850,000 independent processor elements (PEs), each networked for low-latency communication with its four cardinal neighbors.
 
 To suit the local lattice structure of the WSE's hardware architecture, all experiments on this platform employed 2D spatial population structure.
@@ -93,7 +96,7 @@ Each PE hosted a single deme, acting as an ``island.''
 Agents migrated between neighboring PEs through asynchronous message passing;
 in practice, each PE dispatched approximately one agent to each neighbor per generation (TODO check this).
 Additionally, progress of each PE in stepping through agent generations within its own deme was allowed to proceed independently of other PEs.
-Detail on more technical aspects of the Cerebras Software Language (CSL) kernel design used in this work can be found in \citet{TODO}.
+Detail on more technical aspects of the Cerebras Software Language (CSL) kernel design used in this work is provided in \citet{moreno2024trackable}.
 
 In some cases, experiments on WSE were extended beyond the $729 \times 729$ to fill the CS-2 WSE's entire $750 \times 994$ complement of available PEs.
 In some trials, per-PE population sizes of 32 and 2,048 agents were used, to allow for finer granularity in scaling net agent count deme grid dimensions or for larger maximum population size.
