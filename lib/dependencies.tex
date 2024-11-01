@@ -272,3 +272,18 @@ parbox=false
 
 \DeclareCaptionFormat{listing}{\rule{\dimexpr\textwidth\relax}{0.4pt}\par\vskip1pt#1#2#3\par\vspace{-5pt}\rule{\dimexpr\textwidth\relax}{0.4pt}}
 \captionsetup[lstlisting]{format=listing,singlelinecheck=false, margin=0pt, ,labelsep=space,labelfont=bf}
+
+% adapted from https://tex.stackexchange.com/a/472608/316176
+\usepackage{pdflscape,lipsum}
+\usepackage{eso-pic,zref-user}
+\newcounter{cntsideways}
+\makeatletter
+\AddToShipoutPictureBG{%
+ \ifnum\zref@extractdefault{rotate\number\value{page}}{page}{0}=0
+  \PLS@RemoveRotate
+ \else
+  \PLS@AddRotate{90}%
+ \fi}
+
+\newcommand\rotatesidewayslabel{\stepcounter{cntsideways}%
+ \zlabel{tmp\thecntsideways}\zlabel{rotate\zref@extractdefault{tmp\thecntsideways}{page}{0}}}
