@@ -48,13 +48,13 @@
         %   ~
         % \end{minipage}%
         \begin{minipage}{0.25\textwidth}
-          \includegraphics[height=5.2cm, trim={2.1cm 0.8cm 4.75cm 0cm}, clip]{binder/binder-cupy-5050-spatial1d-traits.ipynb/binder/teeplots/cupy-5050-spatial1d-traits/col=population-size+errorbar=ci+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+          \includegraphics[height=5.2cm, trim={2.1cm 0.8cm 3.9cm 0cm}, clip]{binder/binder-cupy-5050-spatial1d-traits.ipynb/binder/teeplots/cupy-5050-spatial1d-traits/col=population-size+errorbar=ci+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
         \end{minipage}%
       \begin{minipage}{0.12\textwidth}
         \raggedright
         \large
         \caption{50/50 initial conditions}
-        \label{fig:spatial-structure:5050}
+        \label{fig:spatial-structure-1d-uncropped:5050}
         \vspace{20ex}
       \end{minipage}%
     \end{subfigure}%
@@ -76,14 +76,14 @@
         %   ~
         % \end{minipage}%
         \begin{minipage}{0.25\textwidth}
-          \includegraphics[height=5.2cm, trim={2.3cm 0.8cm 4.7cm 0cm}, clip]{binder/binder-cupy-denovo-spatial1d-traits.ipynb/binder/teeplots/cupy-denovo-spatial1d-traits/col=population-size+errorbar=ci+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
+          \includegraphics[height=5.2cm, trim={2.3cm 0.8cm 3.9cm 0cm}, clip]{binder/binder-cupy-denovo-spatial1d-traits.ipynb/binder/teeplots/cupy-denovo-spatial1d-traits/col=population-size+errorbar=ci+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
         \end{minipage}%
       \begin{minipage}{0.12\textwidth}
         \raggedright
         \large
         \vspace{10ex}
         \caption{\textit{de novo} initial conditions}
-        \label{fig:spatial-structure:denovo}
+        \label{fig:spatial-structure-1d-uncropped:denovo}
 
         \includegraphics[height=5.5cm, trim={7.3cm 0cm 0cm 0cm}, clip]{binder/binder-cupy-denovo-spatial1d-traits.ipynb/binder/teeplots/cupy-denovo-spatial1d-traits/col=population-size+errorbar=ci+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
       \end{minipage}%
@@ -95,14 +95,16 @@
 
   \begin{minipage}{\textwidth}
     \caption{%
-      \textbf{Population structure increases normomutator resilience to available adaptive potential.}
+      \textbf{Alternate of Figure \ref{fig:spatial-structure}, including unfixed data from 1D treatments.}
       \footnotesize
+      Rightmost strips of right-column plots include replicates that ended after fixed-duration with a mixture of normo- and hypermutator genotypes.
+      In these cases, genotype proportion within population were used as a proxy for fixation probability.
       Areaplot strips track hypermutator fixation probability across surveyed levels of adaptive potential, with error bands indicating bootstrapped 95\% confidence intervals.
       Strips are arranged left-to-right with ascending population size, marked on the top axis.
       Leftmost column shows well-mixed conditions.
       Populations in center and rightmost columns are subdivided into 256-agent demes, arranged in a 2D grid or 1D ring.
-      Top panel, \ref{fig:spatial-structure:5050}, reports experiments initialized with an even mix of hyper- and normomutator agents.
-      In bottom panel, \ref{fig:spatial-structure:denovo}, hypermutators are initially absent and arise spontaneously \textit{de novo} with probability $10^{-6}$.
+      Top panel, \ref{fig:spatial-structure-1d-uncropped:5050}, reports experiments initialized with an even mix of hyper- and normomutator agents.
+      In bottom panel, \ref{fig:spatial-structure-1d-uncropped:denovo}, hypermutators are initially absent and arise spontaneously \textit{de novo} with probability $10^{-6}$.
       Note that $y$-axis scale differs substantially between top and bottom panels.
       Effects of population structure are more pronounced under \textit{de novo} conditions, when initial supply of hypermutators is scarce.
       Under well-mixed conditions, increase in population size favors hypermutators; normomutators reliably persist in very large populations through fewer than 10 available beneficial mutations.
@@ -110,6 +112,6 @@
       With such strong spatial structure, very large populations of normomutators reliably resist hypermutator fixation even when upwards of 20 beneficial mutations are available.
       Results are under GPU simulation, using Poisson genome model.
     }
-    \label{fig:spatial-structure}
+    \label{fig:spatial-structure-1d-uncropped}
   \end{minipage}
 \end{figure}
