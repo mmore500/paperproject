@@ -74,7 +74,15 @@ Hence, we chose to scale surveyed population sizes by factors of 9: $1 \times 1 
 To efficiently batch our computations, we processed smaller population sizes as independent tiles of a larger, fixed-size fabric.
 Hence, replicate count decreased with population size, but was boosted to at least 9 replicates in all cases.
 Simulations lasted 500,000 generations.
-This was sufficient for populations to reach fixation or, in cases where beneficial mutation counts were constrained, full adaptive potential --- except in some cases involving the smallest, 256-agent populations.
+
+The 50,000 generation duration was sufficient for populations to reach either hyper- or normomutator fixation in nearly all treatments.
+However, some replicates involving 1D spatial structure at the largest-surveyed population size (for that condition, 15.1 million agents) did not reach a decisive end-state.
+For this reason, we excluded 15.1 million agent populations with 1D structure from our analyses.
+Additionally, we found that 256-agent populations failed accrue to more than 12 beneficial mutations within the 500,000 generation window.
+For treatments where more than 12 beneficial mutations were availbe, some replicates therefore did not reach full adaptive potential.
+Thus, we also excluded 256-agent simulations with more than 12 benficial mutations available from our analyses.
+
+In data included in our presentation, $>97\%$ of replicates reached both hyper-/normomutator fixation and full adaptive potential.
 Details on the fraction of replicates reaching fixation by experimental condition are provided in Supplementary Figures \cref{fig:neither-fixed-5050-cupy,fig:neither-fixed-denovo-cupy,fig:neither-fixed-wse-256atile,fig:neither-fixed-wse-altatile}.
 Details on the fraction of replicates reaching full adaptive potential, measured for GPU-based simulations, appear in Supplementary Figures \cref{fig:unaccrued-5050-cupy,fig:unaccrued-denovo-cupy}.
 
