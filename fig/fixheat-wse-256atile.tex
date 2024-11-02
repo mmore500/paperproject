@@ -5,7 +5,7 @@
           \includegraphics[height=7cm, trim={0cm 0cm 2cm 0cm}, clip]{binder/binder-wse-5050-spatial2d-traits.ipynb/binder/teeplots/wse-5050-spatial2d-traits/genotype=hypermutator+index=available-beneficial-mutations+on=population-size+values=fixation-probability+viz=size-fixation-heatmap+ext=.pdf}%
         \end{minipage}
         \begin{minipage}{\linewidth}
-        \caption{TODO}
+        \caption{50/50 initialization, Poisson genome model}
         \label{fig:fixheat-wse-256atile:5050}
         \end{minipage}%
     \end{subfigure}%
@@ -14,7 +14,7 @@
           \includegraphics[height=7cm, trim={0.65cm 0cm 0cm 0cm}, clip]{binder/binder-wse-5050-spatial2d-explicitsite-traits.ipynb/binder/teeplots/wse-5050-spatial2d-explicitsite-traits/genotype=hypermutator+index=available-beneficial-mutations+on=population-size+values=fixation-probability+viz=size-fixation-heatmap+ext=.pdf}%
         \end{minipage}
         \begin{minipage}{\linewidth}
-        \caption{TODO}
+        \caption{50/50 initialization, site-explicit genome model}
         \label{fig:fixheat-wse-256atile:5050-explicitsite}
         \end{minipage}%
     \end{subfigure}
@@ -25,8 +25,8 @@
           \includegraphics[height=7cm, trim={0cm 0cm 2cm 0cm}, clip]{binder/binder-wse-denovo-spatial2d-traits.ipynb/binder/teeplots/wse-denovo-spatial2d-traits/genotype=hypermutator+index=available-beneficial-mutations+on=population-size+values=fixation-probability+viz=size-fixation-heatmap+ext=.pdf}%
     \end{minipage}
     \begin{minipage}{\linewidth}
-    \caption{TODO}
-    \label{fig:fixheat-denovo-cupy:denovo}
+    \caption{\textit{de novo} initialization, Poisson genome model}
+    \label{fig:fixheat-wse-256atile:denovo}
     \end{minipage}%
 \end{subfigure}%
 \begin{subfigure}[b]{0.5\linewidth}
@@ -34,16 +34,21 @@
           \includegraphics[height=7cm, trim={0.65cm 0cm 0cm 0cm}, clip]{binder/binder-wse-denovo-spatial2d-explicitsite-traits.ipynb/binder/teeplots/wse-denovo-spatial2d-explicitsite-traits/genotype=hypermutator+index=available-beneficial-mutations+on=population-size+values=fixation-probability+viz=size-fixation-heatmap+ext=.pdf}%
     \end{minipage}
     \begin{minipage}{\linewidth}
-    \caption{TODO}
+    \caption{\textit{de novo} initialization, site-explicit genome model}
     \label{fig:fixheat-wse-256atile:denovo-explicitsite}
     \end{minipage}%
 \end{subfigure}
 
   \begin{minipage}{\linewidth}
     \caption{%
-      \textbf{TODO.}
-      \footnotesize
-     TODO.
+\textbf{Hypermutator fixation probabilities, WSE simulations with 256 agents per deme.}
+\footnotesize
+Heatmap values are mean proportion of hypermutator allele within end-state populations across replicates.
+Cool hues indicate normomutator favor and warm hues indicate hypermutator favor.
+Top row panels \ref{fig:fixheat-wse-256atile:5050} and \ref{fig:fixheat-wse-256atile:5050-explicitsite} cover experiments initialized with an even mix of normo- and hypermutators.
+Bottom row panels \ref{fig:fixheat-wse-256atile:denovo} and \ref{fig:fixheat-wse-256atile:denovo-explicitsite} cover experiments initialized with an even mix of normo- and hypermutators.
+Left column shows results using Poisson genome model; right column shows results using site-explicit genome model.
+Experiments were conducted on WSE using 2D deme structure with 356 agents per deme.
     }
     \label{fig:fixheat-wse-256atile}
   \end{minipage}
