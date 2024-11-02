@@ -39,7 +39,7 @@
       \begin{minipage}{0.12\textwidth}
         \raggedright
         \large
-        \caption{Poisson\\ model}
+        \caption{counter-based\\ genome model}
         \label{fig:denovo-5050-conditions:poisson}
         \vspace{20ex}
       \end{minipage}%
@@ -62,7 +62,7 @@
         \raggedright
         \large
         \vspace{10ex}
-        \caption{Site-explicit model}
+        \caption{site-explicit\\ genome model}
         \label{fig:denovo-5050-conditions:site-explicit}
 
         \includegraphics[height=5.5cm, trim={7.3cm 0cm 0cm 0cm}, clip]{binder/binder-cupy-denovo-spatial1d-traits.ipynb/binder/teeplots/cupy-denovo-spatial1d-traits/col=population-size+errorbar=ci+hue=genotype+layout=skinny+viz=size-fixation-cliffplot+x=fixation-probability+y=available-beneficial-mutations+ext=.pdf}%
@@ -82,7 +82,7 @@
       In left column, populations are initialized with half of the agents as hypermutators.
       In right column, populations are initialized with all normomutators; hypermutators must arise \textit{de novo}, with probability $10^{-6}$ per daughter.
       The \textit{de novo} regime boosts normomutator resilience to adaptive potential, with large population sizes reliably resisting hypermutator fixation through upwards of 10 available beneficial mutations.
-      Top panel \ref{fig:denovo-5050-conditions:poisson} gives results for the Poisson genome model.
+      Top panel \ref{fig:denovo-5050-conditions:poisson} gives results for the counter-based genome model.
       Bottom panel \ref{fig:denovo-5050-conditions:site-explicit} gives results under the site-explicit genome model, which are similar.
       Simulations were conducted on WSE, using a population size of 256 agents per PE.
     }

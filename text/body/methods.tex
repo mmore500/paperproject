@@ -3,13 +3,13 @@
 Experiments were conducted \textit{in silico} using stochastic agent-based modeling approaches.
 These simulations tracked populations of discrete agents, each competing to create offspring agents through asexual reproduction.
 Within simulations, each agent possessed a set of genetic traits, inherited subject to mutation, that influenced reproductive success.
-To assess the generality of our findings, we supplemented the simple counter-based ``Poisson'' genome model drawn from \cite{raynes2018sign} with an alternate ``Site-explicit'' genome model.
+To assess the generality of our findings, we supplemented the simple ``counter-based'' genome model with Poisson-distributed mutations drawn from \cite{raynes2018sign} with an alternate ``site-explicit'' genome model.
 
 This section reviews the model mechanics used across experiments in this work, as well as aspects of simulation design that we manipulated between treatment conditions.
 Explored dimensions include population size, spatial population structure, background prevalence of hypermutator traits, and restriction of adaptive potential.
 Finally, we describe notable implementation-level considerations necessary in harnessing high-performance computing hardware to achieve the expansive simulation scales explored in this work.
 
-\subsection{Poisson Genome Model} \label{sec:poisson}
+\subsection{Counter-based Genome Model} \label{sec:poisson}
 
 Primary experiments in this work apply an agent-based modeling approach and parameters closely following work by \cite{raynes2018sign}.
 Under this framework, agent genomes consist of two counters: one tracking beneficial mutations accumulated $n_b$ and the other tracking deleterious mutations accumulated $n_d$.
@@ -35,7 +35,7 @@ As with prior work \citep{raynes2018sign}, neither treatment allows hypermutator
 
 \subsection{Site-explicit Genome Model} \label{sec:site-explicit}
 
-A key implicit assumption of the Poisson genome model, in its original formulation, is the availability of unlimited adaptive potential.
+A key implicit assumption of the counter-based genome model, in its original formulation, is the availability of unlimited adaptive potential.
 That is, an assumption that an unlimited number of beneficial (or deleterious) mutations may accumulate.
 To better suit our exploration of scenarios with limited adaptive potential, we supplemented our work to include a genome model that more explicitly models a finite set of loci with adaptive potential.
 One consequence of such a ``site-explicit'' model, in relation to the above counter-based approach, is that discoverable beneficial mutations become scarcer, and hence more difficult to discover, as adaptation unfolds.
@@ -45,11 +45,11 @@ All loci are initialized $b_i = 0$.
 Each locus has probability $p_b = 10^{-6}$ of transitioning $0 \rightarrow 1$ when inherited from parent to offspring.
 Reversion mutations $1 \rightarrow 0$ are allowed, also with probability $p_{\sim b} = 10^{-6}$.
 
-Because we do not limit the quantity of available deleterious mutations in our simulations, we maintained the Poisson model's counter-based approach in tracking deleterious mutations.
+Because we do not limit the quantity of available deleterious mutations in our simulations, we maintained a counter-based approach in tracking deleterious mutations.
 We maintain $\lambda_d = 10^{-3}$.
 Hence, under the site-explicit model, we assign agents' fitness scores as $-n_d + \sum^n b_i$.
 
-Site-explicit hypermutator mechanics also closely follow those under the Poisson model.
+Site-explicit hypermutator mechanics also closely follow those under the counter-based model.
 The hypermutator trait increases mutation rates hundredfold, setting $\hat{p_{b}} = \hat{p_{\sim b}} = 10^{-4}$ and $\hat{\lambda_d=10^{-1}}$.
 Site-explicit experiments were conducted under both ``50/50'' and ``\textit{de novo}'' models of hypermutator introduction, identically to description above.
 
@@ -130,7 +130,7 @@ To assess the efficacy of hardware accelerator resources in expediting our simul
 As a baseline comparison point for performance, we also benchmarked simulation on CPU.
 
 Figure \ref{fig:perf} compares simulation performance between hardware platforms, measured in agent-generations per second (AGPS).
-Mean throughput was 7.0 (SD 0.5) million AGPS on CPU, 2.7 (SD 0.03) billion AGPS on GPU, and 780 (SD 0.5) billion on WSE for \textit{de novo} trials using the Poisson model.
+Mean throughput was 7.0 (SD 0.5) million AGPS on CPU, 2.7 (SD 0.03) billion AGPS on GPU, and 780 (SD 0.5) billion on WSE for \textit{de novo} trials using the counter-based model.
 Net speedup, normalized to mean CPU throughput, was $378\times$ (SD 4) on GPU and $111,091\times$ (SD 75) on WSE.
 Normalized to net GPU performance, WSE provided a speedup of $294\times$ (SD 0.2).
 
