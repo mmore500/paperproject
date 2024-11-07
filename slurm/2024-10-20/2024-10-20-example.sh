@@ -203,7 +203,6 @@ cat > "${SBATCH_FILE}" << EOF
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=16G
 #SBATCH --time=4:00:00
-#SBATCH --constraint=amr
 #SBATCH --output="/mnt/home/%u/joblog/%j"
 #SBATCH --mail-user=mawni4ah2o@pomail.net
 #SBATCH --mail-type=FAIL,TIME_LIMIT
