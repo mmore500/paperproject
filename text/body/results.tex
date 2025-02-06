@@ -92,6 +92,28 @@ With 50/50 initializations, normomutators reliably persist through only one or t
 By contrast, under \textit{de novo} conditions, normomutator populations with 1D structure successfully resist hypermutator invasion through upwards of 20 beneficial mutations.
 Notably, though, under weak, well-mixed spatial structure, the effect of population size is opposite --- rather than suppressing hypermutator favorability, hypermutators actually become \textit{more} likely to sweep large populations.
 
-These findings contrast strongly with previous modeling work assuming unlimited adaptive potential, which predicts that so long as any level of connectivity exists between subpopulations, spatial structure boosts hypermutator fixation probability \citep{raynes2019migration}.
+These findings contrast with previous modeling work assuming unlimited adaptive potential, which predicts that so long as any level of connectivity exists between subpopulations, spatial structure boosts hypermutator fixation probability \citep{raynes2019migration}.
 One possible explanation for why spatial structure can decrease hypermutator fixation probability is by extending the window of opportunity for normomutators to catch up in exploiting available adaptive potential before being driven to extinction.
 Ultimately, this question warrants future work characterizing the spatiotemporal and phylogenetic trajectories through which structured populations resist hypermutator invasion during windows of adaptive evolution.
+
+\subsection{Spatiotemporal Dynamics}
+\label{sec:dynamics}
+
+To better understand how competition between normo- and hypermutator strains unfolds at very large population scales, we performed an additional set of 1.5 billion agent simulations on the WSE using the site-explicit model of adaptation with hypermutators originating \textit{de novo} from normomutator strains.
+In these runs, we probed the critical region where outcomes transition between normomutator and hypermutator fixation, configuring adaptive potential between 12 and 16 available beneficial mutations.
+In order to track the composition of the population over time, we included additional on-device, runtime instrumentation in these replicates.
+Generation-on-generation, we configured each processor element to sample a genome from its local population and record its hypermutator allele (i.e., a binary value as either a normo- or hypermutator).
+To efficiently curate this single-bit data within per-PE memory limits, we leveraged recently-introduced ``DStream'' generalizations of the ring buffer data structure \citep{moreno2024algorithms}.
+Notably, this approach constrained memory use to a fixed-size buffer, while guaranteeing the buffer to always be fullly utilized.
+Our particular motivation in applying DStream was to enable recording to be dynamically halted when normomutators were determined to be locally extinct (and restarted if they are reintroduced).
+While this scheme allowed us to maximuze our use of on-device resources, note that as a result the number of generations elapsed per frame differs between animations depending on when, and if, normomutators went to extinction.
+
+TODO add a figure showing four panels from an extincted run and four panels from a survived run, labeling the time points in the subcaption
+\url{https://hopth.ru/ej} 14 available mutations --- extinct
+\url{https://hopth.ru/ek} 14 available mutations --- survive
+
+As a point of comparison to the threshold adaptive mutation shown above, these animations show circumstances where (a) normomutators reliably survived and (b) hypermutators reliably fixed.
+\url{https://hopth.ru/el} 12 available mutations --- survive
+\url{https://hopth.ru/em} 16 available mutations --- extinct
+
+Close by briefly noting the distributions of points where the hypermutator lineage branched off from the normomutator lineage
