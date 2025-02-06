@@ -103,7 +103,12 @@ The CS-2 chip comprises a grid lattice of 850,000 independent processor elements
 To suit the local lattice structure of the WSE's hardware architecture, all experiments on this platform employed 2D spatial population structure.
 Each PE hosted a single deme, acting as an ``island.''
 Agents migrated between neighboring PEs through asynchronous message passing;
-in practice, each PE dispatched approximately one agent to each neighbor per generation (TODO check this).
+% see e.g.,
+% https://github.com/mmore500/wse-async-ga/blob/ebc92bd012f0bb31092c5e71825af041261c35c5/kernel-async-ga/kernel.csl
+% and
+% https://osf.io/esv9z
+% (note that send flag is bumped twice per send cycle)https://osf.io/esv9z
+in practice, each PE dispatched approximately one agent to each neighbor per generation.
 Additionally, progress of each PE in stepping through agent generations within its own deme was allowed to proceed independently of other PEs.
 Detail on more technical aspects of the Cerebras Software Language (CSL) kernel design used in this work is provided in \citet{moreno2024trackable}.
 
