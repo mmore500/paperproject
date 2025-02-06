@@ -123,3 +123,23 @@
 	url = https://github.com/mmore500/hypermutator-dynamics.git
 	branch = binder-wse-5050-spatial2d-traits.ipynb
 	shallow = true
+[submodule "binder/binder-wse-denovo-spatial2d-explicitsite-genomes.ipynb"]
+	path = binder/binder-wse-denovo-spatial2d-explicitsite-genomes.ipynb
+	url = https://github.com/mmore500/hypermutator-dynamics.git
+	branch = binder-wse-denovo-spatial2d-explicitsite-genomes.ipynb
+	shallow = true
+[submodule "binder/binder-wse-denovo-spatial2d-explicitsite-timeseries.ipynb"]
+	path = binder/binder-wse-denovo-spatial2d-explicitsite-timeseries.ipynb
+	url = https://github.com/mmore500/hypermutator-dynamics.git
+	branch = binder-wse-denovo-spatial2d-explicitsite-timeseries.ipynb
+	shallow = true
+[submodule "binder/binder-wse-denovo-spatial2d-poisson-genomes.ipynb"]
+	path = binder/binder-wse-denovo-spatial2d-poisson-genomes.ipynb
+	url = https://github.com/mmore500/hypermutator-dynamics.git
+	branch = binder-wse-denovo-spatial2d-poisson-genomes.ipynb
+	shallow = true
+[submodule "binder/binder-wse-denovo-spatial2d-poisson-timeseries.ipynb"]
+	path = binder/binder-wse-denovo-spatial2d-poisson-timeseries.ipynb
+	url = https://github.com/mmore500/hypermutator-dynamics.git
+	branch = binder-wse-denovo-spatial2d-poisson-timeseries.ipynb
+	shallow = true
