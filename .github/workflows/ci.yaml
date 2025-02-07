@@ -42,9 +42,9 @@ jobs:
           name: manuscript
           path: ${{ github.event.repository.name }}-draft.pdf
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: deploy
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v3
