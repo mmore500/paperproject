@@ -99,21 +99,37 @@ Ultimately, this question warrants future work characterizing the spatiotemporal
 \subsection{Spatiotemporal Dynamics}
 \label{sec:dynamics}
 
-To better understand how competition between normo- and hypermutator strains unfolds at very large population scales, we performed an additional set of 1.5 billion agent simulations on the WSE using the site-explicit model of adaptation with hypermutators originating \textit{de novo} from normomutator strains.
+To better understand how competition between normo- and hypermutator strains unfolds at very large population scales, we performed an additional set of simulations on the WSE using the site-explicit model of adaptation, where hypermutators originated \textit{de novo} from normomutator strains.
+For these experiments, PE subpopulations were restricted to 256 agents to preserve on-device memory to record time series data.
+This configuration yielded a net population size of 191 million agents.
 In these runs, we probed the critical region where outcomes transition between normomutator and hypermutator fixation, configuring adaptive potential between 12 and 16 available beneficial mutations.
+
 In order to track the composition of the population over time, we included additional on-device, runtime instrumentation in these replicates.
 Generation-on-generation, we configured each processor element to sample a genome from its local population and record its hypermutator allele (i.e., a binary value as either a normo- or hypermutator).
 To efficiently curate this single-bit data within per-PE memory limits, we leveraged recently-introduced ``DStream'' generalizations of the ring buffer data structure \citep{moreno2024algorithms}.
-Notably, this approach constrained memory use to a fixed-size buffer, while guaranteeing the buffer to always be fullly utilized.
-Our particular motivation in applying DStream was to enable recording to be dynamically halted when normomutators were determined to be locally extinct (and restarted if they are reintroduced).
-While this scheme allowed us to maximuze our use of on-device resources, note that as a result the number of generations elapsed per frame differs between animations depending on when, and if, normomutators went to extinction.
+Notably, this approach constrained memory use to a fixed-size buffer, while guaranteeing the buffer to always be fully utilized.
+Additionally, recording could be dynamically halted when normomutators were determined to be locally extinct (and restarted if they are reintroduced).
+While this scheme allowed maximization of on-device resources, note that, as a result, in animations the number of generations elapsed per frame varies depending on when, and if, normomutators went to extinction.
 
-TODO add a figure showing four panels from an extincted run and four panels from a survived run, labeling the time points in the subcaption
-\url{https://hopth.ru/ej} 14 available mutations --- extinct
-\url{https://hopth.ru/ek} 14 available mutations --- survive
+\input{fig/dynamics}
 
-As a point of comparison to the threshold adaptive mutation shown above, these animations show circumstances where (a) normomutators reliably survived and (b) hypermutators reliably fixed.
-\url{https://hopth.ru/el} 12 available mutations --- survive
-\url{https://hopth.ru/em} 16 available mutations --- extinct
+Figure \ref{fig:dynamics} arranges sequential population snapshots from two example simulations, both with adaptive potential of 14 beneficial mutations.
+In the first example, hypermutators fixed; in the second, they did not.
 
-Close by briefly noting the distributions of points where the hypermutator lineage branched off from the normomutator lineage
+At outset, example simulations in panels \ref{fig:dynamics:no-fixation} and \ref{fig:dynamics:fixation} unfold similarly.
+First, hypermutator strains appear \textit{de novo} across the breadth of simulated populations.
+Then, as patches of hypermutators expand outwards, the normomutator population is broken into pockets.%
+\footnote{%
+Notably, hypermutator strains continue to stem from normomutator lineages as they accrue adaptive mutations.
+Of 16 replicates where hypermutators fixed, we observed 2 cases where the final dominant hypermutator lineage arose from a partially-adapted normomutator lineage --- harboring 1 and 3 beneficial mutations, respectively.
+% https://github.com/mmore500/hypermutator-dynamics/blob/90422b30f2dd9ca29baad273cbcc676dbfeab55f/binder/wse-denovo-spatial2d-explicitsite-genomes.ipynb
+}
+In scenarios where hypermutators fix, surviving patches of normomutators dwindle away entirely (panel \ref{fig:dynamics:fixation}).
+Alternately, where normomutators survive, they re-establish via concentric growth from surviving pockets (panel \ref{fig:dynamics:no-fixation}).
+
+\input{fig/peaksweep}
+
+At nadir, normomutators constitute less than 0.1\% of the population in experiments with adaptive potential of 14 available beneficial mutations.
+% ^^^ https://github.com/mmore500/hypermutator-dynamics/blob/5e904ac2fbbd4b41a0ad679883fc1a63af71c00c/binder/wse-denovo-spatial2d-explicitsite-timeseries.ipynb
+To assess the peak of transient presence of hypermutators within, we performed an additional set of four-replicate simulations ranging from adaptive potentials of 2 to 10 available beneficial mutations.
+For all replicates with 6 or more available beneficial mutations, hypermutators peaked beyond 50\% prevalence (Figure \ref{fig:peaksweep}).
