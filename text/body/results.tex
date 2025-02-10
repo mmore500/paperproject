@@ -108,7 +108,7 @@ In order to track the composition of the population over time, we included addit
 Generation-on-generation, we configured each processor element to sample a genome from its local population and record its hypermutator allele (i.e., a binary value as either a normo- or hypermutator).
 To efficiently curate this single-bit data within per-PE memory limits, we leveraged recently-introduced ``DStream'' generalizations of the ring buffer data structure \citep{moreno2024algorithms}.
 Notably, this approach constrained memory use to a fixed-size buffer, while guaranteeing the buffer to always be fully utilized.
-Additionally, recording could be dynamically halted when normomutators were determined to be locally extinct (and restarted if they are reintroduced).
+Additionally, recording could thereby be dynamically halted when normomutators were determined to be locally extinct (and restarted if they are reintroduced).
 While this scheme allowed maximization of on-device resources, note that, as a result, in animations the number of generations elapsed per frame varies depending on when, and if, normomutators went to extinction.
 
 \input{fig/dynamics}
