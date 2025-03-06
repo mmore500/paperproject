@@ -148,3 +148,8 @@
 	url = https://github.com/mmore500/hypermutator-dynamics.git
 	branch = binder-wse-denovo-spatial2d-explicitsite-timeseries-2025-02-07-peaksweep.ipynb
 	shallow = true
+[submodule "binder/binder-cupy-5050-traits.ipynb"]
+	path = binder/binder-cupy-5050-traits.ipynb
+	url = https://github.com/mmore500/hypermutator-dynamics.git
+	branch = binder-cupy-5050-traits.ipynb
+	shallow = true
