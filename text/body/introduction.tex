@@ -9,7 +9,7 @@ Hence, mutation may also confer a rare --- but profound --- fitness benefit.
 Like other phenotypic characteristics, the mutation rate of an organism can be strongly influenced both plastically (e.g., stress-induced mutation) \citep{ram2012evolution} and by heritable traits --- for instance, by the efficacy of DNA mismatch repair mechanisms \citep{miller1998mutators}.
 In the latter case, purifying selection will tend to suppress so-called ``hypermutator'' alleles that amplify mutation rate in the absence of ongoing adaptive evolution.
 However, without a mechanism to ease linkage disequilibrium (e.g., recombination or lateral gene transer), hypermutator alleles can  ``hitch-hike'' when a fitness-advantaged strain sweeps to fixation and carries along its full genetic background in addition to any beneficial traits \citep{smith1974hitchhiking,johnson1999beneficial,gentile2011competition}.
-In fact, as hypermutation can systematically accelerate the pace of adaptive evolution \citep{orr2000rate}, hypermutator alleles may become evolutionarily favored over than their ``normomutator'' counterparts.
+In fact, as hypermutation can systematically accelerate the pace of adaptive evolution \citep{orr2000rate}, hypermutator alleles may become evolutionarily favored over their ``normomutator'' counterparts.
 
 It is well known that large population size, in particular, can drive the probability of hypermutator traits fixing to near certainty \citep{raynes2018sign,tenaillon1999mutators,andre2006evolution,good2016evolution}.
 However, questions remain as to conditions that stabilize very large populations \textit{against} hypermutator fixation \citep{raynes2012contrasting,raynes2019migration,tanaka2003evolution}.
@@ -23,17 +23,17 @@ As mentioned above, population size has been implicated as a key factor for hype
 On the other hand, bottleneck events --- episodes that arbitrarily decimate a substantial portion of a population --- can suppress hypermutator fixation by disrupting propagation of the beneficial alleles that hypermutators hitchhike off of \citep{raynes2013effect}.
 
 A wide variety of modeling approaches have been applied in studying the evolutionary dynamics of mutator alleles.
-Although tangential to present work, mathematical and compoutational investigations have notably treated a broad variety of additional topics including coevolutionary pressures \citep{pal2007coevolution} and interactions with sexual recombination \citep{johnson1999beneficial}.
-Within the purifyung selection regime (i.e., absent positive selection for beneficial traits), modeling work has also investigated interplay between mutator alleles and Muller's ratchet  \citep{soderberg2011kickstarting} and dynamics steering towards evolutionarily-stable mutation rates \citep{lynch2008cellular}.
+Although tangential to the present work, mathematical and computational investigations have notably treated a broad variety of additional topics, including coevolutionary pressures \citep{pal2007coevolution} and interactions with sexual recombination \citep{johnson1999beneficial}.
+Within the purifying selection regime (i.e., absent positive selection for beneficial traits), modeling work has also investigated the interplay between mutator alleles and Muller's ratchet \citep{soderberg2011kickstarting} and dynamics steering towards evolutionarily stable mutation rates \citep{lynch2008cellular}.
 
-A useful foundation in understanding transient fluctuations in mutator allele prevalence is provided by \citet{desai2011balance}, who focus on a dynamical (rather than steady-state) framing of the topic.
-With regard to scenarios involving positive selection, attention is first paid to the probability for a given \textit{de novo} beneficial mutation to survive drift effects and reach sufficient frequency to be reliably be selected upon.
+A useful foundation in understanding transient fluctuations in mutator allele prevalence is provided by \citet{desai2011balance}, who focus on a dynamic (rather than steady-state) framing of the topic.
+With regard to scenarios involving positive selection, attention is first paid to the probability for a given \textit{de novo} beneficial mutation to survive drift effects and reach sufficient frequency to be reliably selected upon.
 Principled approximations are applied to suggest parameter regimes where establishment probability for beneficial alleles arising on a hypermutator background may safely be considered to be essentially zero (i.e., mutator incurs catastrophic mutational load) and where establishment probability is essentially indistinguishable from normomutators (i.e., mutator incurs negligible mutational load).
-At these extrema, hypermutator fixation probability is shown to follow easily from establishment probabilities if fixation time may be assumed sufficiently short to neglect the possibility of competion between more than one established allele.
-However, in scenarios where either (1) fixation times are long (e.g., large population sizes) or (2) mutational load incurred by hypermutators falls within an intermediate parameter range, matters are noted to become substantially more involved.
+At these extrema, hypermutator fixation probability is shown to follow easily from establishment probabilities if fixation time may be assumed sufficiently short to neglect the possibility of competition between more than one established allele.
+However, in scenarios where either (1) fixation times are long (e.g., large population sizes) or (2) the mutational load incurred by hypermutators falls within an intermediate parameter range, matters are noted to become substantially more involved.
 At this point, \citet{desai2011balance} conclude their analysis with a heuristic discussion outlining expected qualitative regimes within these remaining regions of parameter space.
-In line with themes explored in present work, \citet{desai2011balance} note that where fixation times for hitch-hiking mutator alleles are sufficiently long, establishment of a commensurate beneficial mutation among normomutators prior to fixation becoms inevietable.
-In such cases, therefore, successive adaptive mutations become necessary to fix a hypermutator allele.
+In line with themes explored in present work, \citet{desai2011balance} note that where fixation times for hitch-hiking mutator alleles are sufficiently long, establishment of a commensurate beneficial mutation among normomutators prior to fixation becomes inevitable.
+Therefore, successive adaptive mutations become necessary in such cases to fix a hypermutator allele.
 
 Several earlier works provide further insight into the role of adaptive potential in the evolutionary dynamics of hypermutator alleles.
 The core effect by which successive adaptive mutations can ultimately fix a hypermutator allele is demonstrated by \citet{tanaka2003evolution}.
@@ -41,8 +41,8 @@ Through a combination of analytical and computational modeling, they show how hy
 Although beyond the scope of their analyses, it is noted that such an effect can compound over successive adaptive sweeps to boost hypermutator prevalence.
 Somewhat relatedly, \citet{travis2002mutator} apply a deterministic model to show that hypermutator concentration can creep above baseline equilibrium when adaptive potential associated with environmental shifts becomes available.
 Most pertinently, however, \citet{tenaillon1999mutators} directly reproduce mutator ratcheting over successive sweeps in a set of extensive finite-sized stochastic simulations that apply efficient compartment-based representations to model the genetic composition of well-mixed populations.
-Time series traces of mutator proliferation from background levels in their simulations exhibit clear multistep dynamics.
-Of particular note, in experiments using a population size of $10^9$, they demonstrate fixation probability of mutators to increase with the number of adaptive mutations available.
+In their simulations, time series traces of mutator proliferation from background levels exhibit clear multistep dynamics.
+Of particular note, simulations using a population size of $10^9$ demonstrate the fixation probability of mutators to increase with the number of adaptive mutations available.
 
 Recent \textit{in vivo} experimental work has established direct evidence for connections between adaptive potential and mutator outcomes.
 In this work, \citet{callens2023hypermutator} conducted treatments exposing populations of \textit{E. coli} to either antibiotic or osmotic stressors, calibrated to comparable severities.
@@ -52,37 +52,37 @@ More broadly, existing work has drawn clear connections between elevated mutatio
 
 In a separate vein of inquiry, \citet{raynes2018sign} is notable in establishing a systematic understanding of the impact of population size on hypermutator allele favorability.
 Through paired agent-based simulation and yeast-model experiments, a striking sign-change effect is demonstrated to play out along the spectrum of population size.
-A quantitative basis for this effect is provided by synthesis of independent analytical approximations for the probability of hypermutator fixation by drift and hitchhiking.
-For small population sizes, mutator alleles' selective cost of imposed deleterious load outweighs their selective benefit in facilitating discovery of beneficial mutations.
+A quantitative basis for this effect is provided by synthesizing independent analytical approximations for the probability of hypermutator fixation by drift and hitchhiking.
+For small population sizes, mutator alleles' selective cost of imposed deleterious load outweighs their selective benefit in facilitating the discovery of beneficial mutations.
 In larger population sizes, the relative magnitude of these effects switches and hypermutator alleles become increasingly favored via indirect selection for generated beneficial mutations.
 
 Earlier work has also pointed to the role of population size influencing selection on hypermutators.
-\citet{wylie2009fixation} apply stochastic simulation and diffusion-based analytical methods to study hypermutator dynamics in asexual populations, in part describing in part how large population size can favor hypermutators.
+\citet{wylie2009fixation} apply stochastic simulation and diffusion-based analytical methods to study hypermutator dynamics in asexual populations, partly describing how large population size can favor hypermutators.
 A similar conclusion is reached by \citet{andre2006evolution}, through analytical models based in game theory.
-Work by \citet{good2016evolution}, notable for extending analytical modeling efforts into the parameter regime where clonal interference between competing beneficial mutations is at play, also predict population size to increase fixation probability within well-mixed populations.
+Work by \citet{good2016evolution}, notable for extending analytical modeling efforts into the parameter regime where clonal interference between competing beneficial mutations is at play, also predicts population size to increase fixation probability within well-mixed populations.
 This prediction is validated through forward-time Wright-Fisher simulations.
 (Other aspects of this work are notable in considering consequences of hypermutator alleles with respect to population-level adaptation rates and transient overshooting of evolutionarily stable mutation rates.)
 
 In this work, we seek to join these lines of inquiry in deepening our understanding of how limited adaptive potential interacts with population size and structure to influence hypermutator dynamics within asexual populations.
-Such knowledge is needed in addressing key open questions about how normomutator alleles can be maintained within large populations.
+Such knowledge is needed to address key open questions about how normomutator alleles can be maintained within large populations.
 In \citep{raynes2018sign}, concluding remarks hypothesize that spatial structure may help to explain why hypermutator alleles do not universally fix within large asexual populations.
 However, in a follow-up set of paired \textit{in vivo}/\textit{in vitro} experiments, deviation from well-mixed conditions is contradictorally linked to \textit{higher} probability for hypermutator fixation so long as any level connectivity remains between subpopulations \citep{raynes2019migration}.
 A simple rationale explains this result: even though hypermutators are disfavored within the small population size of an isolated deme, a fixed hypermutator within any single deme will subsequently invade all remaining demes due to outcompeting normomutator strains in accruing subsequent adaptive potential.
 Thus, long-term normomutator persistence requires short-term hypermutator extinction within \textit{all} subpopulations, which becomes increasingly unlikely for larger aggregate population size.
 In this work, we hypothesize an opposite effect to occur where adaptive potential is limited.
-Under such a scenario, long-term normomutator persistence requires short-term normomutator survival within only a single subpopulation, which can succesfully invade hypermutator subpopulations due to lower mutational load once available adaptive potential is exhausted.
+Under such a scenario, long-term normomutator persistence requires short-term normomutator survival within only a single subpopulation, which can successfully invade hypermutator subpopulations due to lower mutational load once available adaptive potential is exhausted.
 
 Understanding how and why hypermutator traits fix has broad importance in our understanding of evolving populations.
 Hypermutator traits have been shown to broadly influence the balance between selection and random effects on genetic content, profoundly accelerating processes of genetic draft \citep{couce2017mutator}.
 Hypermutator strains are observed among populations of pathogens arising in medical and public health contexts, where they can facilitate acquisition of novel traits such as antibiotic resistance, tumor progression, and changes in virulence \citep{eliopoulos2003hypermutation,jolivetgougeon2011bacterial,stern2016viral,schlesner2015hypermutation,hammerstrom2015acinetobacter,perron2010hypermutability}.
-For instance, emergence of hypermutator strains has been associated with treatment using antibiotics of last resort against opportunistic pathogens \citep{mehta2019essential}.
-Spatial structure associated with biofilms, in particular, has been implicated in facilitating evolution of antibiotic resistance \citep{france2018spatial}.
+For instance, the emergence of hypermutator strains has been associated with treatment using antibiotics of last resort against opportunistic pathogens \citep{mehta2019essential}.
+Spatial structure associated with biofilms, in particular, has been implicated in facilitating the evolution of antibiotic resistance \citep{france2018spatial}.
 Thus, beyond theoretical interest, studying hypermutator dynamics also has concrete practical applications with real-world potential to benefit both individual health and public well-being.
 
 \subsection{Major Results}
 
 In our initial experiments, we confirmed --- consistent with expectations --- that large populations favor hypermutator fixation, under the assumption of unlimited adaptive potential.
-However, restricting adaptive potential by limiting adaptive mutations available reversed outcomes in very large populations to favor normomutators.
+However, restricting adaptive potential by limiting available adaptive mutations reversed outcomes in large populations to favor normomutators.
 Investigating the influence of population structure and composition, we found spatial structure to be protective against hypermutator fixation in very large populations, but only when hypermutators were initially rare.
 Under well-mixed conditions, however, large populations instead facilitated hypermutator fixation under conditions with limited adaptive potential.
 
