@@ -1,0 +1,27 @@
+\begin{figure}[h]
+\begin{minipage}{\textwidth}
+  \includegraphics[width=\linewidth]{binder/binder-cupy-traits.ipynb/binder/teeplots/cupy-traits/errorbar=ci+hue=population-structure+kind=line+palette=dark2+row=population-size+style=initial-conditions+viz=relplot+x=available-beneficial-mutations+y=fix-prob+ext=.pdf}%
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+  \caption{%
+    \textbf{Population structure increases normomutator resilience to available adaptive potential.}
+    \footnotesize
+    Areaplot strips track hypermutator fixation probability across surveyed levels of adaptive potential, with error bands indicating bootstrapped 95\% confidence intervals.
+    Strips are arranged left-to-right with ascending population size, marked on the top axis.
+    Leftmost column shows well-mixed conditions.
+    Populations in center and rightmost columns are subdivided into 256-agent demes, arranged in a 2D grid or 1D ring.
+    Top panel, \ref{fig:spatial-structure:5050}, reports experiments initialized with an even mix of hyper- and normomutator agents.
+    In bottom panel, \ref{fig:spatial-structure:denovo}, hypermutators are initially absent and arise spontaneously \textit{de novo} with probability $10^{-6}$.
+    Note that $y$-axis scale differs substantially between top and bottom panels.
+    Effects of population structure are more pronounced under \textit{de novo} conditions, when initial supply of hypermutators is scarce.
+    Under well-mixed conditions, increase in population size favors hypermutators; normomutators reliably persist in very large populations through fewer than 10 available beneficial mutations.
+    In contrast, under 1D deme structure, very large population sizes are favorable to normomutators.
+    With such strong spatial structure, very large populations of normomutators reliably resist hypermutator fixation even when upwards of 20 beneficial mutations are available.
+    Results are under GPU simulation, using counter-based genome model.
+    In lower panel, some treatments with smallest population size were unable to reliably fix all available beneficial mutaitons within allotted runtime; panel areas in these regimes are left blank.
+    Supplementary Figures \cref{fig:fixheat-5050-cupy,fig:fixheat-denovo-cupy} detail results in a tabular format.
+  }
+  \label{fig:spatial-structure-combined}
+\end{minipage}
+\end{figure}

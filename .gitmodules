@@ -153,3 +153,8 @@
 	url = https://github.com/mmore500/hypermutator-dynamics.git
 	branch = binder-cupy-5050-traits.ipynb
 	shallow = true
+[submodule "binder/binder-cupy-traits.ipynb"]
+	path = binder/binder-cupy-traits.ipynb
+	url = https://github.com/mmore500/hypermutator-dynamics.git
+	branch = binder-cupy-traits.ipynb
+	shallow = true
