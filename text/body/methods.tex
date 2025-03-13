@@ -6,7 +6,7 @@ Within simulations, each agent possessed a set of genetic traits, inherited subj
 To assess the generality of our findings, we supplemented the simple ``counter-based'' genome model with Poisson-distributed mutations drawn from \cite{raynes2018sign} with an alternate ``site-explicit'' genome model.
 
 This section reviews the model mechanics used across experiments in this work, as well as aspects of simulation design that we manipulated between treatment conditions.
-Explored dimensions include population size, spatial population structure, background prevalence of hypermutator traits, and restriction of adaptive potential.
+Explored dimensions include population size, spatial population structure, background prevalence of mutator traits, and restriction of adaptive potential.
 Finally, we describe notable implementation-level considerations necessary in harnessing high-performance computing hardware to achieve the expansive simulation scales explored in this work.
 
 \subsection{Counter-based Genome Model} \label{sec:poisson}
@@ -24,14 +24,14 @@ Reversions are not considered, so genomes' beneficial and deleterious mutation c
 In some experiments where adaptive potential was limited, we imposed an upper bound on the total quantity of beneficial mutations that could be accrued.
 This was accomplished by applying a clip operation to the corresponding genome counters each time after mutation was applied.
 
-Agent genomes additionally contain a boolean flag, signifying whether the agent expresses a hypermutator trait.
+Agent genomes additionally contain a boolean flag, signifying whether the agent expresses a mutator trait.
 Agents with this trait incur a hundred-fold increase to mutation rates, $\hat{\lambda_d=10^{-3}} = 100 \times \lambda_d$ and $\hat{\lambda_b=10^{-3}} = 100 \times \lambda_b$.
-Consistent with prior work \citep{raynes2018sign}, we conducted experiments initialized with an even mix of normo- and hypermutators;
-agents in the founding population were randomly assigned hyper- or normomutator status, with equal probability.
+Consistent with prior work \citep{raynes2018sign}, we conducted experiments initialized with an even mix of non- and mutators;
+agents in the founding population were randomly assigned mutator or nonmutator status, with equal probability.
 In this ``50/50'' treatment, offspring always inherit their parent's mutator status.
-In some experiments, we instead permit the hypermutator trait to be spontaneously conferred to offspring with probability $10^{-6}$.
-This ``\textit{de novo}'' treatment assumes the founding population to be solely of normomutator type.
-As with prior work \citep{raynes2018sign}, neither treatment allows hypermutator to normomutator reversion.
+In some experiments, we instead permit the mutator trait to be spontaneously conferred to offspring with probability $10^{-6}$.
+This ``\textit{de novo}'' treatment assumes the founding population to be solely of nonmutator type.
+As with prior work \citep{raynes2018sign}, neither treatment allows mutator to nonmutator reversion.
 
 \subsection{Site-explicit Genome Model} \label{sec:site-explicit}
 
@@ -49,9 +49,9 @@ Because we do not limit the quantity of available deleterious mutations in our s
 We maintain $\lambda_d = 10^{-3}$.
 Hence, under the site-explicit model, we assign agents' fitness scores as $-n_d + \sum^n b_i$.
 
-Site-explicit hypermutator mechanics also closely follow those under the counter-based model.
-The hypermutator trait increases mutation rates hundredfold, setting $\hat{p_{b}} = \hat{p_{\sim b}} = 10^{-4}$ and $\hat{\lambda_d} = 10^{-1}$.
-Site-explicit experiments were conducted under both ``50/50'' and ``\textit{de novo}'' models of hypermutator introduction, identically to description above.
+Site-explicit mutator mechanics also closely follow those under the counter-based model.
+The mutator trait increases mutation rates hundredfold, setting $\hat{p_{b}} = \hat{p_{\sim b}} = 10^{-4}$ and $\hat{\lambda_d} = 10^{-1}$.
+Site-explicit experiments were conducted under both ``50/50'' and ``\textit{de novo}'' models of mutator introduction, identically to description above.
 
 \subsection{Evolution Model} \label{sec:evolution}
 
@@ -75,14 +75,14 @@ To efficiently batch our computations, we processed smaller population sizes as 
 Hence, replicate count decreased with population size, but was boosted to at least 9 replicates in all cases.
 Simulations lasted 500,000 generations.
 
-The 50,000 generation duration was sufficient for populations to reach either hyper- or normomutator fixation in nearly all treatments.
+The 50,000 generation duration was sufficient for populations to reach either mutator or nonmutator fixation in nearly all treatments.
 However, some replicates involving 1D spatial structure at the largest-surveyed population size (for that condition, 15.1 million agents) did not reach a decisive end-state.
 For this reason, we excluded 15.1 million agent populations with 1D structure from our analyses.
 Additionally, we found that 256-agent populations failed accrue to more than 12 beneficial mutations within the 500,000 generation window.
 For treatments where more than 12 beneficial mutations were availbe, some replicates therefore did not reach full adaptive potential.
 Thus, we also excluded 256-agent simulations with more than 12 benficial mutations available from our analyses.
 
-In data included in our presentation, $>97\%$ of replicates reached both hyper-/normomutator fixation and full adaptive potential.
+In data included in our presentation, $>97\%$ of replicates reached both mutator/nonmutator  fixation and full adaptive potential.
 Details on the fraction of replicates reaching fixation by experimental condition are provided in Supplementary Figures \cref{fig:neither-fixed-5050-cupy,fig:neither-fixed-denovo-cupy,fig:neither-fixed-wse-256atile,fig:neither-fixed-wse-altatile}.
 Details on the fraction of replicates reaching full adaptive potential, measured for GPU-based simulations, appear in Supplementary Figures \cref{fig:unaccrued-5050-cupy,fig:unaccrued-denovo-cupy}.
 

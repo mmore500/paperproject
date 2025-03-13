@@ -1,93 +1,93 @@
 \section{Results and Discussion} \label{sec:results}
 
-Our research in this work investigates the interactions between population size, adaptive potential, and population structure in influencing selection on hypermutator traits within asexual populations.
-In our first experiments, we replicate previous work by \citet{raynes2018sign} showing sign-change effects of population size on hypermutator favorability.
-Subsequent experiments investigate how these dynamics change when limited beneficial mutations are available and their sensitivity to initial abundance of hypermutators in the population.
+Our research in this work investigates the interactions between population size, adaptive potential, and population structure in influencing selection on mutator traits within asexual populations.
+In our first experiments, we replicate previous work by \citet{raynes2018sign} showing sign-change effects of population size on mutator favorability.
+Subsequent experiments investigate how these dynamics change when limited beneficial mutations are available and their sensitivity to initial abundance of mutators in the population.
 Finally, experiments survey behavior across three regimes of population spatial structure.
-We find that the sign effect of population size on hypermutator favorability is dependent on spatial structure.
+We find that the sign effect of population size on mutator favorability is dependent on spatial structure.
 
 \subsection{Scaling Population Size}
 \label{sec:scaling-population-size}
 
-In a first set of experiments, we tested how hypermutator fixation probability varies with changes in population size.
+In a first set of experiments, we tested how mutator fixation probability varies with changes in population size.
 
-Previous work by \citet{raynes2018sign} has demonstrated that hypermutator dynamics can transition through several regimes with population scale.
-In the first regime, when population size is very small and normomutators/hypermutators start in even proportion, fixation of either is nearly equiprobable, owing to the overwhelming influence of stochastic effects.
-Subsequently, in medium-sized populations, hypermutators become disfavored by selection.
-Intuitively, this disfavor can be attributed to the power of selection becoming sufficiently sensitive to penalize the mutational load imposed by hypermutator traits.
-However, in sufficiently large populations, hypermutator fixation can move towards certainty.
-This is because, in asexual populations, hypermutator alleles that discover a significant beneficial mutation can gain in population share by association with that beneficial allele.
-Population size increases the probability of at least one hypermutator discovering a beneficial mutation, and so ``hitch-hiking'' to sweep out normomutators.
+Previous work by \citet{raynes2018sign} has demonstrated that mutator dynamics can transition through several regimes with population scale.
+In the first regime, when population size is very small and nonmutators/mutators start in even proportion, fixation of either is nearly equiprobable, owing to the overwhelming influence of stochastic effects.
+Subsequently, in medium-sized populations, mutators become disfavored by selection.
+Intuitively, this disfavor can be attributed to the power of selection becoming sufficiently sensitive to penalize the mutational load imposed by mutator traits.
+However, in sufficiently large populations, mutator fixation can move towards certainty.
+This is because, in asexual populations, mutator alleles that discover a significant beneficial mutation can gain in population share by association with that beneficial allele.
+Population size increases the probability of at least one mutator discovering a beneficial mutation, and so ``hitch-hiking'' to sweep out nonmutators.
 
 \input{fig/wse-inf-one}
 
 As shown in the left panel of Figure \ref{fig:wse-inf-one:32}, we also find a sign-change phenomenon with population scale, as previously reported by \citet{raynes2018sign}.
 Applying WSE accelerator hardware allowed us to test population sizes orders of magnitude beyond previously reported upper ceilings of tens of thousands of agents.
-However, even at billion-agent scales, no qualitative difference emerges between large and very large population sizes with respect to hypermutator fixation probability.
+However, even at billion-agent scales, no qualitative difference emerges between large and very large population sizes with respect to mutator fixation probability.
 With the largest-tested density of 2,048 agents per deme, shown as the left panel of Figure \ref{fig:wse-inf-one:2048}, coarse spacing between surveyed population sizes obscures the original sign-change phenomenon in small and medium-sized populations.
-Nonetheless, hypermutators retain strong selective favor across large and very large population sizes.
+Nonetheless, mutators retain strong selective favor across large and very large population sizes.
 
 \subsection{Restricting Adaptive Potential}
 \label{sec:restricting-adaptive-potential}
 
-Prediction of a strong tendency for hypermutator fixation in large populations prompts a converse question: what conditions are necessary for large populations to resist hypermutator invasion?
+Prediction of a strong tendency for mutator fixation in large populations prompts a converse question: what conditions are necessary for large populations to resist mutator invasion?
 One assumption of the above result is availability of abundant potential beneficial mutations.
 Indeed, agent-based modeling work has largely yet to explore scenarios where few beneficial mutations are available \citep{raynes2013effect,raynes2018sign,raynes2019selection,raynes2019migration}.
-Recent empirical work, however, has shown indications that fitness landscape characteristics can influence hypermutator favorability.
+Recent empirical work, however, has shown indications that fitness landscape characteristics can influence mutator favorability.
 
 To investigate this question, we next performed experiments where the supply of possible beneficial mutations was constrained.
-The right panels of Figures \cref{fig:wse-inf-one:32,fig:wse-inf-one:2048} show hypermutator fixation probabilities where agents could accrue no more than one beneficial mutation.
-At both 32- and 2,048 agents per deme, and an additional, third regime of selection on hypermutator traits appears past population sizes of 1 million agents.
-Beyond this point, normomutators reliably drive hypermutators to extinction.
-We expect this effect to be associated with sufficient scale that at least one normomutator reliably discovers the beneficial mutation before the hypermutator trait fixes.
-Then, given the large population size, selection should reliably advantage normomutators' reduced deleterious mutation load.
+The right panels of Figures \cref{fig:wse-inf-one:32,fig:wse-inf-one:2048} show mutator fixation probabilities where agents could accrue no more than one beneficial mutation.
+At both 32- and 2,048 agents per deme, and an additional, third regime of selection on mutator traits appears past population sizes of 1 million agents.
+Beyond this point, nonmutators reliably drive mutators to extinction.
+We expect this effect to be associated with sufficient scale that at least one nonmutator reliably discovers the beneficial mutation before the mutator trait fixes.
+Then, given the large population size, selection should reliably advantage nonmutators' reduced deleterious mutation load.
 
 \input{fig/avail-ben-muts}
 
-Next, we tested the sensitivity of normomutator persistence in large populations to the amount of adaptive potential available.
+Next, we tested the sensitivity of nonmutator persistence in large populations to the amount of adaptive potential available.
 Figure \ref{fig:avail-ben-muts} shows fixation curves where one, two, three, four, and five beneficial mutations are available, conducted with 256 agents per deme.
-Under surveyed conditions, with 2D spatial structure and hypermutators beginning in equal proportion to normomutators, resilience to hypermutator fixation is very fragile.
-Normomutator persistence rapidly decays with increases in adaptive potential;
-even in billion-agent populations, hypermutators begin to regain favor past three beneficial mutations available.
+Under surveyed conditions, with 2D spatial structure and mutators beginning in equal proportion to nonmutators, resilience to mutator fixation is very fragile.
+nonmutator persistence rapidly decays with increases in adaptive potential;
+even in billion-agent populations, mutators begin to regain favor past three beneficial mutations available.
 
 \input{fig/avail-ben-muts-gen}
 
-\subsection{Effects of Background Hypermutator Prevalence}
+\subsection{Effects of Background mutator Prevalence}
 \label{sec:background-hypermutator-prevalence}
 
-Over the course of history studying hypermutator dynamics, there has been some question as to whether selection on hypermutators is number-, frequency-, or density-dependent, reviewed in \citep{raynes2019selection}.
+Over the course of history studying mutator dynamics, there has been some question as to whether selection on mutators is number-, frequency-, or density-dependent, reviewed in \citep{raynes2019selection}.
 (Note that this issue is orthogonal to overall population size.)
-One key result in recent years is that selection on hypermutators is not frequency- or density-dependent, definitively described in \citep{raynes2019selection} but earlier suggested in \citep{wylie2009fixation}.
+One key result in recent years is that selection on mutators is not frequency- or density-dependent, definitively described in \citep{raynes2019selection} but earlier suggested in \citep{wylie2009fixation}.
 One straightforward consequence of this finding is simplification of experimental design.
-Rather than trying to design competition experiments that capture dynamics when hypermutators are rare, direct experiments may be designed where hypermutators and normomutators are mixed in even proportions at a starting point.
-This is good because it provies sensitivity in detecting within the realm where hypermutator and normomutator fixation probabilities and facilitates an intuitive and direct comparison of favor vs. disfavor for the mutator allele.
+Rather than trying to design competition experiments that capture dynamics when mutators are rare, direct experiments may be designed where mutators and nonmutators are mixed in even proportions at a starting point.
+This is good because it provies sensitivity in detecting within the realm where mutator and nonmutator fixation probabilities and facilitates an intuitive and direct comparison of favor vs. disfavor for the mutator allele.
 This sensitivity is useful in characterizing sign-change effects \citep{raynes2018selection}.
 
 \input{fig/denovo-5050-conditions-combined}
 
-Having observed large population size stabilize normomutators against extinction when few opportunities for adaptive mutation exist, we next sought to assess how robustly such a protective effect might manifest in natural populations.
-In this regard, we sought to test the role of initial conditions in hypermutator fixation outcomes by relaxing the assumption that hypermutators begin ``50/50'' in equal proportion to normomutators.
-Although such a scenario provides a useful design for benchtop experiments \citep{raynes2018sign}, against a background of evolutionary stasis it would, instead, be expected that normomutators instead exist in the population at some low background rate resulting equilibrium between purifying selection and spontaneous hypermutator originations \citep{desai2011balance,johnson1999approach}.
+Having observed large population size stabilize nonmutators against extinction when few opportunities for adaptive mutation exist, we next sought to assess how robustly such a protective effect might manifest in natural populations.
+In this regard, we sought to test the role of initial conditions in mutator fixation outcomes by relaxing the assumption that mutators begin ``50/50'' in equal proportion to nonmutators.
+Although such a scenario provides a useful design for benchtop experiments \citep{raynes2018sign}, against a background of evolutionary stasis it would, instead, be expected that nonmutators instead exist in the population at some low background rate resulting equilibrium between purifying selection and spontaneous mutator originations \citep{desai2011balance,johnson1999approach}.
 
-Prior work, applying both mathematical analysis and agent-based experiments, has shown per-capita favorability of hypermutator traits to be density independent \citep{raynes2019selection}.
-Thus, we would expect a lower background rate for hypermutator alleles to reduce the net probability of normomutator extinction.
+Prior work, applying both mathematical analysis and agent-based experiments, has shown per-capita favorability of mutator traits to be density independent \citep{raynes2019selection}.
+Thus, we would expect a lower background rate for mutator alleles to reduce the net probability of nonmutator extinction.
 
-To test this question, we conducted ``\textit{de novo}'' treatments where hypermutators arose spontaneously rather than being explicitly included in the initial population.
+To test this question, we conducted ``\textit{de novo}'' treatments where mutators arose spontaneously rather than being explicitly included in the initial population.
 Given that we assume the availability of some nonzero number of adaptive mutations, such a scenario might be applicable to cases where an abrupt change in environmental context introduces adaptive potential, such as the sudden introduction of a novel stressor.
-Note that, in our simulation experiments, we assumed hypermutators to originate with probability equivalent to beneficial mutations, $10^{-6}$.
+Note that, in our simulation experiments, we assumed mutators to originate with probability equivalent to beneficial mutations, $10^{-6}$.
 
-Figure \ref{fig:denovo-5050-conditions} compares surveyed hypermutator fixation probabilities with and without hypermutators making up half of the initial population.
+Figure \ref{fig:denovo-5050-conditions} compares surveyed mutator fixation probabilities with and without mutators making up half of the initial population.
 With 256 agents per deme, population size scaled up to 136 million agents.
-In line with expectations, the \textit{de novo} treatment substantially extends normomutator viability.
-Under \textit{de novo} conditions, normomutators reliably resist hypermutator fixation in very large populations through more than 10 beneficial mutations available.
-Under 50/50 conditions, by contrast, hypermutators begin to fix in very large populations past 2 beneficial mutations available.
+In line with expectations, the \textit{de novo} treatment substantially extends nonmutator viability.
+Under \textit{de novo} conditions, nonmutators reliably resist mutator fixation in very large populations through more than 10 beneficial mutations available.
+Under 50/50 conditions, by contrast, mutators begin to fix in very large populations past 2 beneficial mutations available.
 
 As can be seen by comparing panels \ref{fig:denovo-5050-conditions:poisson} and \ref{fig:denovo-5050-conditions:site-explicit}, we found outcomes to be generally consistent between both the counter-based model with Poisson-distributed mutations and an alternate ``site-explicit'' model where the probability of discovering a beneficial mutation scales proportional to the number available.
 
 \subsection{Effects of Population Structure}
 \label{sec:population-structure}
 
-In a final set of experiments, we sought to establish the influence of spatial structure on fixation outcomes to further assess how robustly natural asexual populations might resist hypermutator fixation in scenarios with limited adaptation potential.
+In a final set of experiments, we sought to establish the influence of spatial structure on fixation outcomes to further assess how robustly natural asexual populations might resist mutator fixation in scenarios with limited adaptation potential.
 
 The simulation experiments described above, conducted on WSE hardware, all assumed a global population structure as an interconnected 2D grid of smaller, well-mixed constituent demes.
 To explore this dimension, we conducted trials with the default 2D structure along with (1) a treatment arranging demes in a 1D ring and (2) a fully well-mixed treatment with no subpopulation structure.
@@ -95,50 +95,50 @@ Because work reported in this section used a GPU platform, rather than WSE, popu
 
 \input{fig/spatial-structure-combined}
 
-Figure \ref{fig:spatial-structure} plots increase in hypermutator fixation probabilities with available adaptive potential across a spectrum of population sizes.
+Figure \ref{fig:spatial-structure} plots increase in mutator fixation probabilities with available adaptive potential across a spectrum of population sizes.
 Results differ substantially between 50/50 and \textit{de novo} conditions, appearing in panels \ref{fig:spatial-structure:5050} and \ref{fig:spatial-structure:denovo} respectively.
-With 50/50 initializations, normomutators reliably persist through only one or two beneficial mutations available across all spatial configurations.
-By contrast, under \textit{de novo} conditions, normomutator populations with 1D structure successfully resist hypermutator invasion through upwards of 20 beneficial mutations.
-Notably, though, under weak, well-mixed spatial structure, the effect of population size is opposite --- rather than suppressing hypermutator favorability, hypermutators actually become \textit{more} likely to sweep large populations.
+With 50/50 initializations, nonmutators reliably persist through only one or two beneficial mutations available across all spatial configurations.
+By contrast, under \textit{de novo} conditions, nonmutator populations with 1D structure successfully resist mutator invasion through upwards of 20 beneficial mutations.
+Notably, though, under weak, well-mixed spatial structure, the effect of population size is opposite --- rather than suppressing mutator favorability, mutators actually become \textit{more} likely to sweep large populations.
 
-These findings contrast with previous modeling work assuming unlimited adaptive potential, which predicts that so long as any level of connectivity exists between subpopulations, spatial structure boosts hypermutator fixation probability \citep{raynes2019migration}.
-One possible explanation for why spatial structure can decrease hypermutator fixation probability is by extending the window of opportunity for normomutators to catch up in exploiting available adaptive potential before being driven to extinction.
-Such a possibility aligns with findings from \textit{in vivo} evolution experiments with \textit{E. coli} that show that migration barriers delaying introduction of hypermutator strains into normomutator populations can reduce hypermutator advantage \citep{lechat2006escherichia}.
+These findings contrast with previous modeling work assuming unlimited adaptive potential, which predicts that so long as any level of connectivity exists between subpopulations, spatial structure boosts mutator fixation probability \citep{raynes2019migration}.
+One possible explanation for why spatial structure can decrease mutator fixation probability is by extending the window of opportunity for nonmutators to catch up in exploiting available adaptive potential before being driven to extinction.
+Such a possibility aligns with findings from \textit{in vivo} evolution experiments with \textit{E. coli} that show that migration barriers delaying introduction of mutator strains into nonmutator populations can reduce mutator advantage \citep{lechat2006escherichia}.
 
 \subsection{Spatiotemporal Dynamics}
 \label{sec:dynamics}
 
-To better understand how competition between normo- and hypermutator strains unfolds at very large population scales, we performed an additional set of simulations on the WSE using the site-explicit model of adaptation, where hypermutators originated \textit{de novo} from normomutator strains.
+To better understand how competition between non- and mutator strains unfolds at very large population scales, we performed an additional set of simulations on the WSE using the site-explicit model of adaptation, where mutators originated \textit{de novo} from nonmutator strains.
 For these experiments, PE subpopulations were restricted to 256 agents to preserve on-device memory to record time series data.
 This configuration yielded a net population size of 191 million agents.
-In these runs, we probed the critical region where outcomes transition between normomutator and hypermutator fixation, configuring adaptive potential between 12 and 16 available beneficial mutations.
+In these runs, we probed the critical region where outcomes transition between nonmutator and mutator fixation, configuring adaptive potential between 12 and 16 available beneficial mutations.
 
 In order to track the composition of the population over time, we included additional on-device, runtime instrumentation in these replicates.
-Generation-on-generation, we configured each processor element to sample a genome from its local population and record its hypermutator allele (i.e., a binary value as either a normo- or hypermutator).
+Generation-on-generation, we configured each processor element to sample a genome from its local population and record its mutator allele (i.e., a binary value as either a non- or mutator).
 To efficiently curate this single-bit data within per-PE memory limits, we leveraged recently-introduced ``DStream'' generalizations of the ring buffer data structure \citep{moreno2024algorithms}.
 Notably, this approach constrained memory use to a fixed-size buffer, while guaranteeing the buffer to always be fully utilized.
-Additionally, recording could thereby be dynamically halted when normomutators were determined to be locally extinct (and restarted if they are reintroduced).
-While this scheme allowed maximization of on-device resources, note that, as a result, in animations the number of generations elapsed per frame varies depending on when, and if, normomutators went to extinction.
+Additionally, recording could thereby be dynamically halted when nonmutators were determined to be locally extinct (and restarted if they are reintroduced).
+While this scheme allowed maximization of on-device resources, note that, as a result, in animations the number of generations elapsed per frame varies depending on when, and if, nonmutators went to extinction.
 
 \input{fig/dynamics}
 
 Figure \ref{fig:dynamics} arranges sequential population snapshots from two example simulations, both with adaptive potential of 14 beneficial mutations.
-In the first example, hypermutators fixed; in the second, they did not.
+In the first example, mutators fixed; in the second, they did not.
 
 At outset, example simulations in panels \ref{fig:dynamics:no-fixation} and \ref{fig:dynamics:fixation} unfold similarly.
-First, hypermutator strains appear \textit{de novo} across the breadth of simulated populations.
-Then, as patches of hypermutators expand outwards, the normomutator population is broken into pockets.%
+First, mutator strains appear \textit{de novo} across the breadth of simulated populations.
+Then, as patches of mutators expand outwards, the nonmutator population is broken into pockets.%
 \footnote{%
-Notably, hypermutator strains continue to stem from normomutator lineages as they accrue adaptive mutations.
-Of 16 replicates where hypermutators fixed, we observed 2 cases where the final dominant hypermutator lineage arose from a partially-adapted normomutator lineage --- harboring 1 and 3 beneficial mutations, respectively.
+Notably, mutator strains continue to stem from nonmutator lineages as they accrue adaptive mutations.
+Of 16 replicates where mutators fixed, we observed 2 cases where the final dominant mutator lineage arose from a partially-adapted nonmutator lineage --- harboring 1 and 3 beneficial mutations, respectively.
 % https://github.com/mmore500/hypermutator-dynamics/blob/90422b30f2dd9ca29baad273cbcc676dbfeab55f/binder/wse-denovo-spatial2d-explicitsite-genomes.ipynb
 }
-In scenarios where hypermutators fix, surviving patches of normomutators dwindle away entirely (panel \ref{fig:dynamics:fixation}).
-Alternately, where normomutators survive, they re-establish via concentric growth from surviving pockets (panel \ref{fig:dynamics:no-fixation}).
+In scenarios where mutators fix, surviving patches of nonmutators dwindle away entirely (panel \ref{fig:dynamics:fixation}).
+Alternately, where nonmutators survive, they re-establish via concentric growth from surviving pockets (panel \ref{fig:dynamics:no-fixation}).
 
 \input{fig/peaksweep}
 
-At nadir, normomutators constitute less than 0.1\% of the population in experiments with adaptive potential of 14 available beneficial mutations.
+At nadir, nonmutators constitute less than 0.1\% of the population in experiments with adaptive potential of 14 available beneficial mutations.
 % ^^^ https://github.com/mmore500/hypermutator-dynamics/blob/5e904ac2fbbd4b41a0ad679883fc1a63af71c00c/binder/wse-denovo-spatial2d-explicitsite-timeseries.ipynb
-To assess the peak of transient presence of hypermutators within, we performed an additional set of four-replicate simulations ranging from adaptive potentials of 2 to 10 available beneficial mutations.
-For all replicates with 6 or more available beneficial mutations, hypermutators peaked beyond 50\% prevalence (Figure \ref{fig:peaksweep}).
+To assess the peak of transient presence of mutators within, we performed an additional set of four-replicate simulations ranging from adaptive potentials of 2 to 10 available beneficial mutations.
+For all replicates with 6 or more available beneficial mutations, mutators peaked beyond 50\% prevalence (Figure \ref{fig:peaksweep}).
