@@ -62,39 +62,35 @@ Site-explicit experiments were conducted under both ``50/50'' and ``\textit{de n
 
 \subsection{Evolution Model} \label{sec:evolution}
 
-Simulations applied tournament selection with synchronous generations and fixed population size.
-For each available slot in a subpopulation's next generation, we sampled, with replacement, a pair of agents from that subpopulation.
-With 90\% probability, the winner of the available slot was chosen randomly among the pair.
-Otherwise, the available slot was assigned to the pair member with higher fitness score.
+Simulations applied a tournament selection strategy with synchronous generations and fixed population size.
+For each available slot in a subpopulation's next generation, we sampled, with replacement, a pair of candidate parents from that subpopulation.
+With 90\% probability, a selected parent chosen randomly among the pair.
+Otherwise, candidate with higher fitness score was selected as parent.
 As such, fitness score improvements conferred a 10\% fitness advantage.
+Our motivation in performing selection via pairwise competition was to enable efficient vectorized operations for GPU evaluation.
 
 In simulations with spatial structure, populations were partitioned into well-mixed 256-agent ``demes.''%
 \footnote{%
 Where noted, 32-agent and 2,048-agent deme sizes were also used, to support finer-grained sweeps of population size or higher maximum net population size.
 }
-Where deme structure was used, selection solely competed agents inhabiting the same deme.
+Where deme structure was used, competition occured only between agents inhabiting the same deme.
 Each generation, migration between neighboring demes was applied by swapping a pair of agents.
 Hence, demes received one immigrant from each neighbor per generation.
 Under default conditions, demes were arranged as a two-dimensional grid lattice with non-toroidal boundaries (i.e., grid edges did not wrap around).
-Under 1D structure treatments, demes were instead arranged in a ring configuration.
-Finally, for well-mixed treatments, deme structure was broken down to treat entire populations as a single deme.
+For well-mixed treatments, deme structure was broken down to treat entire populations as a single deme.
 
-All 2D structure experiments used a square grid.
-Hence, we chose to scale surveyed population sizes by factors of 9: $1 \times 1 \times 256,\;\; 3 \times 3 \times 256,\;\; 9 \times 9 \times 256,\;\; \ldots,\;\; 729 \times 729 \times 256$.
+Our 2D structure experiments used square deme grids.
+To maintain square layout, we scaled surveyed population sizes by factors of 9: $1 \times 1 \times 256,\;\; 3 \times 3 \times 256,\;\; 9 \times 9 \times 256,\;\; \ldots,\;\; 729 \times 729 \times 256$.
 To efficiently batch our computations, we processed smaller population sizes as independent tiles of a larger, fixed-size fabric.
 Hence, replicate count decreased with population size, but was boosted to at least 9 replicates in all cases.
-Simulations lasted 500,000 generations.
+Simulations lasted 500,000 generations, which sufficed for populations to reach fixation in nearly all cases.
+(We defined fixation as all mutators or all nonmutators for 50/50 experiments, and as either 100\% mutators or <1\% mutators for \textit{de novo} experiments.)
+However, we found that 256-agent populations failed to reliably reach full adaptive potential in accruing more than 12 beneficial mutations within the prescribed 500,000 generation window.
+Thus, we excluded 256-agent simulations with more than 12 benficial mutations available from our analyses.
 
-The 50,000 generation duration was sufficient for populations to reach either mutator or nonmutator fixation in nearly all treatments.
-However, some replicates involving 1D spatial structure at the largest-surveyed population size (for that condition, 15.1 million agents) did not reach a decisive end-state.
-For this reason, we excluded 15.1 million agent populations with 1D structure from our analyses.
-Additionally, we found that 256-agent populations failed accrue to more than 12 beneficial mutations within the 500,000 generation window.
-For treatments where more than 12 beneficial mutations were availbe, some replicates therefore did not reach full adaptive potential.
-Thus, we also excluded 256-agent simulations with more than 12 benficial mutations available from our analyses.
-
-In data included in our presentation, $>97\%$ of replicates reached both mutator/nonmutator  fixation and full adaptive potential.
-Details on the fraction of replicates reaching fixation by experimental condition are provided in Supplementary Figures \cref{fig:neither-fixed-5050-cupy,fig:neither-fixed-denovo-cupy,fig:neither-fixed-wse-256atile,fig:neither-fixed-wse-altatile}.
-Details on the fraction of replicates reaching full adaptive potential, measured for GPU-based simulations, appear in Supplementary Figures \cref{fig:unaccrued-5050-cupy,fig:unaccrued-denovo-cupy}.
+For all included data, $>97\%$ of replicates reached both mutator/nonmutator fixation and accrued full adaptive potential.
+Details on the fraction of replicates reaching fixation by experimental condition are provided in Supplementary \cref{fig:neither-fixed-5050-cupy,fig:neither-fixed-denovo-cupy,fig:neither-fixed-wse-256atile,fig:neither-fixed-wse-altatile}.
+Details on the fraction of replicates reaching full adaptive potential, measured for GPU-based simulations, appear in Supplementary \cref{fig:unaccrued-5050-cupy,fig:unaccrued-denovo-cupy}.
 
 \subsection{Hardware Accelerator Platforms} \label{sec:hardware}
 
