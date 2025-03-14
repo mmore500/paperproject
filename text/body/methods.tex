@@ -22,21 +22,24 @@ Thus, a genome’s ``fitness score'' is calculated simply as $n_b - n_d$.
 For purposes here, the simplicity of this approach is useful in enabling runtime simulation efficiency.
 Sensitivity analysis performed in closely-related work applying this genome model found evolutionary outcomes to be similar to those with exponential distributions of fitness effects for individual mutations \citep{raynes2019selection}.
 
-A mutation process is applied to agent genomes each generation.
-For each new agent, a count of discovered beneficial and deleterious mutations are drawn from independent Poisson distributions, with expected deleterious mutations per generation as
-$\lambda_d=10^{-3}$ and expected beneficial mutations per generation as $\lambda_b=10^{-6}$.
-That is, $\mathsf{offspring-}n_b = \mathsf{parent-}n_b + \mathrm{Pois}(\lambda_b)$ and $\mathsf{offspring-}n_d = \mathsf{parent-}n_d + \mathrm{Pois}(\lambda_d)$.
-Reversions are not considered, so genomes' beneficial and deleterious mutation counts do not decrease from generation to generation.
-In some experiments where adaptive potential was limited, we imposed an upper bound on the total quantity of beneficial mutations that could be accrued.
-This was accomplished by applying a clip operation to the corresponding genome counters each time after mutation was applied.
+Genomes were subjected to mutation each generation.
+For each offspring, counts of newly accrued beneficial and deleterious mutations are drawn from independent Poisson distributions.
+Expected deleterious mutations per generation were parameterized as
+$\lambda_d=10^{-3}$ and expected beneficial mutations per generation were parameterized as $\lambda_b=10^{-6}$.
+Reversions are not considered, so beneficial and deleterious mutation counts are strictly nondecreasing.
+In some experiments where adaptive potential was limited, we imposed an upper bound on the maximum quantity of beneficial mutations available.
+Any further beneficial mutations accrued past this point were reverted to the bound.
 
 Agent genomes additionally contain a boolean flag, signifying whether the agent expresses a mutator trait.
-Agents with this trait incur a hundred-fold increase to mutation rates, $\hat{\lambda_d=10^{-3}} = 100 \times \lambda_d$ and $\hat{\lambda_b=10^{-3}} = 100 \times \lambda_b$.
-Consistent with prior work \citep{raynes2018sign}, we conducted experiments initialized with an even mix of non- and mutators;
-agents in the founding population were randomly assigned mutator or nonmutator status, with equal probability.
-In this ``50/50'' treatment, offspring always inherit their parent's mutator status.
-In some experiments, we instead permit the mutator trait to be spontaneously conferred to offspring with probability $10^{-6}$.
-This ``\textit{de novo}'' treatment assumes the founding population to be solely of nonmutator type.
+Agents with this trait incur a hundred-fold increase to mutation rates, $\hat{\lambda_d} = 100 \times \lambda_d$ and $\hat{\lambda_b} = 100 \times \lambda_b$.
+We assume no direct fitness benefit or cost to be associated with the mutator allele.
+
+Experiments applied one of two approaches to introduce mutator alleles.
+In the ``50/50'' treatment, genomes were initialized equiprobably as a mutator or as a nonmutator.
+The ``50/50'' experiment design, applied in \textit{in vivo} experiments reported in \citet{raynes2018sign}, maximizes sensitivity in detecting sign-change fitness effects where selection transitions between favoring versus disfavoring mutator alleles.
+rationale behind this approach also stems from the understanding that fitness effects from mutator alleles act in a density- and count-independent manner \citep{raynes2019selection}.
+By contrast, in other experiments, we introduced mutator alleles via a \textit{de novo} approach where the mutator trait is spontaneously conferred to offspring with probability $10^{-6}$.
+Under this approach, the founding population is initialized as nonmutator type.
 As with prior work \citep{raynes2018sign}, neither treatment allows mutator to nonmutator reversion.
 
 \subsection{Site-explicit Genome Model} \label{sec:site-explicit}
