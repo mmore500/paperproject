@@ -94,14 +94,13 @@ Details on the fraction of replicates reaching full adaptive potential, measured
 
 \subsection{Hardware Accelerator Platforms} \label{sec:hardware}
 
-To enable the simulation scale necessary for this work, we employed Graphics Processing Unit (GPU) and Wafer-Scale Engine (WSE) hardware accelerators.
-The architectures of these hardware accelerators comprise large collections of worker processors specialized for numerical computation.
+To enable the simulation scale necessary for this work, we employed Graphics Processing Unit (GPU) and Wafer-Scale Engine (WSE) hardware accelerators, which contain large collections of worker processors specialized for numerical computation.
 GPU hardware was NVIDIA A100 and WSE hardware was Cerebras CS-2 \citep{choquette2021nvidia,cerebras2021wafer}.
 WSE hardware was hosted by the Neocortex installation at Pittsburgh Supercomputing Center \citep{buitrago2021neocortex}.
 
-The Cerebras Wafer-Scale Engine platform, in particular, is a notable exemplar among an emerging class of next-generation AI/ML-oriented hardware accelerators \citep{lauterbach2021path}.
+The Cerebras Wafer-Scale Engine platform, in particular, is notable among an emerging class of next-generation AI/ML-oriented hardware accelerators \citep{lauterbach2021path}.
 Explorations are ongoing in establishing applications of these platforms for scientific and high-performance computing (HPC) \citep{rocki2020fast,brown2023exploring,ltaief2023scaling,sai2023massively,brown2022distributed,luow2020using,woo2022distributed,tramm2024efficient,chen2024using,phillips2023solving,chen2024solving}, including agent-based evolution simulations \citep{moreno2024trackable}.
-The CS-2 chip comprises a grid lattice of 850,000 independent processor elements (PEs), each networked for low-latency communication with its four cardinal neighbors.
+The CS-2 chip comprises a grid lattice of 850,000 independent processor elements (PEs), networked for low-latency communication among neighboring PEs.
 
 To suit the local lattice structure of the WSE's hardware architecture, all experiments on this platform employed 2D spatial population structure.
 Each PE hosted a single deme, acting as an ``island.''
@@ -112,41 +111,40 @@ Agents migrated between neighboring PEs through asynchronous message passing;
 % https://osf.io/esv9z
 % (note that send flag is bumped twice per send cycle)https://osf.io/esv9z
 in practice, each PE dispatched approximately one agent to each neighbor per generation.
-Additionally, progress of each PE in stepping through agent generations within its own deme was allowed to proceed independently of other PEs.
+Progress of each PE in stepping through agent generations within its own deme was allowed to proceed independently of other PEs.
 Detail on more technical aspects of the Cerebras Software Language (CSL) kernel design used in this work is provided in \citet{moreno2024trackable}.
 
-In some cases, experiments on WSE were extended beyond the $729 \times 729$deme configuration to fill the CS-2 WSE's entire $750 \times 994$ complement of available PEs.
-Thus, in trials using per-PE population size of 2,048 agents, our largest net population size reached 1.5 billion agents.
+In some cases, experiments on WSE were extended beyond the $729 \times 729$ deme configuration to fill the CS-2 WSE's entire $750 \times 994$ complement of available PEs.
+Thus, in trials using a per-PE population size of 2,048 agents, our largest net population size reached 1.5 billion agents.
 
-Given the stochastic nature in our agent-based evolution modeling, our experiments relied heavily on pseudorandom number generators (PRNGs).
+Given the stochastic nature of agent-based evolution models, our experiments relied heavily on pseudorandom number generators (PRNGs).
 These algorithms emulate true entropy by producing a sequence of output values that, although deterministic, are statistically independent.
 Due to performance engineering considerations, vendor-supplied PRNG implementations for the WSE and GPU do not employ cryptographic-quality algorithms.
 Our WSE simulations relied on Cerebras Software Language's PRNG utilities, which use a Linear-Feedback Shift Register (LFSR) approach with polynomial $3x^2 + 8x + 1$ strided by 128 iterations.
-On GPU, we used CuPy's PRNG utilities, which expose CUDA's underlying XORWOW-based CuRAND implementation \citep{marsaglia2003xorshift}.
-This PRNG also applies an LFSR approach \citep{brent2004note}.
+On GPU, we used CuPy's PRNG utilities, which expose CUDA's underlying XORWOW-based CuRAND implementation \citep{marsaglia2003xorshift}, another type of LFSR approach \citep{brent2004note}.
 
 PRNG patterning, particularly in lower-quality Linear Congruential Generator (LCG) algorithms, has been shown in some cases to substantially bias simulation results \citep{click2010quality}.
-Notably, we encountered one set of conditions where fixation probabilities for 12 beneficial mutations available deviated appreciably from that for 10 and 14 beneficial mutations available for single-deme populations.
+Notably, we encountered one set of conditions in WSE simulations where fixation probabilities for 12 beneficial mutations available deviated appreciably from that for 10 and 14 beneficial mutations.
 The anomaly occurred solely under the site-explicit genome model, where the number of PRNG calls made to apply mutation to an agent differs with the quantity of available beneficial mutations.
-In this case, each PE comprised a fully independent population so replicate count was very high ($n = 827 \times 827 = 683,929$), making the result all the more unexpected.
+In the anomolous configuration, each PE comprised a fully independent population so replicate count was very high ($n = 827 \times 827 = 683,929$), making the result all the more unexpected.
 
 Fully re-running the affected simulation did not resolve the data anomaly.
 However, modifying the simulation code to advance the PRNG engine via no-op calls within the body of the mutation operator brought the result in line with expectations.
-Thus, it seems likely that in this instance the original simulation encountered a PRNG cycle or similar artifact.
-As such, for one data point, we exclude the originally generated data in favor of the results with added PRNG stepping.
-On a more general basis, the soundness of our simulation implementations is bolstered by consistency between similar experiments are conducted on WSE and GPU.
-Additionally, CuRAND's RNG has been extensively characterized and, although it exhibits statistically detectable flaws of its own, considered to be of production quality \citep{nvidia2024curand}.
+Thus, it seems likely that in this instance the simulation encountered a PRNG cycle or similar artifact.
+As such, for this data point, we exclude the originally generated data in favor of the results with added PRNG stepping.
+We note that on a more general basis, the soundness of our simulation implementations is bolstered by consistency between similar experiments conducted on WSE and GPU.
+In particular, CuRAND's RNG has been extensively characterized and, although it exhibits statistically detectable flaws of its own, considered to be of production quality \citep{nvidia2024curand}.
 
 \subsection{On-hardware Simulation Performance}
 \label{sec:performance}
 
 \input{fig/perf}
 
-To assess the efficacy of hardware accelerator resources in expediting our simulations, we collected timings of execution duration from our simulation experiments.
-As a baseline comparison point for performance, we also benchmarked simulation on CPU.
+To assess the efficacy of hardware accelerator resources in expediting our simulations, we collected timings of runtime duration from our simulation experiments.
+As a baseline comparison point for performance, we also benchmarked simulation on CPU (AMD EPYC 7H12 2.595 GHz).
 
 Figure \ref{fig:perf} compares simulation performance between hardware platforms, measured in agent-generations per second (AGPS).
-Mean throughput was 7.0 (SD 0.5) million AGPS on CPU, 2.7 (SD 0.03) billion AGPS on GPU, and 780 (SD 0.5) billion on WSE for \textit{de novo} trials using the counter-based model.
+Mean throughput was 7.0 (SD 0.5) million AGPS on CPU, 2.7 (SD 0.03) billion AGPS on GPU, and 780 (SD 0.5) billion AGPS on WSE for \textit{de novo} trials using the counter-based model.
 Net speedup, normalized to mean CPU throughput, was $378\times$ (SD 4) on GPU and $111,091\times$ (SD 75) on WSE.
 Normalized to net GPU performance, WSE provided a speedup of $294\times$ (SD 0.2).
 
@@ -155,8 +153,8 @@ The site-explicit model was not implemented on GPU.
 For all the above, 50/50 trials gave similar performance to \textit{de novo}.
 
 On WSE, we found agent-generation throughput to be generally consistent across per-PE population densities, as shown in Supplementary Figure \ref{fig:perf-tilepop}.
-In contrast, mean GPU throughput dropped to 121 million AGPS when increasing net population size from 15.1 million to 175 million.
-For this reason, we only scaled GPU simulations up to $243 \times 243$ demes.
+In contrast, mean GPU throughput dropped $>95\%$ to 121 million AGPS when increasing net population size from 15.1 million to 175 million.
+For this reason, we only scaled GPU experiments up to 15.1-million-agent populations ($243 \times 243$ demes).
 
 \subsection{Software and Data Availability} \label{sec:materials}
 
