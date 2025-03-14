@@ -1,13 +1,15 @@
 \section{Methods} \label{sec:methods}
 
 Experiments were conducted \textit{in silico} using stochastic agent-based modeling approaches.
-These simulations tracked populations of discrete agents, each competing to create offspring agents through asexual reproduction.
-Within simulations, each agent possessed a set of genetic traits, inherited subject to mutation, that influenced reproductive success.
-To assess the generality of our findings, we supplemented the simple ``counter-based'' genome model with Poisson-distributed mutations drawn from \cite{raynes2018sign} with an alternate ``site-explicit'' genome model.
+Our simulations tracked fixed-capacity populations of discrete agents propagated in synchronous generations, with competition between agents to create asexual offspring.
+Each agent possessed a set of genetic traits, inherited subject to mutation, that influenced reproductive success.
+We used a genome model based on counts of accumulated beneficial and deleterious mutations, following closely from \citep{raynes2018sign}.
+To assess the generality of our findings, we supplemented the simple ``counter-based'' genome model with an alternate ``site-explicit'' genome model.
+These genome models are described below.
 
-This section reviews the model mechanics used across experiments in this work, as well as aspects of simulation design that we manipulated between treatment conditions.
-Explored dimensions include population size, spatial population structure, background prevalence of mutator traits, and restriction of adaptive potential.
-Finally, we describe notable implementation-level considerations necessary in harnessing high-performance computing hardware to achieve the expansive simulation scales explored in this work.
+This section reviews the model mechanics used across experiments in this work, as well as aspects of simulation design used to enact treatment conditions.
+Experimental variables varied between treatments include population size, spatial population structure, background prevalence of mutator traits, and restriction of adaptive potential.
+Finally, we describe notable implementation-level considerations necessary in harnessing high-performance computing hardware to achieve the simulation of large, heterogenous populations necessary for this work.
 
 \subsection{Counter-based Genome Model} \label{sec:poisson}
 
