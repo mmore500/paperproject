@@ -13,10 +13,14 @@ Finally, we describe notable implementation-level considerations necessary in ha
 
 \subsection{Counter-based Genome Model} \label{sec:poisson}
 
-Primary experiments in this work apply an agent-based modeling approach and parameters closely following work by \cite{raynes2018sign}.
-Under this framework, agent genomes consist of two counters: one tracking beneficial mutations accumulated $n_b$ and the other tracking deleterious mutations accumulated $n_d$.
-Mutations are assumed to have interchangeable fitness impacts, so a genome’s fitness score is calculated simply as $n_b - n_d$.
-Details on how fitness scores guide selection are described in Section \ref{sec:evolution}.
+Primary experiments in this work apply an agent-based modeling approach closely following work by \citet{raynes2018sign}.
+We also adopt parameters from \citet{raynes2018sign}, which were chosen on the basis of values reported from laboratory measurements on \textit{E. coli} strains\citep{wloch2001direct,frenkel2014fates,joseph2004spontaneous,levy2015quantitative,zeyl2001estimates}.
+Under the ``counter-based'' framework, agent genomes consist of two counters: one tracking beneficial mutations accumulated ($n_b$) and the other tracking deleterious mutations accumulated $n_d$.
+As modeled in several pieces of related work \citep{tenaillon1999mutators,travis2002mutator,raynes2019migration,tanaka2003evolution,wylie2009fixation}, mutations are assumed to have comparable fitness impacts.
+Thus, a genome’s ``fitness score'' is calculated simply as $n_b - n_d$.
+(Details on how ``fitness score'' influences selection are described in Section \ref{sec:evolution}.)
+For purposes here, the simplicity of this approach is useful in enabling runtime simulation efficiency.
+Sensitivity analysis performed in closely-related work applying this genome model found evolutionary outcomes to be similar to those with exponential distributions of fitness effects for individual mutations \citep{raynes2019selection}.
 
 A mutation process is applied to agent genomes each generation.
 For each new agent, a count of discovered beneficial and deleterious mutations are drawn from independent Poisson distributions, with expected deleterious mutations per generation as
