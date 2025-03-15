@@ -114,20 +114,23 @@ For all replicates with 6 or more available beneficial mutations, mutators peake
 \subsection{Effects of Population Structure}
 \label{sec:population-structure}
 
-In a final set of experiments, we sought to establish the influence of spatial structure on fixation outcomes to further assess how robustly natural asexual populations might resist mutator fixation in scenarios with limited adaptation potential.
-
-The simulation experiments described above, conducted on WSE hardware, all assumed a global population structure as an interconnected 2D grid of smaller, well-mixed constituent demes.
-To explore this dimension, we conducted trials with the default 2D structure along with (1) a treatment arranging demes in a 1D ring and (2) a fully well-mixed treatment with no subpopulation structure.
-Because work reported in this section used a GPU platform, rather than WSE, population sizes ranged only up to 15 million agents.
+In a final set of experiments, we extended our earlier trials with 50/50 initialization to assess the impact of spatial structure on mutator dynamics where mutators are initially rare.
+In particular, we were curious whether removal of population structure would negligibly affect mutator fixation probabilities, as was earlier the case with 50/50 initialization.
+Trials conducted in this experiment comparing the 2D deme structure to fully well-mixed conditions were conducted using GPU evaluation.
+As a result, population sizes ranged only up to 15 million.
 
 \input{fig/spatial-structure-combined}
 
-Figure \ref{fig:spatial-structure} plots increase in mutator fixation probabilities with available adaptive potential across a spectrum of population sizes.
-Results differ substantially between 50/50 and \textit{de novo} conditions, appearing in panels \ref{fig:spatial-structure:5050} and \ref{fig:spatial-structure:denovo} respectively.
-With 50/50 initializations, nonmutators reliably persist through only one or two beneficial mutations available across all spatial configurations.
-By contrast, under \textit{de novo} conditions, nonmutator populations with 1D structure successfully resist mutator invasion through upwards of 20 beneficial mutations.
-Notably, though, under weak, well-mixed spatial structure, the effect of population size is opposite --- rather than suppressing mutator favorability, mutators actually become \textit{more} likely to sweep large populations.
+Figure \ref{fig:spatial-structure-combined} plots increase in mutator fixation probability with available adaptive potential across a spectrum of population sizes.
+Interestingly, spatial structure does cause results to differ substantially under \textit{de novo} conditions.
+We find that in large nonmutator populations of 15 million with well-mixed structure, fixation probability of mutator alleles becomes appreciable with adaptive potential of only 5 available beneficial mutations.
+Thisis not the case for large populations with 2D deme structure, where fixation of mutator alleles become appreciable above 10 available beneficial mutations.
+For intermediate population sizes of 186,000 agents, however, an opposite effect occurs: spatial structure raises the probability of mutator fixation across the board of available adaptive potential compared to well-mixed conditions.
 
 These findings contrast with previous modeling work assuming unlimited adaptive potential, which predicts that so long as any level of connectivity exists between subpopulations, spatial structure boosts mutator fixation probability \citep{raynes2019migration}.
-One possible explanation for why spatial structure can decrease mutator fixation probability is by extending the window of opportunity for nonmutators to catch up in exploiting available adaptive potential before being driven to extinction.
-Such a possibility aligns with findings from \textit{in vivo} evolution experiments with \textit{E. coli} that show that migration barriers delaying introduction of mutator strains into nonmutator populations can reduce mutator advantage \citep{lechat2006escherichia}.
+One possible explanation for why spatial structure can decrease mutator fixation probability is in extending fixation times, which extends the opportunity for nonmutators to exploit available adaptive potential before being driven to extinction.
+This describe effect notably aligns with findings from \textit{in vivo} evolution experiments with \textit{E. coli} that show that migration barriers delaying introduction of mutator strains into nonmutator populations can reduce mutator advantage \citep{lechat2006escherichia}.
+
+On a separate front, it is surprising that substantial differences in mutator dynamics between deme-structured and well-mixed conditions only become apparent with low initial mutator frequency, given the established expectation of fitness effects of mutator alleles as a density- and number- independent \citep{raynes2019selection}.
+While one possible explanation may be in part that detectability of fitness effect magnitudes is masked by sensitivity limitations of the 50/50 assay, However, this result draws into question the extent to which density-independence of mutator fitnesseffects generalizes to scenarios with limited adaptive potential and spatial structure.
+In future work, it would be informative to test whether the impact of spatial structure where mutators are rare stems from heterogeneity in the spatial distribution of mutator clades or from slowing of the spread of beneficial alleles.
