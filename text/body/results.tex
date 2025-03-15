@@ -1,6 +1,6 @@
 \section{Results and Discussion} \label{sec:results}
 
-Our research in this work investigates the interactions between population size, adaptive potential, and population structure in influencing selection on mutator traits within asexual populations.
+In this work, we investigate the interactions between population size, adaptive potential, and population structure in influencing selection on mutator traits within asexual populations.
 In our first experiments, we replicate previous work by \citet{raynes2018sign} showing sign-change effects of population size on mutator favorability.
 Subsequent experiments investigate how these dynamics change when limited beneficial mutations are available and their sensitivity to initial abundance of mutators in the population.
 Finally, experiments survey behavior across three regimes of population spatial structure.
@@ -19,6 +19,7 @@ This effect occurs in asexual populations because population size increases the 
 
 As shown in the left panel of Figure \ref{fig:wse-inf-one:32}, our simulations reproduce the sign-change fitness effect described by \citet{raynes2018sign}.
 Leveraging the capabilites of WSE accelerator hardware, we tested population sizes several orders of magnitude beyond those reported in \citet{raynes2018sign}.
+For these experiments, 2D population structure was used with 50/50 initialization.
 In line with expectations, no further qualitative differences in mutator fixation probability emerged in these larger population sizes, which ranged up to 1 billion agents.
 For the largest-scale trials, shown left panel of Figure \ref{fig:wse-inf-one:2048}, an increased subpopulation sizes 2,048 agents per deme was used.
 As such, in these trials, note that coarsened spacing between surveyed population sizes obscures the sign-change fitness effect near the lower bound of population size.
@@ -26,27 +27,37 @@ As such, in these trials, note that coarsened spacing between surveyed populatio
 \subsection{Restricting Adaptive Potential}
 \label{sec:restricting-adaptive-potential}
 
-Prediction of a strong tendency for mutator fixation in large populations prompts a converse question: what conditions are necessary for large populations to resist mutator invasion?
-One assumption of the above result is availability of abundant potential beneficial mutations.
-Indeed, agent-based modeling work has largely yet to explore scenarios where few beneficial mutations are available \citep{raynes2013effect,raynes2018sign,raynes2019selection,raynes2019migration}.
-Recent empirical work, however, has shown indications that fitness landscape characteristics can influence mutator favorability.
+Next, we sought to establish how adaptive potential interacts with current synthesis of the role of population size in mediating mutator dynamics.
+One assumption of existing work by \citet{raynes2018sign} is availability of abundant potential beneficial mutations.
+Existing simulation studies suggest restricting adaptive potential should disfavor mutator alleles \citep{tenaillon1999mutators}, but understanding of how this effect interacts with other factors is limited.
 
 To investigate this question, we next performed experiments where the supply of possible beneficial mutations was constrained.
-The right panels of Figures \cref{fig:wse-inf-one:32,fig:wse-inf-one:2048} show mutator fixation probabilities where agents could accrue no more than one beneficial mutation.
-At both 32- and 2,048 agents per deme, and an additional, third regime of selection on mutator traits appears past population sizes of 1 million agents.
-Beyond this point, nonmutators reliably drive mutators to extinction.
-We expect this effect to be associated with sufficient scale that at least one nonmutator reliably discovers the beneficial mutation before the mutator trait fixes.
-Then, given the large population size, selection should reliably advantage nonmutators' reduced deleterious mutation load.
+As for the above results, experiments were conducted on the WSE platform using 2D population structure with 50/50 initialization.
+The right panels of \cref{fig:wse-inf-one:32,fig:wse-inf-one:2048} show mutator fixation probabilities where agents could accrue no more than one beneficial mutation, for trials usig 32- and 2,048 agents per deme respectively.
+In both cases, a second sign-change fitness effect for mutator traits appears, with nonmutators regaining favor past population sizes of 100,000 agents.
+Beyond population sizes of 1 million agents, nonmutators reliably drive mutators to extinction.
+
+These results substantiate an earlierverbal hypothesis by \citet{desai2011balance} that more than one beneficial mutation should become necessary to fix a mutator allele when fixation time becomes long, as is the case with large population size.
+Rationale behind this expectation is that where fixation time is long, nonmutators become likely to also discover a comparable beneficial allele before being driven to extinction.
+From this point, disadvantage in mutational load dooms the mutator allele.
 
 \input{fig/avail-ben-muts}
 
-Next, we tested the sensitivity of nonmutator persistence in large populations to the amount of adaptive potential available.
+Next, we tested sensitivity of the relationship between mutator fixation probability and population size with respect to the amount of adaptive potential available.
 Figure \ref{fig:avail-ben-muts} shows fixation curves where one, two, three, four, and five beneficial mutations are available, conducted with 256 agents per deme.
-Under surveyed conditions, with 2D spatial structure and mutators beginning in equal proportion to nonmutators, resilience to mutator fixation is very fragile.
-nonmutator persistence rapidly decays with increases in adaptive potential;
-even in billion-agent populations, mutators begin to regain favor past three beneficial mutations available.
+Under surveyed conditions, with 2D spatial structure and mutators initially in equal proportion to nonmutators, nonmutator persistence rapidly decays with increases in adaptive potential.
+Even with the largest-surveyed billion-agent population size, mutators regain selective parity where four or more beneficial mutations are available.
+Interestingly, this result may help explain an earlier observation by \citet{tenaillon1999mutators} that below a threshold of four beneficial mutations available, mutator alleles never rose from background levels to fix within their compartment-based model of a well-mixed billion-member population.
+Notwithstanding differences in model parameterization and population structure, our findings suggest thi threshold may coincide with the point where the net fitness effect of the mutator allele neutralizes in commensurately-scaled populations.
 
 \input{fig/avail-ben-muts-gen}
+
+Given that experiments conducted on the WSE platform all involve 2D spatial structure, we implemented an additional set of GPU-based experiments to compare findings with well-mixed population structure.
+Figure \ref{fig:avail-ben-muts-gen} overviews these results.
+Although experments ranged up to a smaller maximum population size on the GPU platform, detected regimes of mutator dynamics are consistent with WSE-based experiments.
+Comparing on the basis of spatial structure, we find fixation probabilities to be near-identical between GPU-based trials using 2D and well-mixed structure across surveyed conditions.
+Corrected for multiple comparisons using the Holm-Bonferroni method, we find significant divergence in fixation probability only for TODO (TODO).
+% https://github.com/mmore500/hypermutator-dynamics/issues/38
 
 \subsection{Effects of Background Mutator Prevalence}
 \label{sec:background-hypermutator-prevalence}
@@ -57,7 +68,7 @@ One key result in recent years is that selection on mutators is not frequency- o
 One straightforward consequence of this finding is simplification of experimental design.
 Rather than trying to design competition experiments that capture dynamics when mutators are rare, direct experiments may be designed where mutators and nonmutators are mixed in even proportions at a starting point.
 This is good because it provies sensitivity in detecting within the realm where mutator and nonmutator fixation probabilities and facilitates an intuitive and direct comparison of favor vs. disfavor for the mutator allele.
-This sensitivity is useful in characterizing sign-change effects \citep{raynes2018selection}.
+This sensitivity is useful in characterizing sign-change effects \citep{raynes2019selection}.
 
 \input{fig/denovo-5050-conditions-combined}
 
