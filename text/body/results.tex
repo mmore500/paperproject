@@ -62,34 +62,56 @@ Corrected for multiple comparisons using the Holm-Bonferroni method, we find sig
 \subsection{Effects of Background Mutator Prevalence}
 \label{sec:background-hypermutator-prevalence}
 
-Over the course of history studying mutator dynamics, there has been some question as to whether selection on mutators is number-, frequency-, or density-dependent, reviewed in \citep{raynes2019selection}.
-(Note that this issue is orthogonal to overall population size.)
-One key result in recent years is that selection on mutators is not frequency- or density-dependent, definitively described in \citep{raynes2019selection} but earlier suggested in \citep{wylie2009fixation}.
-One straightforward consequence of this finding is simplification of experimental design.
-Rather than trying to design competition experiments that capture dynamics when mutators are rare, direct experiments may be designed where mutators and nonmutators are mixed in even proportions at a starting point.
-This is good because it provies sensitivity in detecting within the realm where mutator and nonmutator fixation probabilities and facilitates an intuitive and direct comparison of favor vs. disfavor for the mutator allele.
-This sensitivity is useful in characterizing sign-change effects \citep{raynes2019selection}.
-
 \input{fig/denovo-5050-conditions-combined}
 
-Having observed large population size stabilize nonmutators against extinction when few opportunities for adaptive mutation exist, we next sought to assess how robustly such a protective effect might manifest in natural populations.
-In this regard, we sought to test the role of initial conditions in mutator fixation outcomes by relaxing the assumption that mutators begin ``50/50'' in equal proportion to nonmutators.
-Although such a scenario provides a useful design for benchtop experiments \citep{raynes2018sign}, against a background of evolutionary stasis it would, instead, be expected that nonmutators instead exist in the population at some low background rate resulting equilibrium between purifying selection and spontaneous mutator originations \citep{desai2011balance,johnson1999approach}.
+Having observed large population size prevent mutator fixation in competition experiments under conditions of limited adaptive potential, we next sought to assess how such an effect might manifest in more naturalistic conditions.
+For this purpose, we relaxed the initial condition that mutators begin ``50/50'' in equal proportion to nonmutators.
+Instead, we allowed mutators to enter the population at a low background rate \citep{desai2011balance,johnson1999approach}, an experimental design common with several previous simulation studies of hypermutator dynamics \citep{wylie2009fixation,tenaillon1999mutators}.
+To conservatively TODO
+We selected a relatively conservative introduction probability of $10^{-6}$.
 
-Prior work, applying both mathematical analysis and agent-based experiments, has shown per-capita favorability of mutator traits to be density independent \citep{raynes2019selection}.
-Thus, we would expect a lower background rate for mutator alleles to reduce the net probability of nonmutator extinction.
-
-To test this question, we conducted ``\textit{de novo}'' treatments where mutators arose spontaneously rather than being explicitly included in the initial population.
-Given that we assume the availability of some nonzero number of adaptive mutations, such a scenario might be applicable to cases where an abrupt change in environmental context introduces adaptive potential, such as the sudden introduction of a novel stressor.
-Note that, in our simulation experiments, we assumed mutators to originate with probability equivalent to beneficial mutations, $10^{-6}$.
-
-Figure \ref{fig:denovo-5050-conditions} compares surveyed mutator fixation probabilities with and without mutators making up half of the initial population.
+Figure \ref{fig:denovo-5050-conditions-combined} compares mutator fixation probabilities between 50/50 and \textit{de novo} conditions.
+Trials were conducted with 2D spatial structure on the WSE platform.
 With 256 agents per deme, population size scaled up to 136 million agents.
-In line with expectations, the \textit{de novo} treatment substantially extends nonmutator viability.
-Under \textit{de novo} conditions, nonmutators reliably resist mutator fixation in very large populations through more than 10 beneficial mutations available.
-Under 50/50 conditions, by contrast, mutators begin to fix in very large populations past 2 beneficial mutations available.
 
-As can be seen by comparing panels \ref{fig:denovo-5050-conditions:poisson} and \ref{fig:denovo-5050-conditions:site-explicit}, we found outcomes to be generally consistent between both the counter-based model with Poisson-distributed mutations and an alternate ``site-explicit'' model where the probability of discovering a beneficial mutation scales proportional to the number available.
+Prior work analyzing conditions with infinite adaptive potential has shown per-capita favorability of mutator traits to be density independent \citep{raynes2019selection}.
+As such, a lower background rate for mutator alleles should be expected to substantially reduce the net probability of mutator fixation.
+In line with expectations, the \textit{de novo} treatment substantially reduces mutator fixation.
+Under \textit{de novo} conditions, nonmutators reliably resist mutator fixation in populations of 136 million through more than 10 beneficial mutations available.
+Under 50/50 conditions, by contrast, mutators begin to fix in these large populations past 2 beneficial mutations available.
+
+We performed sensitivity analysis of our findings to the underlying counter-based genome model used.
+For this purpose, we implemented an alternate ``site-explicit'' model where the probability of discovering a beneficial mutation scales proportional to the number available.
+As shown in Supplementary Figure \ref{fig:wse-site-explicit-counter-based}, results were generally consistent between the two genome models.
+Notably, though, under the ``site-explicit'' model, mutator alleles more frequently fixed within the smallest surveyed population size under 50/50 initialization.
+
+\subsection{Spatiotemporal Dynamics}
+\label{sec:dynamics}
+
+To assess how competition between non- and mutator strains unfolds at very large population scales, we performed an additional set of simulations on the WSE using the site-explicit model of adaptation, where mutators originated \textit{de novo} from nonmutator strains.
+For these experiments, a subpopulation size of 256 agents per PE was used to preserve on-device memory to record time series data.
+This configuration yielded a net population size of 191 million agents.
+In these trials, we probed the critical region where outcomes transition between nonmutator and mutator fixation, configuring adaptive potential between 12 and 16 available beneficial mutations.
+
+\input{fig/dynamics}
+
+Figure \ref{fig:dynamics} arranges sequential population snapshots from two example simulations, both with adaptive potential of 14 beneficial mutations.
+In the first example, mutators fixed; in the second, they did not.
+At outset, panels \ref{fig:dynamics:no-fixation} and \ref{fig:dynamics:fixation} unfold similarly.
+First, mutator strains appear \textit{de novo} across the breadth of simulated populations.
+Then, as patches of mutators expand outwards, the nonmutator population is broken into pockets.
+Mutator strains continued to stem from nonmutator lineages as they accrue adaptive mutations.
+Of 16 replicates where we observed mutators fix, we found 2 cases where the final dominant mutator lineage arose from a partially-adapted nonmutator lineage --- harboring 1 and 3 beneficial mutations, respectively.
+% https://github.com/mmore500/hypermutator-dynamics/blob/90422b30f2dd9ca29baad273cbcc676dbfeab55f/binder/wse-denovo-spatial2d-explicitsite-genomes.ipynb
+In scenarios where mutators fix, surviving patches of nonmutators dwindle away entirely (panel \ref{fig:dynamics:fixation}).
+Where nonmutators persist, they re-establish via concentric growth from surviving pockets (panel \ref{fig:dynamics:no-fixation}).
+
+\input{fig/peaksweep}
+
+At peak mutator prevalence, we observed nonmutators shrink to less than 0.1\% of the population in experiments with adaptive potential of 14 available beneficial mutations.
+% ^^^ https://github.com/mmore500/hypermutator-dynamics/blob/5e904ac2fbbd4b41a0ad679883fc1a63af71c00c/binder/wse-denovo-spatial2d-explicitsite-timeseries.ipynb
+To assess the magnitude of transient peak mutator concentrations across levels of adaptive potential, we performed an additional set of four-replicate simulations ranging from adaptive potentials of 2 to 10 available beneficial mutations.
+For all replicates with 6 or more available beneficial mutations, mutators peaked beyond 50\% prevalence (Figure \ref{fig:peaksweep}).
 
 \subsection{Effects of Population Structure}
 \label{sec:population-structure}
@@ -111,41 +133,3 @@ Notably, though, under weak, well-mixed spatial structure, the effect of populat
 These findings contrast with previous modeling work assuming unlimited adaptive potential, which predicts that so long as any level of connectivity exists between subpopulations, spatial structure boosts mutator fixation probability \citep{raynes2019migration}.
 One possible explanation for why spatial structure can decrease mutator fixation probability is by extending the window of opportunity for nonmutators to catch up in exploiting available adaptive potential before being driven to extinction.
 Such a possibility aligns with findings from \textit{in vivo} evolution experiments with \textit{E. coli} that show that migration barriers delaying introduction of mutator strains into nonmutator populations can reduce mutator advantage \citep{lechat2006escherichia}.
-
-\subsection{Spatiotemporal Dynamics}
-\label{sec:dynamics}
-
-To better understand how competition between non- and mutator strains unfolds at very large population scales, we performed an additional set of simulations on the WSE using the site-explicit model of adaptation, where mutators originated \textit{de novo} from nonmutator strains.
-For these experiments, PE subpopulations were restricted to 256 agents to preserve on-device memory to record time series data.
-This configuration yielded a net population size of 191 million agents.
-In these runs, we probed the critical region where outcomes transition between nonmutator and mutator fixation, configuring adaptive potential between 12 and 16 available beneficial mutations.
-
-In order to track the composition of the population over time, we included additional on-device, runtime instrumentation in these replicates.
-Generation-on-generation, we configured each processor element to sample a genome from its local population and record its mutator allele (i.e., a binary value as either a non- or mutator).
-To efficiently curate this single-bit data within per-PE memory limits, we leveraged recently-introduced ``DStream'' generalizations of the ring buffer data structure \citep{moreno2024algorithms}.
-Notably, this approach constrained memory use to a fixed-size buffer, while guaranteeing the buffer to always be fully utilized.
-Additionally, recording could thereby be dynamically halted when nonmutators were determined to be locally extinct (and restarted if they are reintroduced).
-While this scheme allowed maximization of on-device resources, note that, as a result, in animations the number of generations elapsed per frame varies depending on when, and if, nonmutators went to extinction.
-
-\input{fig/dynamics}
-
-Figure \ref{fig:dynamics} arranges sequential population snapshots from two example simulations, both with adaptive potential of 14 beneficial mutations.
-In the first example, mutators fixed; in the second, they did not.
-
-At outset, example simulations in panels \ref{fig:dynamics:no-fixation} and \ref{fig:dynamics:fixation} unfold similarly.
-First, mutator strains appear \textit{de novo} across the breadth of simulated populations.
-Then, as patches of mutators expand outwards, the nonmutator population is broken into pockets.%
-\footnote{%
-Notably, mutator strains continue to stem from nonmutator lineages as they accrue adaptive mutations.
-Of 16 replicates where mutators fixed, we observed 2 cases where the final dominant mutator lineage arose from a partially-adapted nonmutator lineage --- harboring 1 and 3 beneficial mutations, respectively.
-% https://github.com/mmore500/hypermutator-dynamics/blob/90422b30f2dd9ca29baad273cbcc676dbfeab55f/binder/wse-denovo-spatial2d-explicitsite-genomes.ipynb
-}
-In scenarios where mutators fix, surviving patches of nonmutators dwindle away entirely (panel \ref{fig:dynamics:fixation}).
-Alternately, where nonmutators survive, they re-establish via concentric growth from surviving pockets (panel \ref{fig:dynamics:no-fixation}).
-
-\input{fig/peaksweep}
-
-At nadir, nonmutators constitute less than 0.1\% of the population in experiments with adaptive potential of 14 available beneficial mutations.
-% ^^^ https://github.com/mmore500/hypermutator-dynamics/blob/5e904ac2fbbd4b41a0ad679883fc1a63af71c00c/binder/wse-denovo-spatial2d-explicitsite-timeseries.ipynb
-To assess the peak of transient presence of mutators within, we performed an additional set of four-replicate simulations ranging from adaptive potentials of 2 to 10 available beneficial mutations.
-For all replicates with 6 or more available beneficial mutations, mutators peaked beyond 50\% prevalence (Figure \ref{fig:peaksweep}).
