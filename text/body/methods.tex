@@ -20,7 +20,7 @@ As modeled in several pieces of related work \citep{tenaillon1999mutators,travis
 Thus, a genome’s ``fitness score'' is calculated simply as $n_b - n_d$.
 (Details on how ``fitness score'' influences selection are described in Section \ref{sec:evolution}.)
 For purposes here, the simplicity of this approach is useful in enabling runtime simulation efficiency.
-Sensitivity analysis performed in closely-related work applying this genome model found evolutionary outcomes to be similar to those with exponential distributions of fitness effects for individual mutations \citep{raynes2019selection}.
+Sensitivity analysis performed in closely related work applying this genome model found evolutionary outcomes to be similar to those with exponential distributions of fitness effects for individual mutations \citep{raynes2019selection}.
 
 Genomes were subjected to mutation each generation.
 For each offspring, counts of newly accrued beneficial and deleterious mutations are drawn from independent Poisson distributions.
@@ -37,7 +37,7 @@ We assume no direct fitness benefit or cost to be associated with the mutator al
 Experiments applied one of two approaches to introduce mutator alleles.
 In the ``50/50'' treatment, genomes were initialized equiprobably as a mutator or as a nonmutator.
 The ``50/50'' experiment design, applied in \textit{in vivo} experiments reported in \citet{raynes2018sign}, maximizes sensitivity in detecting sign-change fitness effects where selection transitions between favoring versus disfavoring mutator alleles.
-rationale behind this approach also stems from the understanding that fitness effects from mutator alleles act in a density- and count-independent manner \citep{raynes2019selection}.
+Rationale behind this approach also stems from the understanding that fitness effects from mutator alleles act in a density- and count-independent manner \citep{raynes2019selection}.
 By contrast, in other experiments, we introduced mutator alleles via a \textit{de novo} approach where the mutator trait is spontaneously conferred to offspring with probability $10^{-6}$.
 Under this approach, the founding population is initialized as nonmutator type.
 As with prior work \citep{raynes2018sign}, neither treatment allows mutator to nonmutator reversion.
@@ -64,8 +64,8 @@ Site-explicit experiments were conducted under both ``50/50'' and ``\textit{de n
 
 Simulations applied a tournament selection strategy with synchronous generations and fixed population size.
 For each available slot in a subpopulation's next generation, we sampled, with replacement, a pair of candidate parents from that subpopulation.
-With 90\% probability, a selected parent chosen randomly among the pair.
-Otherwise, candidate with higher fitness score was selected as parent.
+With 90\% probability, a selected parent is chosen randomly among the pair.
+Otherwise, the candidate with the higher fitness score was selected as the parent.
 As such, fitness score improvements conferred a 10\% fitness advantage.
 Our motivation in performing selection via pairwise competition was to enable efficient vectorized operations for GPU evaluation.
 
@@ -73,7 +73,7 @@ In simulations with spatial structure, populations were partitioned into well-mi
 \footnote{%
 Where noted, 32-agent and 2,048-agent deme sizes were also used, to support finer-grained sweeps of population size or higher maximum net population size.
 }
-Where deme structure was used, competition occured only between agents inhabiting the same deme.
+Where deme structure was used, competition occurred only between agents inhabiting the same deme.
 Each generation, migration between neighboring demes was applied by swapping a pair of agents.
 Hence, demes received one immigrant from each neighbor per generation.
 Under default conditions, demes were arranged as a two-dimensional grid lattice with non-toroidal boundaries (i.e., grid edges did not wrap around).
@@ -86,7 +86,7 @@ Hence, replicate count decreased with population size, but was boosted to at lea
 Simulations lasted 500,000 generations, which sufficed for populations to reach fixation in nearly all cases.
 (We defined fixation as all mutators or all nonmutators for 50/50 experiments, and as either 100\% mutators or <1\% mutators for \textit{de novo} experiments.)
 However, we found that 256-agent populations failed to reliably reach full adaptive potential in accruing more than 12 beneficial mutations within the prescribed 500,000 generation window.
-Thus, we excluded 256-agent simulations with more than 12 benficial mutations available from our analyses.
+Thus, we excluded 256-agent simulations with more than 12 beneficial mutations available from our analyses.
 
 For all included data, $>97\%$ of replicates reached both mutator/nonmutator fixation and accrued full adaptive potential.
 Details on the fraction of replicates reaching fixation by experimental condition are provided in Supplementary \cref{fig:neither-fixed-5050-cupy,fig:neither-fixed-denovo-cupy,fig:neither-fixed-wse-256atile,fig:neither-fixed-wse-altatile}.
@@ -119,10 +119,10 @@ Thus, in trials using a per-PE population size of 2,048 agents, our largest net 
 
 For a set of supplementary trials described in Section \ref{sec:dynamics}, we applied additional runtime data logging in our simulations to track time series data of mutator allele prevalence.
 Generation-on-generation, we configured each processor element to sample a genome from its local population and record its mutator allele status (i.e., a binary value as either a non- or mutator).
-To efficiently curate this single-bit data within per-PE memory limits while allowing a flexible recording duration, we leveraged recently-introduced ``DStream'' ring buffer data structures \citep{moreno2024algorithms}.
+To efficiently curate this single-bit data within per-PE memory limits while allowing a flexible recording duration, we leveraged recently introduced ``DStream'' ring buffer data structures \citep{moreno2024algorithms}.
 Notably, this approach constrained memory use to a fixed-size buffer, while allowing recording to be dynamically halted when nonmutators were determined to be locally extinct (and restarted if they are reintroduced).
 While this scheme allowed maximization of on-device resources, as a consequence the set of sampled time points varied depending on how long nonmutator alleles persisted.
-As a result, in provided animations, the number of generations elapsed per frame varies.
+As a result, the number of generations elapsed per frame in provided animations varies.
 
 
 Given the stochastic nature of agent-based evolution models, our experiments relied heavily on pseudorandom number generators (PRNGs).
@@ -134,14 +134,14 @@ On GPU, we used CuPy's PRNG utilities, which expose CUDA's underlying XORWOW-bas
 PRNG patterning, particularly in lower-quality Linear Congruential Generator (LCG) algorithms, has been shown in some cases to substantially bias simulation results \citep{click2010quality}.
 Notably, we encountered one set of conditions in WSE simulations where fixation probabilities for 12 beneficial mutations available deviated appreciably from that for 10 and 14 beneficial mutations.
 The anomaly occurred solely under the site-explicit genome model, where the number of PRNG calls made to apply mutation to an agent differs with the quantity of available beneficial mutations.
-In the anomolous configuration, each PE comprised a fully independent population so replicate count was very high ($n = 827 \times 827 = 683,929$), making the result all the more unexpected.
+In the anomalous configuration, each PE comprised a fully independent population, so replicate count was very high ($n = 827 \times 827 = 683,929$), making the result all the more unexpected.
 
 Fully re-running the affected simulation did not resolve the data anomaly.
 However, modifying the simulation code to advance the PRNG engine via no-op calls within the body of the mutation operator brought the result in line with expectations.
-Thus, it seems likely that in this instance the simulation encountered a PRNG cycle or similar artifact.
+Thus, it seems likely that, in this instance, the simulation encountered a PRNG cycle or similar artifact.
 As such, for this data point, we exclude the originally generated data in favor of the results with added PRNG stepping.
 We note that on a more general basis, the soundness of our simulation implementations is bolstered by consistency between similar experiments conducted on WSE and GPU.
-In particular, CuRAND's RNG has been extensively characterized and, although it exhibits statistically detectable flaws of its own, considered to be of production quality \citep{nvidia2024curand}.
+In particular, CuRAND's RNG has been extensively characterized and, although it exhibits statistically detectable flaws of its own, is considered to be of production quality \citep{nvidia2024curand}.
 
 \subsection{On-hardware Simulation Performance}
 \label{sec:performance}
@@ -167,7 +167,7 @@ For this reason, we only scaled GPU experiments up to 15.1-million-agent populat
 \subsection{Software and Data Availability} \label{sec:materials}
 
 Simulation code, configuration files, and batch scripts for this work are available via Zenodo at \url{https://doi.org/10.5281/zenodo.13983623}.
-Postprocessing scripts and executable notebooks for this work are hosted separately, at \url{https://doi.org/10.5281/zenodo.13983579}.
+Postprocessing scripts and executable notebooks for this work are hosted separately at \url{https://doi.org/10.5281/zenodo.13983579}.
 Data and supplemental materials are available via the Open Science Framework \url{https://doi.org/10.17605/OSF.IO/YMAF8} \citep{foster2017open}.
 
 This project benefited significantly from open-source scientific software \citep{2020SciPy-NMeth,harris2020array,reback2020pandas,mckinney-proc-scipy-2010,waskom2021seaborn,hunter2007matplotlib,moreno2023teeplot}.
