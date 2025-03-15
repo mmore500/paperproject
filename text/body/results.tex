@@ -9,23 +9,19 @@ We find that the sign effect of population size on mutator favorability is depen
 \subsection{Scaling Population Size}
 \label{sec:scaling-population-size}
 
-In a first set of experiments, we tested how mutator fixation probability varies with changes in population size.
-
-Previous work by \citet{raynes2018sign} has demonstrated that mutator dynamics can transition through several regimes with population scale.
-In the first regime, when population size is very small and nonmutators/mutators start in even proportion, fixation of either is nearly equiprobable, owing to the overwhelming influence of stochastic effects.
-Subsequently, in medium-sized populations, mutators become disfavored by selection.
-Intuitively, this disfavor can be attributed to the power of selection becoming sufficiently sensitive to penalize the mutational load imposed by mutator traits.
-However, in sufficiently large populations, mutator fixation can move towards certainty.
-This is because, in asexual populations, mutator alleles that discover a significant beneficial mutation can gain in population share by association with that beneficial allele.
-Population size increases the probability of at least one mutator discovering a beneficial mutation, and so ``hitch-hiking'' to sweep out nonmutators.
+In a first set of experiments, we tested the capability of our model to reproduce the qualitative regimes of mutator dynamics across population scales identified by \citet{raynes2018sign}.
+In the first regime, where population size is very small, fixation of mutator and nonmutator alleles is nearly equiprobable, owing to the overwhelming influence of stochastic effects.
+Subsequently, in medium-sized populations, mutators become disfavored on account of increased power of selection becoming in penalizing the increased mutational load imposed by mutator allelees.
+Finally, in sufficiently large populations, a sign-change fitness effect occurs and mutator fixation becomes overwhelmingly favored.
+This effect occurs in asexual populations because population size increases the probability of at least one mutator discovering a beneficial mutation, and so ``hitch-hiking'' to sweep out nonmutators.
 
 \input{fig/wse-inf-one}
 
-As shown in the left panel of Figure \ref{fig:wse-inf-one:32}, we also find a sign-change phenomenon with population scale, as previously reported by \citet{raynes2018sign}.
-Applying WSE accelerator hardware allowed us to test population sizes orders of magnitude beyond previously reported upper ceilings of tens of thousands of agents.
-However, even at billion-agent scales, no qualitative difference emerges between large and very large population sizes with respect to mutator fixation probability.
-With the largest-tested density of 2,048 agents per deme, shown as the left panel of Figure \ref{fig:wse-inf-one:2048}, coarse spacing between surveyed population sizes obscures the original sign-change phenomenon in small and medium-sized populations.
-Nonetheless, mutators retain strong selective favor across large and very large population sizes.
+As shown in the left panel of Figure \ref{fig:wse-inf-one:32}, our simulations reproduce the sign-change fitness effect described by \citet{raynes2018sign}.
+Leveraging the capabilites of WSE accelerator hardware, we tested population sizes several orders of magnitude beyond those reported in \citet{raynes2018sign}.
+In line with expectations, no further qualitative differences in mutator fixation probability emerged in these larger population sizes, which ranged up to 1 billion agents.
+For the largest-scale trials, shown left panel of Figure \ref{fig:wse-inf-one:2048}, an increased subpopulation sizes 2,048 agents per deme was used.
+As such, in these trials, note that coarsened spacing between surveyed population sizes obscures the sign-change fitness effect near the lower bound of population size.
 
 \subsection{Restricting Adaptive Potential}
 \label{sec:restricting-adaptive-potential}
