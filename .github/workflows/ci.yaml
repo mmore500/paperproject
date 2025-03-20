@@ -12,6 +12,9 @@ jobs:
 
   tidy:
     runs-on: ubuntu-22.04
+    env:
+      # RE https://stackoverflow.com/a/40184923/17332200
+      PIP_NO_CACHE_DIR: 1
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
@@ -29,6 +32,9 @@ jobs:
 
   lint:
     runs-on: ubuntu-22.04
+    env:
+      # RE https://stackoverflow.com/a/40184923/17332200
+      PIP_NO_CACHE_DIR: 1
     steps:
       - uses: actions/checkout@v2
       - run: |
@@ -40,6 +46,9 @@ jobs:
 
   test-pylib:
     runs-on: ubuntu-22.04
+    env:
+      # RE https://stackoverflow.com/a/40184923/17332200
+      PIP_NO_CACHE_DIR: 1
     steps:
       - uses: actions/checkout@v2
       - run: |
@@ -64,6 +73,9 @@ jobs:
   binder-notebook:
     needs: list-notebooks
     runs-on: ubuntu-22.04
+    env:
+      # RE https://stackoverflow.com/a/40184923/17332200
+      PIP_NO_CACHE_DIR: 1
     strategy:
       fail-fast: false
       matrix:
@@ -99,6 +111,9 @@ jobs:
 
   binder:
     runs-on: ubuntu-22.04
+    env:
+      # RE https://stackoverflow.com/a/40184923/17332200
+      PIP_NO_CACHE_DIR: 1
     steps:
       - uses: actions/checkout@v2
       - name: Setup headless display
@@ -128,6 +143,9 @@ jobs:
   tex:
     name: Latex Build and Deploy
     runs-on: ubuntu-22.04
+    env:
+      # RE https://stackoverflow.com/a/40184923/17332200
+      PIP_NO_CACHE_DIR: 1
     container:
       image: ghcr.io/mmore500/teximage:sha-77b8179
       options: --user root
@@ -157,15 +175,18 @@ jobs:
           name: manuscript
           path: tex/*-draft.pdf
       - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: deploy
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 
   slurm:
     runs-on: ubuntu-22.04
+    env:
+      # RE https://stackoverflow.com/a/40184923/17332200
+      PIP_NO_CACHE_DIR: 1
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
