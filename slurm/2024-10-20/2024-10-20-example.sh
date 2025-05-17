@@ -205,7 +205,7 @@ cat > "${SBATCH_FILE}" << EOF
 #SBATCH --time=4:00:00
 #SBATCH --output="/mnt/home/%u/joblog/%j"
 #SBATCH --mail-user=mawni4ah2o@pomail.net
-#SBATCH --mail-type=FAIL,TIME_LIMIT
+#SBATCH --mail-type=FAIL,TIME_LIMIT,ARRAY_TASKS
 #SBATCH --account=beacon
 #SBATCH --requeue
 #SBATCH --array=0-5
