@@ -2,8 +2,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=latex
 
 main.pdf
-hstrat-agentless-concept.pdf
-hstrat-agentless-concept-draft.pdf
+paperproject.pdf
+paperproject.pdf
 
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
@@ -316,6 +316,3 @@ TSWLatexianTemp*
 *.glstex
 
 # End of https://www.toptal.com/developers/gitignore/api/latex
-
-hstrat-surface-concept-draft.pdf
-hstrat-surface-concept.pdf
