@@ -6,12 +6,12 @@
 
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    # pkgs.htop
-    # pkgs.gnumake
-    # pkgs.vim
-    # pkgs.texliveFull
-    # pkgs.python310
-    # pkgs.bibtex-tidy
+      pkgs.htop
+      pkgs.gnumake
+      pkgs.vim
+      # pkgs.texliveFull
+      pkgs.python310
+      pkgs.bibtex-tidy
   ];
 
   # Sets environment variables in the workspace
@@ -20,22 +20,25 @@
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       # "vscodevim.vim"
+      # "adamraichu.pdf-viewer"
     ];
 
     # Enable previews
     previews = {
       enable = true;
       previews = {
-        # web = {
-        #   # Example: run "npm run dev" with PORT set to IDX's defined port for previews,
-        #   # and show it in IDX's web preview panel
-        #   command = ["npm" "run" "dev"];
-        #   manager = "web";
-        #   env = {
-        #     # Environment variables to set for your server
-        #     PORT = "$PORT";
-        #   };
-        # };
+        web = {
+          # command to run the python http server on the specific port and bind to all interfaces
+          command = [
+            "python3.10"
+            "-m"
+            "http.server"
+            "$PORT"
+            "--bind"
+            "0.0.0.0"
+          ];
+          manager = "web";
+        };
       };
     };
 
