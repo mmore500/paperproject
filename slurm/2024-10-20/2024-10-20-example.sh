@@ -100,7 +100,7 @@ source "${BATCHDIR_ENV}/bin/activate"
 echo "python3.10 $(which python3.10)"
 echo "python3.10 --version $(python3.10 --version)"
 for attempt in {1..5}; do
-    python3.10 -m pip install --upgrade pip setuptools wheel || :
+    python3.10 -m pip install --upgrade pip 'setuptools<82' wheel setuptools-scm || :
     python3.10 -m pip install --upgrade uv \
     && python3.10 -m uv pip install \
         'more_itertools==10.*' \
@@ -111,6 +111,7 @@ for attempt in {1..5}; do
         'pyarrow==15.*' \
         'scipy==1.*' \
         'tqdm==4.*' \
+    && python3.10 -m uv pip install --no-build-isolation \
         "git+${HSTRAT_REMOTE_URL}@${HSTRAT_REVISION}" \
     && break || echo "pip install attempt ${attempt} failed"
     if [ ${attempt} -eq 3 ]; then
