@@ -16,7 +16,7 @@ echo "--------------------"
 ################################################################################
 
 # adapted from https://stackoverflow.com/a/24114056
-script_dir="$(cd "$(dirname -- "$BASH_SOURCE")" && pwd)"
+script_dir="$(realpath "$(dirname -- "$BASH_SOURCE")")"
 echo "script_dir ${script_dir}"
 
 ################################################################################
