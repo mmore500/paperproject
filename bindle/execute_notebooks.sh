@@ -16,7 +16,7 @@ echo "--------------------"
 ################################################################################
 
 # adapted from https://stackoverflow.com/a/24114056
-script_dir="$(dirname -- "$BASH_SOURCE")"
+script_dir="$(cd "$(dirname -- "$BASH_SOURCE")" && pwd)"
 echo "script_dir ${script_dir}"
 
 ################################################################################
@@ -25,21 +25,24 @@ echo "execute marimo notebooks in current directory"
 echo "---------------------------------------------"
 ################################################################################
 
+# cd into script_dir so teeplot outputs land under bindle/teeplots/
+# (unlike jupyter nbconvert, `marimo export ipynb` uses the caller's cwd
+# rather than the notebook's directory)
+cd "${script_dir}"
+
 shopt -s nullglob
 
 if [ $# -gt 0 ]; then
-  cd "${script_dir}"
   notebooks=("$@")
 else
-  notebooks=("${script_dir}/"*.py)
+  notebooks=(*.py)
 fi
 
 for notebook in "${notebooks[@]}"; do
   echo "notebook ${notebook}"
   export NOTEBOOK_NAME="$(basename "${notebook%.*}")"
   export NOTEBOOK_PATH="$(realpath "${notebook}")"
-  notebook_dir="$(dirname -- "${notebook}")"
-  output_ipynb="${notebook_dir}/${NOTEBOOK_NAME}.ipynb"
+  output_ipynb="${NOTEBOOK_NAME}.ipynb"
   # export marimo notebook to jupyter notebook with executed outputs
   # adapted from https://docs.marimo.io/guides/exporting/
   marimo export ipynb \
