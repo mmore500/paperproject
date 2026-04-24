@@ -63,34 +63,8 @@ for notebook in "${notebooks[@]}"; do
     echo "marimo export failed for ${notebook} (exit ${marimo_status})"
     echo "---------------------------------------------"
     if [ -f "${output_ipynb}" ]; then
-      python3 - "${output_ipynb}" <<'PYEOF'
-import json
-import sys
-
-path = sys.argv[1]
-with open(path) as f:
-    nb = json.load(f)
-
-found = False
-for idx, cell in enumerate(nb.get("cells", [])):
-    if cell.get("cell_type") != "code":
-        continue
-    for out in cell.get("outputs", []):
-        if out.get("output_type") != "error":
-            continue
-        found = True
-        source = "".join(cell.get("source", []))
-        print(f"=== cell {idx} failed: {out.get('ename')}: {out.get('evalue')} ===")
-        print("--- cell source ---")
-        print(source)
-        print("--- traceback ---")
-        for line in out.get("traceback", []):
-            print(line)
-        print()
-
-if not found:
-    print(f"(no error outputs found in {path})")
-PYEOF
+      jq '.cells[].outputs[]? | select(.output_type=="error")' "${output_ipynb}"
+      jq -r '.. | select(type == "object" and .output_type == "error") | .traceback[]' "${output_ipynb}"
     else
       echo "(${output_ipynb} was not produced)"
     fi
