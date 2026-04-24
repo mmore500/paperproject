@@ -45,12 +45,57 @@ for notebook in "${notebooks[@]}"; do
   output_ipynb="${NOTEBOOK_NAME}.ipynb"
   # export marimo notebook to jupyter notebook with executed outputs
   # adapted from https://docs.marimo.io/guides/exporting/
+  # `marimo export ipynb` exits non-zero when any cell errored, but only
+  # prints "Export was successful, but some cells failed to execute." with
+  # no traceback. Capture the status, then dump cell tracebacks from the
+  # produced ipynb so CI logs show what actually failed.
+  set +e
   marimo export ipynb \
     --include-outputs \
     --sort topological \
     -f \
     "${notebook}" \
     -o "${output_ipynb}"
+  marimo_status=$?
+  set -e
+  if [ "${marimo_status}" -ne 0 ]; then
+    echo
+    echo "marimo export failed for ${notebook} (exit ${marimo_status})"
+    echo "---------------------------------------------"
+    if [ -f "${output_ipynb}" ]; then
+      python3 - "${output_ipynb}" <<'PYEOF'
+import json
+import sys
+
+path = sys.argv[1]
+with open(path) as f:
+    nb = json.load(f)
+
+found = False
+for idx, cell in enumerate(nb.get("cells", [])):
+    if cell.get("cell_type") != "code":
+        continue
+    for out in cell.get("outputs", []):
+        if out.get("output_type") != "error":
+            continue
+        found = True
+        source = "".join(cell.get("source", []))
+        print(f"=== cell {idx} failed: {out.get('ename')}: {out.get('evalue')} ===")
+        print("--- cell source ---")
+        print(source)
+        print("--- traceback ---")
+        for line in out.get("traceback", []):
+            print(line)
+        print()
+
+if not found:
+    print(f"(no error outputs found in {path})")
+PYEOF
+    else
+      echo "(${output_ipynb} was not produced)"
+    fi
+    exit "${marimo_status}"
+  fi
 done
 
 shopt -u nullglob
