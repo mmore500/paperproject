@@ -23,4 +23,4 @@ jobs:
       - name: Build LaTeX document
         run: |
           trap 'cat *.log || true >> "$GITHUB_OUTPUT"' EXIT
-          make
+          latexmk -pdf -interaction=nonstopmode -file-line-error main.tex
