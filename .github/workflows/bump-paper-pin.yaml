@@ -20,4 +20,3 @@ jobs:
           git add paper
           git diff --cached --quiet || git commit -m "bump paper pin"
       - run: git push origin HEAD
-      
