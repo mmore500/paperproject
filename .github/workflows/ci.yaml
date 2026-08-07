@@ -259,7 +259,6 @@ jobs:
   tex-deploy:
     name: Latex Deploy
     needs: tex
-    if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-22.04
     # serialize Pages deploys to avoid concurrent runs timing out
     concurrency:
