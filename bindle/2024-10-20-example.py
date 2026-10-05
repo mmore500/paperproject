@@ -98,5 +98,10 @@ def _(df, pathlib, sns, tp):
     return
 
 
+@app.function
+def test_dummy():
+    assert True
+
+
 if __name__ == "__main__":
     app.run()
