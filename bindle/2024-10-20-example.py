@@ -44,11 +44,9 @@ def do_watermark(mo, watermark):
 
 @app.cell(hide_code=True)
 def delimit_prep_data(mo):
-    mo.md(
-        """
+    mo.md("""
     ## Prep Data
-    """
-    )
+    """)
     return
 
 
@@ -72,11 +70,9 @@ def peek_data(df, pd):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        """
+    mo.md("""
     ## Example Plot
-    """
-    )
+    """)
     return
 
 
@@ -100,6 +96,11 @@ def _(df, pathlib, sns, tp):
     ) as g:
         g.figure.set_size_inches(5, 2)
     return
+
+
+@app.function
+def test_dummy():
+    assert True
 
 
 if __name__ == "__main__":
