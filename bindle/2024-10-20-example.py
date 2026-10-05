@@ -3,29 +3,19 @@ import marimo
 __generated_with = "0.23.2"
 app = marimo.App(width="full")
 
-
-@app.cell
-def import_std():
+with app.setup:
     import pathlib
 
-    return (pathlib,)
-
-
-@app.cell
-def import_pkg():
     import marimo as mo
     import pandas as pd
     import seaborn as sns
     from teeplot import teeplot as tp
     from watermark import watermark
 
-    return mo, pd, sns, tp, watermark
-
 
 @app.cell(hide_code=True)
-def do_watermark(mo, watermark):
-    mo.md(
-        f"""
+def do_watermark():
+    mo.md(f"""
     ```Text
     {watermark(
         current_date=True,
@@ -37,23 +27,20 @@ def do_watermark(mo, watermark):
         globals_=globals(),
     )}
     ```
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
-def delimit_prep_data(mo):
-    mo.md(
-        """
+def delimit_prep_data():
+    mo.md("""
     ## Prep Data
-    """
-    )
+    """)
     return
 
 
 @app.cell
-def load_data(sns):
+def load_data():
     df = sns.load_dataset("mpg")
     return (df,)
 
@@ -65,23 +52,21 @@ def describe_data(df):
 
 
 @app.cell
-def peek_data(df, pd):
+def peek_data(df):
     pd.concat([df.head(), df.tail()])
     return
 
 
 @app.cell(hide_code=True)
-def _(mo):
-    mo.md(
-        """
+def _():
+    mo.md("""
     ## Example Plot
-    """
-    )
+    """)
     return
 
 
 @app.cell
-def _(df, pathlib, sns, tp):
+def _(df):
     with tp.teed(
         sns.relplot,
         data=df,
@@ -99,6 +84,17 @@ def _(df, pathlib, sns, tp):
         teeplot_subdir=pathlib.Path(__file__).stem,
     ) as g:
         g.figure.set_size_inches(5, 2)
+    return
+
+
+@app.cell
+def _():
+    def test_dummy_true():
+        assert True
+
+    def test_dummy_arithmetic():
+        assert 1 + 1 == 2
+
     return
 
 
