@@ -98,5 +98,16 @@ def _(df, pathlib, sns, tp):
     return
 
 
+@app.cell
+def _():
+    def test_dummy_true():
+        assert True
+
+    def test_dummy_arithmetic():
+        assert 1 + 1 == 2
+
+    return
+
+
 if __name__ == "__main__":
     app.run()
