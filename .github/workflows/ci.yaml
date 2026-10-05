@@ -108,7 +108,7 @@ jobs:
         with:
           python-version: "3.10"
       - name: Setup headless display
-        uses: pyvista/setup-headless-display-action@v2
+        uses: pyvista/setup-headless-display-action@v5
       - run: |
           sudo apt-get update -y
           sudo apt-get install -y ghostscript imagemagick python3-pil libgif-dev ffmpeg mat2
@@ -144,7 +144,7 @@ jobs:
         with:
           python-version: "3.10"
       - name: Setup headless display
-        uses: pyvista/setup-headless-display-action@v2
+        uses: pyvista/setup-headless-display-action@v5
       - run: |
           sudo apt-get update -y
           sudo apt-get install -y ghostscript imagemagick python3-pil libgif-dev ffmpeg
@@ -194,7 +194,7 @@ jobs:
         with:
           python-version: "3.10"
       - name: Setup headless display
-        uses: pyvista/setup-headless-display-action@v2
+        uses: pyvista/setup-headless-display-action@v5
       - run: |
           sudo apt-get update -y
           sudo apt-get install -y ghostscript imagemagick python3-pil libgif-dev ffmpeg mat2
@@ -231,7 +231,7 @@ jobs:
         with:
           python-version: "3.10"
       - name: Setup headless display
-        uses: pyvista/setup-headless-display-action@v2
+        uses: pyvista/setup-headless-display-action@v5
       - run: |
           sudo apt-get update -y
           sudo apt-get install -y ghostscript imagemagick python3-pil libgif-dev ffmpeg
@@ -320,7 +320,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y git lshw python3.10-venv
+          sudo apt-get install -y git lshw
       - name: Install Nix
         uses: cachix/install-nix-action@v25
         with:
