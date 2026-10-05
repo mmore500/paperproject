@@ -3,27 +3,18 @@ import marimo
 __generated_with = "0.23.2"
 app = marimo.App(width="full")
 
-
-@app.cell
-def import_std():
+with app.setup:
     import pathlib
 
-    return (pathlib,)
-
-
-@app.cell
-def import_pkg():
     import marimo as mo
     import pandas as pd
     import seaborn as sns
     from teeplot import teeplot as tp
     from watermark import watermark
 
-    return mo, pd, sns, tp, watermark
-
 
 @app.cell(hide_code=True)
-def do_watermark(mo, watermark):
+def do_watermark():
     mo.md(f"""
     ```Text
     {watermark(
@@ -41,7 +32,7 @@ def do_watermark(mo, watermark):
 
 
 @app.cell(hide_code=True)
-def delimit_prep_data(mo):
+def delimit_prep_data():
     mo.md("""
     ## Prep Data
     """)
@@ -49,7 +40,7 @@ def delimit_prep_data(mo):
 
 
 @app.cell
-def load_data(sns):
+def load_data():
     df = sns.load_dataset("mpg")
     return (df,)
 
@@ -61,13 +52,13 @@ def describe_data(df):
 
 
 @app.cell
-def peek_data(df, pd):
+def peek_data(df):
     pd.concat([df.head(), df.tail()])
     return
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def _():
     mo.md("""
     ## Example Plot
     """)
@@ -75,7 +66,7 @@ def _(mo):
 
 
 @app.cell
-def _(df, pathlib, sns, tp):
+def _(df):
     with tp.teed(
         sns.relplot,
         data=df,
