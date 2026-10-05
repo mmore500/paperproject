@@ -102,5 +102,13 @@ def _(df, pathlib, sns, tp):
     return
 
 
+@app.cell
+def _():
+    def test_dummy():
+        assert True
+
+    return (test_dummy,)
+
+
 if __name__ == "__main__":
     app.run()
