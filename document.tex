@@ -1,8 +1,7 @@
 \usepackage{graphicx}
-\ifdefined\nofake
-\else
-% render graphics that are available, and draw missing ones (e.g., figures
-% from paper branch submodules) as black boxes, like graphicx's demo option
+% unless \nofake is defined, render graphics that are available, and draw
+% missing ones (e.g., figures from paper branch submodules) as black boxes,
+% like graphicx's demo option
 \makeatletter
 \newif\iffake@found
 \def\fake@checkgraphic#1{%
@@ -20,6 +19,7 @@
     \IfFileExists{#1}{\global\fake@foundtrue}{}%
   \fi
   \endgroup}
+\ifdefined\nofake\else
 \AtBeginDocument{%
   \let\fake@Ginclude@graphics\Ginclude@graphics
   \def\Ginclude@graphics#1{%
@@ -30,8 +30,8 @@
       \rule{\@ifundefined{Gin@@ewidth}{150pt}{\Gin@@ewidth}}%
       {\@ifundefined{Gin@@eheight}{100pt}{\Gin@@eheight}}%
     \fi}}
-\makeatother
 \fi
+\makeatother
 
 \input{lib/dependencies.tex}
 \input{lib/pragmaonce.tex}
